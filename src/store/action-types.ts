@@ -1,0 +1,2 @@
+export const CHANGE_GAME_STATUS = 'CHANGE_GAME_STATUS'
+export const SHOW_RULES = 'SHOW_RULES'
