@@ -27,7 +27,7 @@ const Game: React.FC = function () {
       <button>Reset</button>
       <button onClick={onInstruction}>Instruction</button>
       <button onClick={onMainMenu}>Main menu</button>
-            {gameRulseStatus ? <Rules/> : null}
+      {gameRulseStatus ? <Rules/> : null}
       </div>
     )
   }

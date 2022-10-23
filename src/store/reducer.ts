@@ -1,16 +1,18 @@
 import { Actions } from './actions'
-import { CHANGE_GAME_STATUS, SHOW_RULES, SHOW_START_MENU } from './action-types'
+import { CHANGE_GAME_STATUS, SHOW_RULES, SHOW_START_MENU, SHOW_SETTINGS } from './action-types'
 
 export const initialState: initialSateInterface = {
   gameStatus: false,
   gameRules: false,
-  startMenu: false
+  startMenu: false,
+  settings: false
 }
 
 export interface initialSateInterface {
   gameStatus: boolean
   gameRules: boolean
   startMenu: boolean
+  settings: boolean
 }
 
 function reducer (state: initialSateInterface = initialState, action: Actions): initialSateInterface {
@@ -23,6 +25,9 @@ function reducer (state: initialSateInterface = initialState, action: Actions): 
 
     case SHOW_START_MENU:
       return { ...state, startMenu: action.payload }
+
+    case SHOW_SETTINGS:
+      return { ...state, settings: action.payload }
 
     default: return state
   }
