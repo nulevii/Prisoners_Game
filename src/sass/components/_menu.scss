@@ -1,0 +1,31 @@
+// @font-face {
+//   font-family: bladeline;
+//   src: url(../../img/bladeline.ttf);
+// }
+@font-face {
+  font-family: pipedream;
+  src: url(../../img/pipedream.ttf);
+}
+
+.gameTitle {
+  margin-bottom: 20px;
+
+  font-family: pipedream;
+  font-size: 48px;
+
+  color: $main-color;
+  filter: drop-shadow(0 0 1mm $accent-color) drop-shadow(0 0 4mm $accent-color) drop-shadow(0 0 12mm $accent-color);
+  
+}
+
+.menuContainer {
+  height: 100vh;
+
+  padding-top: 40%;
+
+  text-align: center;
+
+  background-image: url(../../img/prison-bcg.jpg);
+  background-size: cover;
+  background-position: center;
+}
