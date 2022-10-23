@@ -1,6 +1,6 @@
 import React from 'react'
 
-const StartMenu: React.FC = function () {
+const GameSettings: React.FC = function () {
   return (
     <div>
       <p>Select Prisoners quantity</p>
@@ -14,4 +14,4 @@ const StartMenu: React.FC = function () {
   )
 }
 
-export default StartMenu
+export default GameSettings
