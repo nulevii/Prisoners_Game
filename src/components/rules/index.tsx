@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { showRules } from '../../../store/actions'
+import { showRules } from '../../store/actions'
 const Rules: React.FC = function () {
   const dispatch = useDispatch()
   const onHideRules = (): void => {

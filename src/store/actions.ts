@@ -1,4 +1,4 @@
-import { CHANGE_GAME_STATUS, SHOW_RULES } from './action-types'
+import { CHANGE_GAME_STATUS, SHOW_RULES, SHOW_START_MENU } from './action-types'
 
 export const changeGameStatus = (payload: boolean): ChangeGameStatusInterface => ({
   type: CHANGE_GAME_STATUS,
@@ -18,4 +18,13 @@ interface showRulesInterface {
   payload: boolean
 }
 
-export type Actions = ChangeGameStatusInterface | showRulesInterface
+export const showStartMenu = (payload: boolean): showStartMenuInterface => ({
+  type: SHOW_START_MENU,
+  payload
+})
+interface showStartMenuInterface {
+  type: typeof SHOW_START_MENU
+  payload: boolean
+}
+
+export type Actions = ChangeGameStatusInterface | showRulesInterface | showStartMenuInterface
