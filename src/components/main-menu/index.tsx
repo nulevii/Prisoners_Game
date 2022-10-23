@@ -23,8 +23,8 @@ const MainMenu: React.FC = () => {
     dispatch(showSettings(true))
   }
   return (
-    <div>
-      <p className='caption'>Prisoners Game</p>
+    <div className='menuContainer'>
+      <p className='gameTitle'>Prisoners</p>
       <button onClick={onStartGame}>Start game</button>
       <button onClick={onInstruction}>Instruction</button>
       <button onClick={onSettings}>Settings</button>
