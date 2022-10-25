@@ -5,6 +5,7 @@ import { changeGameStatus, showRules, showGameSettings } from '../../store/actio
 
 import MainMenu from '../main-menu'
 import GameSettings from './game-settings'
+import GameRoom from './game-room'
 import Rules from '../rules'
 
 const Game: React.FC = function () {
@@ -12,7 +13,6 @@ const Game: React.FC = function () {
   const gameStatus: boolean = useSelector((state: initialSateInterface) => state.gameStatus)
   const gameRulseStatus: boolean = useSelector((state: initialSateInterface) => state.gameRules)
   const gameSettingsStatus: boolean = useSelector((state: initialSateInterface) => state.gameSettings)
-  console.log(gameSettingsStatus)
   const onMainMenu = (): void => {
     dispatch(changeGameStatus(false))
   }
@@ -28,7 +28,7 @@ const Game: React.FC = function () {
     return (
       <div>
       {gameSettingsStatus ? <GameSettings/> : null}
-      <div>Game Started</div>
+      <GameRoom/>
       <button onClick={onStart}>Reset</button>
       <button onClick={onInstruction}>Instruction</button>
       <button onClick={onMainMenu}>Main menu</button>
