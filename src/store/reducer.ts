@@ -1,25 +1,32 @@
 import { Actions } from './actions'
-import { CHANGE_GAME_STATUS, SHOW_RULES, SHOW_START_MENU, SHOW_SETTINGS, SHOW_GAME_SETTINGS, INCREASE_PRISONERS_QTT, DECREASE_PRISONERS_QTT } from './action-types'
-
-export const initialState: initialSateInterface = {
+import { CHANGE_GAME_STATUS, SHOW_RULES, SHOW_START_MENU, SHOW_SETTINGS, SHOW_GAME_SETTINGS, INCREASE_PRISONERS_QTT, DECREASE_PRISONERS_QTT, START_GAME, OPEN_BOX } from './action-types'
+import { createBoxesArray, BoxInterface, createPrisoners, PrisonersInterface } from '../utilities/generateGameTools'
+export const initialState: InitialStateInterface = {
   gameStatus: false,
   gameRules: false,
   startMenu: false,
   settings: false,
   gameSettings: true,
-  prisonersQtt: 10
+
+  prisonersQtt: 10,
+  boxes: createBoxesArray(10),
+  prisoners: []
 }
 
-export interface initialSateInterface {
+export interface InitialStateInterface {
   gameStatus: boolean
   gameRules: boolean
   startMenu: boolean
   settings: boolean
   gameSettings: boolean
+
   prisonersQtt: number
+  boxes: BoxInterface[]
+  prisoners: PrisonersInterface[]
+
 }
 
-function reducer (state: initialSateInterface = initialState, action: Actions): initialSateInterface {
+function reducer (state: InitialStateInterface = initialState, action: Actions): InitialStateInterface {
   switch (action.type) {
     case CHANGE_GAME_STATUS:
       return { ...state, gameStatus: action.payload }
@@ -49,6 +56,17 @@ function reducer (state: initialSateInterface = initialState, action: Actions): 
         return { ...state, prisonersQtt: 10 }
       }
       return { ...state, prisonersQtt: state.prisonersQtt - action.payload }
+
+    case START_GAME:
+      return { ...state, boxes: createBoxesArray(state.prisonersQtt), prisoners: createPrisoners(state.prisonersQtt) }
+
+    case OPEN_BOX:
+      const newBoxes = [...state.boxes]
+      newBoxes[action.payload] = { ...newBoxes[action.payload], isOpen: true }
+      return {
+        ...state,
+        boxes: newBoxes
+      }
 
     default: return state
   }

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { initialSateInterface } from '../../store/reducer'
+import { InitialStateInterface } from '../../store/reducer'
 import { changeGameStatus, showRules, showSettings } from '../../store/actions'
 
 import Rules from '../rules'
@@ -8,8 +8,8 @@ import Settings from './settings'
 
 const MainMenu: React.FC = () => {
   const dispatch = useDispatch()
-  const gameRulseStatus: boolean = useSelector((state: initialSateInterface) => state.gameRules)
-  const settingsStatus: boolean = useSelector((state: initialSateInterface) => state.settings)
+  const gameRulseStatus: boolean = useSelector((state: InitialStateInterface) => state.gameRules)
+  const settingsStatus: boolean = useSelector((state: InitialStateInterface) => state.settings)
 
   const onStartGame = (): void => {
     dispatch(changeGameStatus(true))

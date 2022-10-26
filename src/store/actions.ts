@@ -1,4 +1,8 @@
-import { CHANGE_GAME_STATUS, SHOW_RULES, SHOW_START_MENU, SHOW_SETTINGS, SHOW_GAME_SETTINGS, INCREASE_PRISONERS_QTT, DECREASE_PRISONERS_QTT } from './action-types'
+import {
+  CHANGE_GAME_STATUS, SHOW_RULES, SHOW_START_MENU, SHOW_SETTINGS,
+  SHOW_GAME_SETTINGS, INCREASE_PRISONERS_QTT, DECREASE_PRISONERS_QTT,
+  START_GAME, OPEN_BOX
+} from './action-types'
 
 export const changeGameStatus = (payload: boolean): ChangeGameStatusInterface => ({
   type: CHANGE_GAME_STATUS,
@@ -65,4 +69,23 @@ interface DecreasePrisonersQttInterface {
   payload: number
 }
 
-export type Actions = ChangeGameStatusInterface | ShowRulesInterface | ShowStartMenuInterface | ShowSettingsInterface | ShowGameSettingsInterface | IncreasePrisonersQttInterface | DecreasePrisonersQttInterface
+export const startGame = (): StartGameInterface => ({
+  type: START_GAME
+})
+interface StartGameInterface {
+  type: typeof START_GAME
+}
+
+export const openBox = (payload: number): OpenBoxInterface => ({
+  type: OPEN_BOX,
+  payload
+})
+interface OpenBoxInterface {
+  type: typeof OPEN_BOX
+  payload: number
+}
+
+export type Actions = ChangeGameStatusInterface | ShowRulesInterface
+| ShowStartMenuInterface | ShowSettingsInterface | ShowGameSettingsInterface
+| IncreasePrisonersQttInterface | DecreasePrisonersQttInterface | StartGameInterface
+| OpenBoxInterface

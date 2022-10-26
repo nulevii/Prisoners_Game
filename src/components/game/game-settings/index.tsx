@@ -1,39 +1,32 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { initialSateInterface } from '../../../store/reducer'
-import { showGameSettings, increasePrisonersQtt, decreasePrisonersQtt } from '../../../store/actions'
+import { InitialStateInterface } from '../../../store/reducer'
+import { showGameSettings, increasePrisonersQtt, decreasePrisonersQtt, startGame } from '../../../store/actions'
 
 const GameSettings: React.FC = function () {
   const dispatch = useDispatch()
-  const prisonersQtt: number = useSelector((state: initialSateInterface) => state.prisonersQtt)
+  const prisonersQtt: number = useSelector((state: InitialStateInterface) => state.prisonersQtt)
 
   const onStart = (): void => {
     dispatch(showGameSettings(false))
+    dispatch(startGame())
   }
-  const SMALL_QTT_CHANGE = 1
-  const BIG_QTT_CHANGE = 10
+  const QTT_CHANGE = 10
 
-  const onSmallIncrease = (): void => {
-    dispatch(increasePrisonersQtt(SMALL_QTT_CHANGE))
-  }
   const onBigIncrease = (): void => {
-    dispatch(increasePrisonersQtt(BIG_QTT_CHANGE))
+    dispatch(increasePrisonersQtt(QTT_CHANGE))
   }
-  const onSmallDecrease = (): void => {
-    dispatch(decreasePrisonersQtt(SMALL_QTT_CHANGE))
-  }
+
   const onBigDecrease = (): void => {
-    dispatch(decreasePrisonersQtt(BIG_QTT_CHANGE))
+    dispatch(decreasePrisonersQtt(QTT_CHANGE))
   }
 
   return (
     <div>
       <p>Select Prisoners quantity</p>
-      <button onClick={onBigIncrease}>+ {BIG_QTT_CHANGE}</button>
-      <button onClick={onSmallIncrease}>+ {SMALL_QTT_CHANGE}</button>
+      <button onClick={onBigIncrease}>+ {QTT_CHANGE}</button>
       <p>{prisonersQtt}</p>
-      <button onClick={onSmallDecrease}>- {SMALL_QTT_CHANGE}</button>
-      <button onClick={onBigDecrease}>- {BIG_QTT_CHANGE}</button>
+      <button onClick={onBigDecrease}>- {QTT_CHANGE}</button>
       <button onClick={onStart}>Start</button>
     </div>
   )
