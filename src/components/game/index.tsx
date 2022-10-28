@@ -11,7 +11,7 @@ import Rules from '../rules'
 
 const Game: React.FC = function () {
   const dispatch = useDispatch()
-  const gameStatus: boolean = useSelector((state: InitialStateInterface) => state.gameStatus)
+  const gameStatus: boolean = useSelector((state: InitialStateInterface) => state.gameRoom)
   const gameRulseStatus: boolean = useSelector((state: InitialStateInterface) => state.gameRules)
   const gameSettingsStatus: boolean = useSelector((state: InitialStateInterface) => state.gameSettings)
   const onMainMenu = (): void => {

@@ -36,11 +36,13 @@ export const createPrisoners = (prisonersQtt: number): PrisonersInterface[] => {
     .map(prisonerNumber => {
       const prisonerName = `${prisonersNames[generateId(prisonersNames)]} ${prisonersSurnames[generateId(prisonersSurnames)]}`
       const prisonerImg = 'https://cdn-icons-png.flaticon.com/512/123/123668.png'
+      const attempts = prisonersQtt / 2
+
       return {
         prisonerNumber,
         prisonerName,
-        prisonerImg
-
+        prisonerImg,
+        attempts
       }
     })
   return prisoners
@@ -50,4 +52,5 @@ export interface PrisonersInterface {
   prisonerNumber: number
   prisonerName: string
   prisonerImg: string
+  attempts: number
 }
