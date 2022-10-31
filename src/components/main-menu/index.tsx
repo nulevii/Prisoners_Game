@@ -28,7 +28,6 @@ const MainMenu: React.FC = () => {
     <div className='menuContainer'>
       <div className='gameTitle'>
         <div className="TitleLetter TitleLetterP"><img src={sprite} alt="" width="150" /></div>
-        {/* <div className="TitleLetter TitleLetterR"><img src="./../../img/sprite.png" alt="" /></div> */}
         <div className="TitleLetter TitleLetterI"></div>
         <div className="TitleLetter TitleLetterS"></div>
         <div className="TitleLetter TitleLetterO"></div>
