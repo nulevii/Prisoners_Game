@@ -2,5 +2,6 @@
 @import "./base/base";
 @import "./base/variables";
 
-@import "./components/menu-title";
-@import "./components/menu-btns";
+@import "./components/main-menu/menu-title";
+@import "./components/main-menu/menu-btns";
+@import "./components/main-menu/menu-cursor";
