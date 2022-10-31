@@ -4,7 +4,11 @@
 
 html {
   scroll-behavior: smooth;
-  overflow-x: clip;
+  overflow: clip;
+}
+
+body {
+  background-color: #051E37;
 }
 
 h1,
