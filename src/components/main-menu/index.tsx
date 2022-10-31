@@ -38,6 +38,7 @@ const MainMenu: React.FC = () => {
       <button onClick={onStartGame} className='menuBtn startBtn'></button>
       <button onClick={onInstruction} className='menuBtn instructionsBtn'></button>
       <button onClick={onAbout} className='menuBtn aboutBtn'></button>
+      <button className='soundBtn'></button>
       {gameRulseStatus ? <Rules /> : null}
       {settingsStatus ? <AboutSection /> : null}
     </div>
