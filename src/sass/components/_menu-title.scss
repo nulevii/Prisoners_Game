@@ -1,0 +1,93 @@
+.menuContainer {
+  position: relative;
+  overflow: clip;
+  height: 100vh;
+  margin: 0 auto;
+  background-image: url(../../img/background.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #051e37;
+}
+
+.gameTitle {
+  position: relative;
+  right: -2.5%;
+  top: 27%;
+  display: flex;
+  margin: 0 auto;
+  width: 25%;
+  height: 25%;
+  justify-content: center;
+}
+
+.TitleLetter {
+  position: relative;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &P {
+    top: 15%;
+    width: 11%;
+    height: 70%;
+    background-image: url(../../img/main-menu/p.png);
+  }
+
+  &R {
+    top: 13%;
+    height: 73%;
+    width: 11%;
+    background-image: url(../../img/main-menu//r1.png);
+  }
+
+  &I {
+    left: -3%;
+    height: 80%;
+    width: 9%;
+    background-image: url(../../img/main-menu//i.png);
+  }
+
+  &S {
+    top: 12%;
+    left: -8%;
+    height: 80%;
+    width: 17%;
+    background-image: url(../../img/main-menu//s1.png);
+  }
+
+  &O {
+    left: -8%;
+    top: -5%;
+    width: 11%;
+    background-image: url(../../img/main-menu//o.png);
+  }
+
+  &N {
+    left: -8%;
+    top: -6%;
+    width: 13%;
+    background-image: url(../../img/main-menu//n.png);
+  }
+
+  &E {
+    left: -6%;
+    top: -3%;
+    width: 10%;
+    background-image: url(../../img/main-menu//e.png);
+  }
+
+  &RR {
+    left: -4%;
+    top: -4.5%;
+    width: 9.8%;
+    background-image: url(../../img/main-menu//r.png);
+  }
+
+  &SS {
+    width: 16.5%;
+    left: -10%;
+    top: 3.5%;
+    background-image: url(../../img/main-menu//s.png);
+  }
+}
