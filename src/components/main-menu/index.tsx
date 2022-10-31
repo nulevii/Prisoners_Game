@@ -5,18 +5,14 @@ import { changeGameStatus, showRules, showAbout } from '../../store/actions'
 
 import Rules from '../rules'
 import AboutSection from './about-section'
+import { setCustomCursor } from '../../utilities/customCursor'
 
 const MainMenu: React.FC = () => {
   useEffect(() => {
-    function update (e: currentTarget): void {
-      const x: string = e.clientX || e.touches[0].clientX
-      const y = e.clientY || e.touches[0].clientY
-      document.documentElement.style.setProperty('--cursorX', x + 'px')
-      document.documentElement.style.setProperty('--cursorY', y + 'px')
-    }
-    document.addEventListener('mousemove', update)
-    document.addEventListener('touchmove', update)
-  })
+    document.addEventListener('mousemove', setCustomCursor)
+    document.addEventListener('touchmove', setCustomCursor)
+  }, [])
+
   const dispatch = useDispatch()
   const gameRulseStatus: boolean = useSelector(
     (state: InitialStateInterface) => state.gameRules
