@@ -69,10 +69,10 @@ function reducer (state: InitialStateInterface = initialState, action: Actions):
       // App logic
 
     case INCREASE_PRISONERS_QTT:
-      if (state.prisonersQtt + action.payload > 100) {
+      if (state.prisonersQtt + Number(action.payload) > 100) {
         return { ...state, prisonersQtt: 100 }
       }
-      return { ...state, prisonersQtt: state.prisonersQtt + action.payload }
+      return { ...state, prisonersQtt: state.prisonersQtt + Number(action.payload) }
 
     case DECREASE_PRISONERS_QTT:
       if (state.prisonersQtt - action.payload < 10) {
