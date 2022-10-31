@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { InitialStateInterface } from '../../store/reducer'
 import { changeGameStatus, showRules, showAbout } from '../../store/actions'
@@ -7,9 +7,23 @@ import Rules from '../rules'
 import AboutSection from './about-section'
 
 const MainMenu: React.FC = () => {
+  useEffect(() => {
+    function update (e: currentTarget): void {
+      const x: string = e.clientX || e.touches[0].clientX
+      const y = e.clientY || e.touches[0].clientY
+      document.documentElement.style.setProperty('--cursorX', x + 'px')
+      document.documentElement.style.setProperty('--cursorY', y + 'px')
+    }
+    document.addEventListener('mousemove', update)
+    document.addEventListener('touchmove', update)
+  })
   const dispatch = useDispatch()
-  const gameRulseStatus: boolean = useSelector((state: InitialStateInterface) => state.gameRules)
-  const settingsStatus: boolean = useSelector((state: InitialStateInterface) => state.about)
+  const gameRulseStatus: boolean = useSelector(
+    (state: InitialStateInterface) => state.gameRules
+  )
+  const settingsStatus: boolean = useSelector(
+    (state: InitialStateInterface) => state.about
+  )
 
   const onStartGame = (): void => {
     dispatch(changeGameStatus(true))
@@ -22,9 +36,10 @@ const MainMenu: React.FC = () => {
   const onAbout = (): void => {
     dispatch(showAbout(true))
   }
+
   return (
-    <div className='menuContainer'>
-      <div className='gameTitle'>
+    <div className="menuContainer">
+      <div className="gameTitle">
         <div className="TitleLetter TitleLetterP"></div>
         <div className="TitleLetter TitleLetterR"></div>
         <div className="TitleLetter TitleLetterI"></div>
@@ -35,10 +50,14 @@ const MainMenu: React.FC = () => {
         <div className="TitleLetter TitleLetterRR"></div>
         <div className="TitleLetter TitleLetterSS"></div>
       </div>
-      <button onClick={onStartGame} className='menuBtn startBtn'></button>
-      <button onClick={onInstruction} className='menuBtn instructionsBtn'></button>
-      <button onClick={onAbout} className='menuBtn aboutBtn'></button>
-      <button className='soundBtn'></button>
+
+      <button onClick={onStartGame} className="menuBtn startBtn"></button>
+      <button
+        onClick={onInstruction}
+        className="menuBtn instructionsBtn"
+      ></button>
+      <button onClick={onAbout} className="menuBtn aboutBtn"></button>
+      <button className="soundBtn"></button>
       {gameRulseStatus ? <Rules /> : null}
       {settingsStatus ? <AboutSection /> : null}
     </div>
