@@ -1,7 +1,7 @@
 import {
-  CHANGE_GAME_STATUS, SHOW_RULES, SHOW_START_MENU, SHOW_SETTINGS,
+  CHANGE_GAME_STATUS, SHOW_RULES, SHOW_START_MENU, SHOW_ABOUT,
   SHOW_GAME_SETTINGS, INCREASE_PRISONERS_QTT, DECREASE_PRISONERS_QTT,
-  START_GAME, OPEN_BOX
+  START_GAME, STOP_GAME, OPEN_BOX, SHOW_MAIN_MENU_CONFIRM_WINDOW, SHOW_RESET_CONFIRM_WINDOW
 } from './action-types'
 
 export const changeGameStatus = (payload: boolean): ChangeGameStatusInterface => ({
@@ -31,12 +31,12 @@ interface ShowStartMenuInterface {
   payload: boolean
 }
 
-export const showSettings = (payload: boolean): ShowSettingsInterface => ({
-  type: SHOW_SETTINGS,
+export const showAbout = (payload: boolean): ShowAboutInterface => ({
+  type: SHOW_ABOUT,
   payload
 })
-interface ShowSettingsInterface {
-  type: typeof SHOW_SETTINGS
+interface ShowAboutInterface {
+  type: typeof SHOW_ABOUT
   payload: boolean
 }
 
@@ -46,6 +46,24 @@ export const showGameSettings = (payload: boolean): ShowGameSettingsInterface =>
 })
 interface ShowGameSettingsInterface {
   type: typeof SHOW_GAME_SETTINGS
+  payload: boolean
+}
+
+export const showMainMenuConfirmWindow = (payload: boolean): ShowMainMenuConfirmWindowInterface => ({
+  type: SHOW_MAIN_MENU_CONFIRM_WINDOW,
+  payload
+})
+interface ShowMainMenuConfirmWindowInterface {
+  type: typeof SHOW_MAIN_MENU_CONFIRM_WINDOW
+  payload: boolean
+}
+
+export const showResetConfirmWindow = (payload: boolean): ShowResetConfirmWindowInterface => ({
+  type: SHOW_RESET_CONFIRM_WINDOW,
+  payload
+})
+interface ShowResetConfirmWindowInterface {
+  type: typeof SHOW_RESET_CONFIRM_WINDOW
   payload: boolean
 }
 
@@ -76,6 +94,13 @@ interface StartGameInterface {
   type: typeof START_GAME
 }
 
+export const stopGame = (): StopGameInterface => ({
+  type: STOP_GAME
+})
+interface StopGameInterface {
+  type: typeof STOP_GAME
+}
+
 export const openBox = (payload: number): OpenBoxInterface => ({
   type: OPEN_BOX,
   payload
@@ -86,6 +111,7 @@ interface OpenBoxInterface {
 }
 
 export type Actions = ChangeGameStatusInterface | ShowRulesInterface
-| ShowStartMenuInterface | ShowSettingsInterface | ShowGameSettingsInterface
+| ShowStartMenuInterface | ShowAboutInterface | ShowGameSettingsInterface
+| ShowResetConfirmWindowInterface | ShowMainMenuConfirmWindowInterface
 | IncreasePrisonersQttInterface | DecreasePrisonersQttInterface | StartGameInterface
-| OpenBoxInterface
+| StopGameInterface | OpenBoxInterface

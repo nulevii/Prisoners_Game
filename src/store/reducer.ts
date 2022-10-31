@@ -1,12 +1,23 @@
 import { Actions } from './actions'
-import { CHANGE_GAME_STATUS, SHOW_RULES, SHOW_START_MENU, SHOW_SETTINGS, SHOW_GAME_SETTINGS, INCREASE_PRISONERS_QTT, DECREASE_PRISONERS_QTT, START_GAME, OPEN_BOX } from './action-types'
-import { createBoxesArray, BoxInterface, createPrisoners, PrisonersInterface } from '../utilities/generateGameTools'
+import {
+  CHANGE_GAME_STATUS, SHOW_RULES,
+  SHOW_START_MENU, SHOW_ABOUT, SHOW_GAME_SETTINGS,
+  SHOW_MAIN_MENU_CONFIRM_WINDOW, SHOW_RESET_CONFIRM_WINDOW,
+  INCREASE_PRISONERS_QTT, DECREASE_PRISONERS_QTT,
+  START_GAME, STOP_GAME, OPEN_BOX
+} from './action-types'
+import {
+  createBoxesArray, BoxInterface, createPrisoners,
+  PrisonersInterface
+} from '../utilities/generateGameTools'
 export const initialState: InitialStateInterface = {
   gameRoom: false,
   gameRules: false,
   startMenu: false,
-  settings: false,
+  about: false,
   gameSettings: true,
+  resetConfrirmWindow: false,
+  mainMenuConfirmWindow: false,
   gameStatus: 'notStarted',
 
   prisonersQtt: 10,
@@ -19,8 +30,10 @@ export interface InitialStateInterface {
   gameRoom: boolean
   gameRules: boolean
   startMenu: boolean
-  settings: boolean
+  about: boolean
   gameSettings: boolean
+  resetConfrirmWindow: boolean
+  mainMenuConfirmWindow: boolean
   gameStatus: 'started' | 'notStarted' | 'win' | 'lose'
 
   prisonersQtt: number
@@ -41,11 +54,17 @@ function reducer (state: InitialStateInterface = initialState, action: Actions):
     case SHOW_START_MENU:
       return { ...state, startMenu: action.payload }
 
-    case SHOW_SETTINGS:
-      return { ...state, settings: action.payload }
+    case SHOW_ABOUT:
+      return { ...state, about: action.payload }
 
     case SHOW_GAME_SETTINGS:
       return { ...state, gameSettings: action.payload }
+
+    case SHOW_MAIN_MENU_CONFIRM_WINDOW:
+      return { ...state, mainMenuConfirmWindow: action.payload }
+
+    case SHOW_RESET_CONFIRM_WINDOW:
+      return { ...state, resetConfrirmWindow: action.payload }
 
       // App logic
 
@@ -63,6 +82,10 @@ function reducer (state: InitialStateInterface = initialState, action: Actions):
 
     case START_GAME:
       return { ...state, boxes: createBoxesArray(state.prisonersQtt), prisoners: createPrisoners(state.prisonersQtt), gameStatus: 'started', currentPrisonerId: 0 }
+
+    case STOP_GAME:
+      console.log('hello')
+      return { ...state, boxes: createBoxesArray(10), prisoners: createPrisoners(10), gameStatus: 'notStarted', currentPrisonerId: 0 }
 
     case OPEN_BOX:
       const newBoxes = [...state.boxes]

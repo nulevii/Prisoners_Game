@@ -1,12 +1,12 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { showSettings } from '../../../store/actions'
+import { showAbout } from '../../../store/actions'
 
-const Settings: React.FC = function () {
+const AboutSection: React.FC = function () {
   const dispatch = useDispatch()
 
   const onHideSettings = (): void => {
-    dispatch(showSettings(false))
+    dispatch(showAbout(false))
   }
   return (
     <div>
@@ -18,4 +18,4 @@ const Settings: React.FC = function () {
   )
 }
 
-export default Settings
+export default AboutSection
