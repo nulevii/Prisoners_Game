@@ -2,64 +2,101 @@
   position: relative;
   overflow: clip;
   height: 100vh;
-  max-width: 1080px;
   margin: 0 auto;
   background-image: url(../../img/background.png);
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
+  background-color: #051E37;
 }
 
 .gameTitle {
+  position: relative;
+  right: -2.5%;
+  top: 27%;
   display: flex;
-
-  position: absolute;
   margin: 0 auto;
-  top: 28vh;
-  left: 39vw;
-  width: 40%;
+  width: 25%;
   height: 25%;
+  // background-color: tomato;
+  justify-content: center;
 }
 
 .TitleLetter {
   background-size: contain;
-  background-position: bottom;
+  background-position: center;
   background-repeat: no-repeat;
 }
 
-// .TitleLetterP {
-//   position: relative;
-//   top: 1.5vh;
-//   width: 13%;
-//   background-image: url(../../img/png/p.png)
-// }
+.TitleLetterP {
+  position: relative;
+  top: 15%;
+  width: 11%;
+  height: 70%;
+  background-image: url(../../img/main-menu/p.png)
+}
 
-// .TitleLetterR {
-//   width: 11.5%;
-//   background-image: url(../../img/png/r.png)
-// }
+.TitleLetterR {
+  position: relative;
+  top: 13%;
+  height: 73%;
+  width: 11%;
+  background-image: url(../../img/main-menu//r1.png)
+}
 
-// .TitleLetterI {
-//   width: 11.5%;
-//   background-image: url(../../img/png/i.png)
-// }
+.TitleLetterI {
+  position: relative;
+  left: -3%;
+  height: 80%;
+  width: 9%;
+  background-image: url(../../img/main-menu//i.png);
+}
 
-// .TitleLetterS {
-//   width: 11.5%;
-//   background-image: url(../../img/png/s.png)
-// }
+.TitleLetterS {
+  position: relative;
+  top: 12%;
+  left: -8%;
+  height: 80%;
+  width: 17%;
+  background-image: url(../../img/main-menu//s1.png);
+}
 
-// .TitleLetterO {
-//   width: 11.5%;
-//   background-image: url(../../img/png/o.png)
-// }
+.TitleLetterO {
+  position: relative;
+  left: -7%;
+  top: -5%;
+  width: 11%;
+  background-image: url(../../img/main-menu//o.png)
+}
 
-// .TitleLetterN {
-//   width: 11.5%;
-//   background-image: url(../../img/png/n.png)
-// }
+.TitleLetterN {
+  position: relative;
+  left: -8%;
+  top: -6%;
+  width: 13%;
+  background-image: url(../../img/main-menu//n.png)
+}
 
-// .TitleLetterE {
-//   width: 11.5%;
-//   background-image: url(../../img/png/e.png)
-// }
+.TitleLetterE {
+  position: relative;
+  left: -6%;
+  top: -3%;
+  width: 10%;
+  background-image: url(../../img/main-menu//e.png)
+}
+
+.TitleLetterRR {
+  position: relative;
+  left: -4%;
+  top: -4.5%;
+  width: 9.8%;
+  background-image: url(../../img/main-menu//r.png)
+}
+
+.TitleLetterSS {
+  position: relative;
+  width: 16.5%;
+  left: -10%;
+  top: 3.5%;
+  background-image: url(../../img/main-menu//s.png)
+}
