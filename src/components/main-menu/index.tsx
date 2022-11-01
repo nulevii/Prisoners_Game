@@ -6,6 +6,7 @@ import { changeGameStatus, showRules, showAbout } from '../../store/actions'
 import Rules from '../rules'
 import AboutSection from './about-section'
 import { setCustomCursor } from '../../utilities/customCursor'
+import { throttle } from 'throttle-typescript'
 
 const MainMenu: React.FC = () => {
   useEffect(() => {
@@ -15,7 +16,7 @@ const MainMenu: React.FC = () => {
     elements.forEach(element => {
       if (element != null) {
         const { x, y, width, height } = element.getBoundingClientRect()
-        document.addEventListener('mousemove', (info) => {
+        document.addEventListener('mousemove', throttle((info) => {
           const mouseX = info.clientX
           const mouseY = info.clientY
           const shadow = { x: x - mouseX + width / 2, y: y - mouseY + height / 2 }
@@ -25,7 +26,7 @@ const MainMenu: React.FC = () => {
                 Math.max(xval, yval),
                 1
               )}px black)`
-        })
+        }, 50))
       }
     })
   }, [])
