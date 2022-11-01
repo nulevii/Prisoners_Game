@@ -7,29 +7,27 @@ import Rules from '../rules'
 import AboutSection from './about-section'
 import { setCustomCursor } from '../../utilities/customCursor'
 
-
 const MainMenu: React.FC = () => {
   useEffect(() => {
     document.addEventListener('mousemove', setCustomCursor)
     document.addEventListener('touchmove', setCustomCursor)
-
-    const element = document.getElementById('element')
-    if (element != null) {
-      const { x, y, width, height } = element.getBoundingClientRect()
-      console.log(width)
-
-      document.addEventListener('mousemove', (info) => {
-        const mouseX = info.clientX
-        const mouseY = info.clientY
-        const shadow = { x: x - mouseX + width / 2, y: y - mouseY + height / 2 }
-        const xval = Math.abs(shadow.x)
-        const yval = Math.abs(shadow.y)
-        element.style.textShadow = `${shadow.x}px ${shadow.y}px ${Math.max(
-              Math.max(xval, yval),
-              1
-            )}px black`
-      })
-    }
+    const elements = Array.from(document.getElementsByClassName('menuBtn') as HTMLCollectionOf<HTMLElement>)
+    elements.forEach(element => {
+      if (element != null) {
+        const { x, y, width, height } = element.getBoundingClientRect()
+        document.addEventListener('mousemove', (info) => {
+          const mouseX = info.clientX
+          const mouseY = info.clientY
+          const shadow = { x: x - mouseX + width / 2, y: y - mouseY + height / 2 }
+          const xval = Math.abs(shadow.x)
+          const yval = Math.abs(shadow.y)
+          element.style.filter = `drop-shadow(0 0 2px #000000) drop-shadow(0 0 3px #000000) drop-shadow(${shadow.x}px ${shadow.y}px ${Math.max(
+                Math.max(xval, yval),
+                1
+              )}px black)`
+        })
+      }
+    })
   }, [])
 
   const dispatch = useDispatch()
@@ -65,14 +63,13 @@ const MainMenu: React.FC = () => {
         <div className="TitleLetter TitleLetterRR"></div>
         <div className="TitleLetter TitleLetterSS"></div>
       </div>
-      <h1 id="element" style={{ fontSize: '90px', color: 'white', display: 'inline-block' }}>Text</h1>
-
-      <button onClick={onStartGame} className="menuBtn startBtn"></button>
+      <button onClick={onStartGame} style={{ color: 'black' }} className="menuBtn startBtn"></button>
       <button
         onClick={onInstruction}
         className="menuBtn instructionsBtn"
+        style={{ color: 'black' }}
       ></button>
-      <button onClick={onAbout} className="menuBtn aboutBtn"></button>
+      <button onClick={onAbout} className="menuBtn aboutBtn" style={{ color: 'black' }}></button>
       <button className="soundBtn"></button>
       {gameRulseStatus ? <Rules /> : null}
       {settingsStatus ? <AboutSection /> : null}
