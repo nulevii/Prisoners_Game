@@ -7,6 +7,7 @@ import Rules from '../rules'
 import AboutSection from './about-section'
 import { setCustomCursor } from '../../utilities/customCursor'
 
+
 const MainMenu: React.FC = () => {
   useEffect(() => {
     document.addEventListener('mousemove', setCustomCursor)

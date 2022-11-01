@@ -1,3 +1,5 @@
+@import "compass/css3";
+
 :root {
   cursor: none;
   --cursorX: 50vw;
@@ -11,13 +13,11 @@
   height: 100%;
   position: fixed;
   pointer-events: none;
-  background: radial-gradient(
-    circle 10vmax at var(--cursorX) var(--cursorY),
-    rgba(255, 255, 255, 0.555) 1%,
-    rgba(255, 255, 255, 0.301) 2%,
-    rgba(114, 114, 114, 0.349) 10%,
-    rgba(41, 40, 40, 0.3) 30%,
+ background: radial-gradient(
+    circle 15vh at var(--cursorX) var(--cursorY),
+   rgba(243, 240, 240, 0.7),
+    rgba(134, 132, 132, 0.5) 4%,
     rgba(148, 148, 148, 0.1) 80%,
-    rgba(0, 0, 0, .7) 100%
-  )
+    rgba(0, 0, 0, .3) 100%
+  ) 
 }
