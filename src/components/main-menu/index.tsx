@@ -11,6 +11,24 @@ const MainMenu: React.FC = () => {
   useEffect(() => {
     document.addEventListener('mousemove', setCustomCursor)
     document.addEventListener('touchmove', setCustomCursor)
+
+    const element = document.getElementById('element')
+    if (element != null) {
+      const { x, y, width, height } = element.getBoundingClientRect()
+      console.log(width)
+
+      document.addEventListener('mousemove', (info) => {
+        const mouseX = info.clientX
+        const mouseY = info.clientY
+        const shadow = { x: x - mouseX + width / 2, y: y - mouseY + height / 2 }
+        const xval = Math.abs(shadow.x)
+        const yval = Math.abs(shadow.y)
+        element.style.textShadow = `${shadow.x}px ${shadow.y}px ${Math.max(
+              Math.max(xval, yval),
+              1
+            )}px black`
+      })
+    }
   }, [])
 
   const dispatch = useDispatch()
@@ -46,6 +64,7 @@ const MainMenu: React.FC = () => {
         <div className="TitleLetter TitleLetterRR"></div>
         <div className="TitleLetter TitleLetterSS"></div>
       </div>
+      <h1 id="element" style={{ fontSize: '90px', color: 'white', display: 'inline-block' }}>Text</h1>
 
       <button onClick={onStartGame} className="menuBtn startBtn"></button>
       <button
