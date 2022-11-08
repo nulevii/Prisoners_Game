@@ -1,0 +1,26 @@
+.rainContainer{
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform: translate(-50%, -50%);
+}
+canvas {
+  height: 100vh;
+  width: 100vw;
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform: translate(-50%, -50%);
+}
+
+#rainCanvas3 {
+  z-index: 5;
+}
+
+#rainCanvas2 {
+  z-index: 10;
+}
+
+#rainCanvas1 {
+  z-index: 100;
+}
