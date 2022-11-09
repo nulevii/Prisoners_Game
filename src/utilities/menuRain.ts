@@ -213,6 +213,7 @@ export const menuRain = function (): void {
     animateRainTrough()
     animateRain()
     animateLightning()
+    console.log('object')
     requestAnimationFrame(animloop)
   }
   animloop()
