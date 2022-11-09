@@ -105,16 +105,18 @@ export const menuRain = function (): void {
   }
 
   function drawRainTrough (i: number): void {
-    ctx1?.beginPath()
-    const grd: any = ctx1?.createLinearGradient(0, RainTrough[i].y, 0, RainTrough[i].y + RainTrough[i].length)
-    if (grd !== undefined) {
-      grd.addColorStop(0, 'rgba(255,255,255,0)')
-      grd.addColorStop(1, 'rgba(255,255,255,' + RainTrough[i].opacity.toString() + ')')
-    }
     if (ctx1 !== null) {
-      ctx1.fillStyle = grd
-      ctx1.fillRect(RainTrough[i].x, RainTrough[i].y, 1, RainTrough[i].length)
-      ctx1.fill()
+      ctx1.beginPath()
+      const grd = ctx1?.createLinearGradient(0, RainTrough[i].y, 0, RainTrough[i].y + RainTrough[i].length)
+      if (grd !== undefined) {
+        grd.addColorStop(0, 'rgba(255,255,255,0)')
+        grd.addColorStop(1, 'rgba(255,255,255,' + RainTrough[i].opacity.toString() + ')')
+      }
+      if (ctx1 !== null) {
+        ctx1.fillStyle = grd
+        ctx1.fillRect(RainTrough[i].x, RainTrough[i].y, 1, RainTrough[i].length)
+        ctx1.fill()
+      }
     }
   }
 
