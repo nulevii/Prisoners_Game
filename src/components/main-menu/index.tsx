@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { InitialStateInterface } from '../../store/reducer'
 import { changeGameStatus, showRules, showAbout } from '../../store/actions'
@@ -11,8 +11,10 @@ import { menuRain } from '../../utilities/menuRain'
 
 const MainMenu: React.FC = () => {
   const textShadowRefs = useRef<HTMLButtonElement []>([])
+
+  const [isRain, setIsRain] = useState(true)
   useEffect(() => {
-    menuRain()
+    menuRain(isRain)
     document.removeEventListener('mousemove', setCustomCursor)
     document.removeEventListener('touchmove', setCustomCursor)
     document.addEventListener('mousemove', setCustomCursor)
@@ -68,19 +70,44 @@ const MainMenu: React.FC = () => {
       </div>
       <button
         onClick={onStartGame}
-        ref={(el) => { if (el !== null) { textShadowRefs.current[0] = el } }}
+        ref={(el) => {
+          if (el !== null) {
+            textShadowRefs.current[0] = el
+          }
+        }}
         style={{ color: 'black' }}
         className="menuBtn startBtn"
       ></button>
       <button
         onClick={onInstruction}
-        ref={(el) => { if (el !== null) { textShadowRefs.current[1] = el } }}
+        ref={(el) => {
+          if (el !== null) {
+            textShadowRefs.current[1] = el
+          }
+        }}
         className="menuBtn instructionsBtn"
         style={{ color: 'black' }}
       ></button>
       <button
         onClick={onAbout}
-        ref={(el) => { if (el !== null) { textShadowRefs.current[2] = el } }}
+        ref={(el) => {
+          if (el !== null) {
+            textShadowRefs.current[2] = el
+          }
+        }}
+        className="menuBtn aboutBtn"
+        style={{ color: 'black' }}
+      ></button>
+      <button
+        onClick={() => {
+          setIsRain(!isRain)
+          menuRain(isRain)
+        }}
+        ref={(el) => {
+          if (el !== null) {
+            textShadowRefs.current[3] = el
+          }
+        }}
         className="menuBtn aboutBtn"
         style={{ color: 'black' }}
       ></button>

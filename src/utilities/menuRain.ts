@@ -1,4 +1,4 @@
-export const menuRain = function (): void {
+export const menuRain = function (isRain: boolean): void {
   const canvas1 = document.getElementById('rainCanvas1') as HTMLCanvasElement
   const canvas2 = document.getElementById('rainCanvas2') as HTMLCanvasElement
   const canvas3 = document.getElementById('rainCanvas3') as HTMLCanvasElement
@@ -105,18 +105,16 @@ export const menuRain = function (): void {
   }
 
   function drawRainTrough (i: number): void {
+    ctx1?.beginPath()
+    const grd: any = ctx1?.createLinearGradient(0, RainTrough[i].y, 0, RainTrough[i].y + RainTrough[i].length)
+    if (grd !== undefined) {
+      grd.addColorStop(0, 'rgba(255,255,255,0)')
+      grd.addColorStop(1, 'rgba(255,255,255,' + RainTrough[i].opacity.toString() + ')')
+    }
     if (ctx1 !== null) {
-      ctx1.beginPath()
-      const grd = ctx1?.createLinearGradient(0, RainTrough[i].y, 0, RainTrough[i].y + RainTrough[i].length)
-      if (grd !== undefined) {
-        grd.addColorStop(0, 'rgba(255,255,255,0)')
-        grd.addColorStop(1, 'rgba(255,255,255,' + RainTrough[i].opacity.toString() + ')')
-      }
-      if (ctx1 !== null) {
-        ctx1.fillStyle = grd
-        ctx1.fillRect(RainTrough[i].x, RainTrough[i].y, 1, RainTrough[i].length)
-        ctx1.fill()
-      }
+      ctx1.fillStyle = grd
+      ctx1.fillRect(RainTrough[i].x, RainTrough[i].y, 1, RainTrough[i].length)
+      ctx1.fill()
     }
   }
 
@@ -212,10 +210,10 @@ export const menuRain = function (): void {
   init()
 
   function animloop (): void {
+    if (isRain) { return }
     animateRainTrough()
     animateRain()
     animateLightning()
-    console.log('object')
     requestAnimationFrame(animloop)
   }
   animloop()
