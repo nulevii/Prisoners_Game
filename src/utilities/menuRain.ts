@@ -1,6 +1,7 @@
 import { MutableRefObject } from 'react'
 function useRainMenu (
-  rainCanvasRefs: MutableRefObject<HTMLCanvasElement[]>
+  rainCanvasRefs: MutableRefObject<HTMLCanvasElement[]>,
+  rainCondition: any
 ): Array<() => void> {
   const [canvas1, canvas2, canvas3] = rainCanvasRefs.current
   console.log(rainCanvasRefs.current)
@@ -46,24 +47,24 @@ function useRainMenu (
     let lightTimeCurrent: number = 0
     let lightTimeTotal: number = 0
 
-    let w = window.innerWidth
+    const w = window.innerWidth
     canvas1.width = w
     canvas2.width = w
     canvas3.width = w
-    let h = window.innerHeight
+    const h = window.innerHeight
     canvas1.height = h
     canvas2.height = h
     canvas3.height = h
-    window.addEventListener('resize', function () {
-      w = window.innerWidth
-      canvas1.width = w
-      canvas2.width = w
-      canvas3.width = w
-      h = window.innerHeight
-      canvas1.height = h
-      canvas2.height = h
-      canvas3.height = h
-    })
+    // window.addEventListener('resize', function () {
+    //   w = window.innerWidth
+    //   canvas1.width = w
+    //   canvas2.width = w
+    //   canvas3.width = w
+    //   h = window.innerHeight
+    //   canvas1.height = h
+    //   canvas2.height = h
+    //   canvas3.height = h
+    // })
 
     function random (min: number, max: number): number {
       return Math.random() * (max - min + 1) + min
@@ -279,16 +280,13 @@ function useRainMenu (
       animateRain()
       animateLightning()
       console.log('object')
+      rainCondition.current = requestAnimationFrame(animation)
     }
     return animation
   }
+  const animation = createRainFrame()
 
-  const startRain = () => {
-    return setInterval(() => {
-      requestAnimationFrame(createRainFrame())
-    }, 150)
-  }
-  return [startRain]
+  return [animation]
 }
 
 export default useRainMenu
