@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { InitialStateInterface } from '../../store/reducer'
 import { changeGameStatus, showRules, showAbout } from '../../store/actions'
@@ -9,16 +9,12 @@ import { setCustomCursor } from '../../utilities/customCursor'
 import { addShadow } from '../../utilities/textShadow'
 import useMenuRain from '../../utilities/menuRain'
 
-const addShadowListener = (element) => (e) => addShadow(e, element)
+const addShadowListener = (element: HTMLElement) => (event: MouseEvent) => addShadow(event, element)
 
 const MainMenu: React.FC = () => {
   const textShadowRefs = useRef<HTMLButtonElement []>([])
-  const rainCanvasRefs = useRef<HTMLCanvasElement[]>([])
-  const testRef = useRef(null)
-
+  const rainCanvasRefs = useMenuRain()
   useEffect(() => {
-    const [startRain] = useMenuRain(rainCanvasRefs, testRef)
-    const rain = startRain()
     document.removeEventListener('mousemove', setCustomCursor)
     document.removeEventListener('touchmove', setCustomCursor)
     document.addEventListener('mousemove', setCustomCursor)
@@ -34,8 +30,6 @@ const MainMenu: React.FC = () => {
       textShadowRefs.current.forEach((_, index) => {
         document.removeEventListener('mousemove', fns[index])
       })
-
-      cancelAnimationFrame(testRef.current)
     }
   }, [])
 
