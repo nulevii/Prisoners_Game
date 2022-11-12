@@ -88,15 +88,6 @@ const MainMenu: React.FC = () => {
         ></canvas>
       </div>
       <div className="gameTitle">
-        <div className="TitleLetter TitleLetterP"></div>
-        <div className="TitleLetter TitleLetterR"></div>
-        <div className="TitleLetter TitleLetterI"></div>
-        <div className="TitleLetter TitleLetterS"></div>
-        <div className="TitleLetter TitleLetterO"></div>
-        <div className="TitleLetter TitleLetterN"></div>
-        <div className="TitleLetter TitleLetterE"></div>
-        <div className="TitleLetter TitleLetterRR"></div>
-        <div className="TitleLetter TitleLetterSS"></div>
       </div>
       <button
         onClick={onStartGame}
