@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { InitialStateInterface } from '../../store/reducer'
 import { changeGameStatus, showRules, showAbout } from '../../store/actions'
@@ -6,31 +6,17 @@ import { changeGameStatus, showRules, showAbout } from '../../store/actions'
 import Rules from '../rules'
 import AboutSection from './about-section'
 import { setCustomCursor } from '../../utilities/customCursor'
-import { addShadow } from '../../utilities/textShadow'
-import useMenuRain from '../../utilities/menuRain'
-
-const addShadowListener = (element: HTMLElement) => (event: MouseEvent) => addShadow(event, element)
+import { useAddShadow } from '../../utilities/textShadow'
+import useMenuRain from '../../utilities/useRainMenu'
 
 const MainMenu: React.FC = () => {
-  const textShadowRefs = useRef<HTMLButtonElement []>([])
+  const textShadowRefs = useAddShadow()
   const rainCanvasRefs = useMenuRain()
   useEffect(() => {
     document.removeEventListener('mousemove', setCustomCursor)
     document.removeEventListener('touchmove', setCustomCursor)
     document.addEventListener('mousemove', setCustomCursor)
     document.addEventListener('touchmove', setCustomCursor)
-
-    const fns = textShadowRefs.current.map((element) => {
-      const fn = addShadowListener(element)
-      document.addEventListener('mousemove', fn)
-      return fn
-    })
-
-    return () => {
-      textShadowRefs.current.forEach((_, index) => {
-        document.removeEventListener('mousemove', fns[index])
-      })
-    }
   }, [])
 
   const dispatch = useDispatch()
@@ -56,62 +42,27 @@ const MainMenu: React.FC = () => {
   return (
     <div className="menuContainer">
       <div className="rainContainer">
-        <canvas
-          ref={(el) => {
-            if (el !== null) {
-              rainCanvasRefs.current[0] = el
-            }
-          }}
-          id="rainCanvas1"
-        ></canvas>
-        <canvas
-          ref={(el) => {
-            if (el !== null) {
-              rainCanvasRefs.current[1] = el
-            }
-          }}
-          id="rainCanvas2"
-        ></canvas>
-        <canvas
-          ref={(el) => {
-            if (el !== null) {
-              rainCanvasRefs.current[2] = el
-            }
-          }}
-          id="rainCanvas3"
-        ></canvas>
+        <canvas ref={(el) => { rainCanvasRefs.current[0] = el }} />
+        <canvas ref={(el) => { rainCanvasRefs.current[1] = el }} />
+        <canvas ref={(el) => { rainCanvasRefs.current[2] = el }} />
       </div>
-      <div className="gameTitle">
-      </div>
+
+      <div className="gameTitle"/>
+
       <button
         onClick={onStartGame}
-        ref={(el) => {
-          if (el !== null) {
-            textShadowRefs.current[0] = el
-          }
-        }}
-        style={{ color: 'black' }}
+        ref={(el) => { textShadowRefs.current![0] = el! }}
         className="menuBtn startBtn"
       ></button>
       <button
         onClick={onInstruction}
-        ref={(el) => {
-          if (el !== null) {
-            textShadowRefs.current[1] = el
-          }
-        }}
+        ref={(el) => { textShadowRefs.current![1] = el! }}
         className="menuBtn instructionsBtn"
-        style={{ color: 'black' }}
       ></button>
       <button
         onClick={onAbout}
-        ref={(el) => {
-          if (el !== null) {
-            textShadowRefs.current[2] = el
-          }
-        }}
+        ref={(el) => { textShadowRefs.current![2] = el! }}
         className="menuBtn aboutBtn"
-        style={{ color: 'black' }}
       ></button>
       <button className="soundBtn"></button>
       {gameRulseStatus ? <Rules /> : null}

@@ -12,6 +12,7 @@ module.exports = {
   },
   plugins: ['react'],
   rules: {
-    'no-case-declarations': 'off'
+    'no-case-declarations': 'off',
+    '@typescript-eslint/no-non-null-assertion': 'off'
   }
 }
