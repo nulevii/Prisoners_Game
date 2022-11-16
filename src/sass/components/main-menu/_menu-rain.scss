@@ -3,6 +3,7 @@
   left:50%;
   top:50%;
   transform: translate(-50%, -50%);
+    pointer-events: none;
 }
 canvas {
   height: 100vh;
@@ -11,6 +12,7 @@ canvas {
   left:50%;
   top:50%;
   transform: translate(-50%, -50%);
+    pointer-events: none;
 }
 
 #rainCanvas3 {
