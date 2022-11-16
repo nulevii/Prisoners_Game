@@ -3,7 +3,7 @@
   --cursorX: 50vw;
   --cursorY: 50vh;
 }
-:root:before {
+body:before {
   z-index: 1;
   content: '';
   display: block;
@@ -16,6 +16,16 @@
    rgba(243, 240, 240, 0.7),
     rgba(134, 132, 132, 0.5) 4%,
     rgba(148, 148, 148, 0.1) 80%,
+    rgba(0, 0, 0, .3) 100%
+  ) 
+}
+
+.light-of:before{
+   background: radial-gradient(
+    circle 15vh at var(--cursorX) var(--cursorY),
+       rgba(243, 240, 240, 0.7) ,
+    rgba(0, 0, 0, .3) 4%,
+    rgba(0, 0, 0, .3) 100%,
     rgba(0, 0, 0, .3) 100%
   ) 
 }

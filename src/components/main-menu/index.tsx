@@ -1,23 +1,16 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { InitialStateInterface } from '../../store/reducer'
 import { changeGameStatus, showRules, showAbout } from '../../store/actions'
 
 import Rules from '../rules'
 import AboutSection from './about-section'
-import { setCustomCursor } from '../../utilities/customCursor'
 import { useAddShadow } from '../../utilities/textShadow'
-import useMenuRain from '../../utilities/useRainMenu'
+import useRainMenu from '../../utilities/customHooks/useRainMenu'
 
 const MainMenu: React.FC = () => {
   const textShadowRefs = useAddShadow()
-  const rainCanvasRefs = useMenuRain()
-  useEffect(() => {
-    document.removeEventListener('mousemove', setCustomCursor)
-    document.removeEventListener('touchmove', setCustomCursor)
-    document.addEventListener('mousemove', setCustomCursor)
-    document.addEventListener('touchmove', setCustomCursor)
-  }, [])
+  const rainCanvasRefs = useRainMenu()
 
   const dispatch = useDispatch()
   const gameRulseStatus: boolean = useSelector(

@@ -7,7 +7,7 @@ const Rules: React.FC = function () {
     dispatch(showRules(false))
   }
   return (
-    <div>
+    <div >
       <p>Game Rules</p>
       <button onClick={onHideRules}>Hide rules</button>
     </div>

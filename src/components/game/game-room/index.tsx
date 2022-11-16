@@ -15,7 +15,7 @@ const GameRoom: React.FC = function () {
     dispatch(openBox(boxIndex))
   }
   return (
-    <div style={{ margin: '20px', display: 'flex', flexWrap: 'wrap', gap: '5px' }} className='room'>
+    <div style={{ padding: '20px', display: 'flex', flexWrap: 'wrap', gap: '5px' }} className='room'>
       {boxes.map(({ boxNumber, numberInBox, isOpen }, index) => (
         <div onClick={() => { onOpenBox(index) }} key={boxNumber}
         style={{

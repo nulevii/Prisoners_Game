@@ -11,9 +11,11 @@
     "@types/node": "^16.11.68",
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
+    "howler": "^2.2.3",
     "modern-normalize": "^1.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-howler": "^5.2.0",
     "react-redux": "^8.0.4",
     "react-scripts": "5.0.1",
     "redux": "^4.2.0",
@@ -48,6 +50,7 @@
     ]
   },
   "devDependencies": {
+    "@types/react-howler": "^5.2.0",
     "@typescript-eslint/eslint-plugin": "^5.40.1",
     "eslint": "^8.25.0",
     "eslint-config-standard-with-typescript": "^23.0.0",
