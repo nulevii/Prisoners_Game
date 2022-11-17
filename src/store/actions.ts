@@ -1,7 +1,7 @@
 import {
   CHANGE_GAME_STATUS, SHOW_RULES, SHOW_START_MENU, SHOW_ABOUT,
   SHOW_GAME_SETTINGS, INCREASE_PRISONERS_QTT, DECREASE_PRISONERS_QTT,
-  START_GAME, STOP_GAME, OPEN_BOX, SHOW_MAIN_MENU_CONFIRM_WINDOW, SHOW_RESET_CONFIRM_WINDOW
+  START_GAME, STOP_GAME, SOUND_SWITCH, OPEN_BOX, SHOW_MAIN_MENU_CONFIRM_WINDOW, SHOW_RESET_CONFIRM_WINDOW
 } from './action-types'
 
 export const changeGameStatus = (payload: boolean): ChangeGameStatusInterface => ({
@@ -67,6 +67,17 @@ interface ShowResetConfirmWindowInterface {
   payload: boolean
 }
 
+export const soundSwitch = (
+  payload: boolean
+): SoundSwitchInterface => ({
+  type: SOUND_SWITCH,
+  payload
+})
+interface SoundSwitchInterface {
+  type: typeof SOUND_SWITCH
+  payload: boolean
+}
+
 // App logic
 
 export const increasePrisonersQtt = (payload: number): IncreasePrisonersQttInterface => ({
@@ -110,8 +121,17 @@ interface OpenBoxInterface {
   payload: number
 }
 
-export type Actions = ChangeGameStatusInterface | ShowRulesInterface
-| ShowStartMenuInterface | ShowAboutInterface | ShowGameSettingsInterface
-| ShowResetConfirmWindowInterface | ShowMainMenuConfirmWindowInterface
-| IncreasePrisonersQttInterface | DecreasePrisonersQttInterface | StartGameInterface
-| StopGameInterface | OpenBoxInterface
+export type Actions =
+  | ChangeGameStatusInterface
+  | ShowRulesInterface
+  | ShowStartMenuInterface
+  | ShowAboutInterface
+  | ShowGameSettingsInterface
+  | ShowResetConfirmWindowInterface
+  | ShowMainMenuConfirmWindowInterface
+  | IncreasePrisonersQttInterface
+  | DecreasePrisonersQttInterface
+  | StartGameInterface
+  | StopGameInterface
+  | SoundSwitchInterface
+  | OpenBoxInterface

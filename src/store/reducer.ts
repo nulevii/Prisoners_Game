@@ -4,7 +4,7 @@ import {
   SHOW_START_MENU, SHOW_ABOUT, SHOW_GAME_SETTINGS,
   SHOW_MAIN_MENU_CONFIRM_WINDOW, SHOW_RESET_CONFIRM_WINDOW,
   INCREASE_PRISONERS_QTT, DECREASE_PRISONERS_QTT,
-  START_GAME, STOP_GAME, OPEN_BOX
+  START_GAME, STOP_GAME, SOUND_SWITCH, OPEN_BOX
 } from './action-types'
 import {
   createBoxesArray, BoxInterface, createPrisoners,
@@ -19,7 +19,8 @@ export const initialState: InitialStateInterface = {
   resetConfrirmWindow: false,
   mainMenuConfirmWindow: false,
   gameStatus: 'notStarted',
-
+  sound: false,
+  volume: 1.0,
   prisonersQtt: 10,
   boxes: createBoxesArray(10),
   prisoners: [],
@@ -35,6 +36,8 @@ export interface InitialStateInterface {
   resetConfrirmWindow: boolean
   mainMenuConfirmWindow: boolean
   gameStatus: 'started' | 'notStarted' | 'win' | 'lose'
+  sound: boolean
+  volume: number
 
   prisonersQtt: number
   boxes: BoxInterface[]
@@ -66,6 +69,9 @@ function reducer (state: InitialStateInterface = initialState, action: Actions):
     case SHOW_RESET_CONFIRM_WINDOW:
       return { ...state, resetConfrirmWindow: action.payload }
 
+    case SOUND_SWITCH:
+      return { ...state, sound: action.payload }
+
       // App logic
 
     case INCREASE_PRISONERS_QTT:
@@ -81,26 +87,50 @@ function reducer (state: InitialStateInterface = initialState, action: Actions):
       return { ...state, prisonersQtt: state.prisonersQtt - action.payload }
 
     case START_GAME:
-      return { ...state, boxes: createBoxesArray(state.prisonersQtt), prisoners: createPrisoners(state.prisonersQtt), gameStatus: 'started', currentPrisonerId: 0 }
+      return {
+        ...state,
+        boxes: createBoxesArray(state.prisonersQtt),
+        prisoners: createPrisoners(state.prisonersQtt),
+        gameStatus: 'started',
+        currentPrisonerId: 0
+      }
 
     case STOP_GAME:
-      console.log('hello')
-      return { ...state, boxes: createBoxesArray(10), prisoners: createPrisoners(10), gameStatus: 'notStarted', currentPrisonerId: 0 }
+      return {
+        ...state,
+        boxes: createBoxesArray(10),
+        prisoners: createPrisoners(10),
+        gameStatus: 'notStarted',
+        currentPrisonerId: 0
+      }
 
     case OPEN_BOX:
       const newBoxes = [...state.boxes]
       newBoxes[action.payload] = { ...newBoxes[action.payload], isOpen: true }
       const newPrisoners = [...state.prisoners]
-      newPrisoners[state.currentPrisonerId] = { ...newPrisoners[state.currentPrisonerId], attempts: state.prisoners[state.currentPrisonerId].attempts - 1 }
+      newPrisoners[state.currentPrisonerId] = {
+        ...newPrisoners[state.currentPrisonerId],
+        attempts: state.prisoners[state.currentPrisonerId].attempts - 1
+      }
       console.log(state.gameStatus)
 
-      if (newPrisoners[state.currentPrisonerId].prisonerNumber === state.boxes[action.payload].numberInBox) {
-        const closedBoxes = newBoxes.map(box => { return { ...box, isOpen: false } })
-        if (newPrisoners[state.currentPrisonerId].prisonerNumber === state.prisonersQtt) {
+      if (
+        newPrisoners[state.currentPrisonerId].prisonerNumber ===
+        state.boxes[action.payload].numberInBox
+      ) {
+        const closedBoxes = newBoxes.map((box) => {
+          return { ...box, isOpen: false }
+        })
+        if (
+          newPrisoners[state.currentPrisonerId].prisonerNumber ===
+          state.prisonersQtt
+        ) {
           return { ...state, gameStatus: 'win' }
         }
         return {
-          ...state, currentPrisonerId: state.currentPrisonerId + 1, boxes: closedBoxes
+          ...state,
+          currentPrisonerId: state.currentPrisonerId + 1,
+          boxes: closedBoxes
         }
       }
 
@@ -113,7 +143,8 @@ function reducer (state: InitialStateInterface = initialState, action: Actions):
         prisoners: newPrisoners
       }
 
-    default: return state
+    default:
+      return state
   }
 }
 

@@ -1,0 +1,18 @@
+.soundBtn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 23px;
+  height: 29px;
+  background-image: url(../../assets/images/main-menu/sound.png);
+  background-size: 80px 80px;
+  background-repeat: no-repeat;
+  background-position: left top;
+  background-color: transparent;
+  border: none;
+  overflow: hidden;
+}
+
+.soundOff{
+  background-position: left bottom;
+}

@@ -57,7 +57,6 @@ const MainMenu: React.FC = () => {
         ref={(el) => { textShadowRefs.current![2] = el! }}
         className="menuBtn aboutBtn"
       ></button>
-      <button className="soundBtn"></button>
       {gameRulseStatus ? <Rules /> : null}
       {settingsStatus ? <AboutSection /> : null}
     </div>
