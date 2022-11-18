@@ -2,17 +2,58 @@
   position: absolute;
   top: 20px;
   left: 20px;
-  width: 23px;
-  height: 29px;
+  width: 30px;
+  height: 34px;
   background-image: url(../../assets/images/main-menu/sound.png);
-  background-size: 80px 80px;
+  background-size: 32px 94px;
   background-repeat: no-repeat;
-  background-position: left top;
+  background-position: top;
   background-color: transparent;
   border: none;
   overflow: hidden;
+  opacity: .7;
 }
 
 .soundOff{
-  background-position: left bottom;
+  background-position: bottom;
 }
+
+
+
+input[type='range'] {
+  opacity: .7;
+position: absolute;
+top: 22px;
+left: 53px;
+width: 7.6em; height: 2em;
+background-color: transparent;
+overflow: hidden;
+cursor: none;
+}  
+
+
+
+/* ### Slider::-thumb */
+input[type='range'] {
+@mixin thumb() {
+margin: 0; padding: 0;
+height: 2em; width: .7em;
+border-radius: 0;
+border: none;
+box-shadow:
+   -7em 0 0 0 #9c9c9c,
+   -6em 0 0 0 #9c9c9c, 
+   -5em 0 0 0 #9c9c9c,
+   -4em 0 0 0 #9c9c9c, 
+   -3em 0 0 0 #9c9c9c,
+   -2em 0 0 0 #9c9c9c, 
+   -1em 0 0 0 #9c9c9c,
+}
+&::-webkit-slider-thumb { @include thumb(); }
+  &::-moz-range-thumb { @include thumb(); }
+         &::-ms-thumb { @include thumb(); }
+}
+
+
+
+

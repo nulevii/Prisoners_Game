@@ -23,6 +23,7 @@ const VolumeSettings: React.FC = () => {
         console.log(sound)
       }}
     ></button>
+      <input type='range' min='1' defaultValue='3' max='8' step='1' />
     </>
   )
 }
