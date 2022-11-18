@@ -4,14 +4,14 @@ import { Provider } from 'react-redux'
 import { store } from './store/store'
 import useMouseEffects from './utilities/customHooks/useMouseEffects'
 
-import Game from './components/game'
+import GameWrapper from './components/gameWrapper'
 import VolumeSettings from './components/volumeSettings'
 
 const App: React.FC = () => {
   useMouseEffects()
   return (
     <Provider store={store}>
-      <Game></Game>
+      <GameWrapper></GameWrapper>
       <VolumeSettings/>
     </Provider>
   )

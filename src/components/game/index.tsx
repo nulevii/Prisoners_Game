@@ -1,23 +1,28 @@
 import React from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { InitialStateInterface } from '../../store/reducer'
-import {
-  changeGameStatus, showRules, showGameSettings,
-  showMainMenuConfirmWindow, showResetConfirmWindow, stopGame
-} from '../../store/actions'
-
-import MainMenu from '../main-menu'
+import { useDispatch, useSelector } from 'react-redux'
 import GameSettings from './game-rules'
 import GameRoom from './game-room'
 import GameInfoBlock from './game-info-block'
 import Rules from '../rules'
 import ConfirmWindow from '../confirm-window'
+import { InitialStateInterface } from '../../store/reducer'
 
-const Game: React.FC = function () {
+import {
+  changeGameStatus,
+  showRules,
+  showGameSettings,
+  showMainMenuConfirmWindow,
+  showResetConfirmWindow,
+  stopGame
+} from '../../store/actions'
+
+const Game: React.FC = () => {
   const dispatch = useDispatch()
+
   const {
-    gameRoom, gameRules,
-    gameSettings, resetConfrirmWindow,
+    gameRules,
+    gameSettings,
+    resetConfrirmWindow,
     mainMenuConfirmWindow
   } = useSelector((state: InitialStateInterface) => state)
 
@@ -49,27 +54,36 @@ const Game: React.FC = function () {
   const onMainMenuNo = (): void => {
     dispatch(showMainMenuConfirmWindow(false))
   }
-
-  if (gameRoom) {
-    return (
-      <div>
-      {gameSettings ? <GameSettings/> : null}
-      <GameRoom/>
-      <GameInfoBlock/>
+  return (
+    <div>
+      {gameSettings ? <GameSettings /> : null}
+      <GameRoom />
+      <GameInfoBlock />
       <button onClick={onReset}>Reset</button>
-      {resetConfrirmWindow ? <ConfirmWindow action={'restart game'} onActionYes={onResetYes} onActionNo={onResetNo}></ConfirmWindow> : null}
+      {resetConfrirmWindow
+        ? (
+        <ConfirmWindow
+          action={'restart game'}
+          onActionYes={onResetYes}
+          onActionNo={onResetNo}
+        ></ConfirmWindow>
+          )
+        : null}
       <br />
       <button onClick={onInstruction}>Instruction</button>
-      {gameRules ? <Rules/> : null}
+      {gameRules ? <Rules /> : null}
       <br />
       <button onClick={onMainMenu}>Main menu</button>
-      {mainMenuConfirmWindow ? <ConfirmWindow action={'go back to main menu'} onActionYes={onMainMenuYes} onActionNo={onMainMenuNo}></ConfirmWindow> : null}
-      </div>
-    )
-  }
-
-  return (
-    <MainMenu/>
+      {mainMenuConfirmWindow
+        ? (
+        <ConfirmWindow
+          action={'go back to main menu'}
+          onActionYes={onMainMenuYes}
+          onActionNo={onMainMenuNo}
+        ></ConfirmWindow>
+          )
+        : null}
+    </div>
   )
 }
 

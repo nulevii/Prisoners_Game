@@ -1,9 +1,9 @@
 import { MutableRefObject } from 'react'
 
-const RAIN_THROUGH_NUM: number = 500
-const SPEED_RAIN_TROUGH: number = 15
-const RAIN_NUM: number = 500
-const lightningInterval = 2000
+const RAIN_THROUGH_NUM: number = 100
+const SPEED_RAIN_TROUGH: number = 1
+const RAIN_NUM: number = 300
+const lightningInterval = 6000
 
 interface RainTrough {
   x: number
