@@ -1,3 +1,4 @@
+import { guards } from './guards'
 const generateRandomNum = (number: number): number => Math.floor(Math.random() * number)
 
 const generateId = (randomNumbersArray: number[] | string[]): number => {
@@ -19,10 +20,8 @@ export const createBoxesArray = (prisonersQtt: number): BoxInterface[] => {
       isOpen: false
     }
   })
-
   return boxes
 }
-
 export interface BoxInterface {
   boxNumber: number
   numberInBox: number
@@ -47,10 +46,21 @@ export const createPrisoners = (prisonersQtt: number): PrisonersInterface[] => {
     })
   return prisoners
 }
-
 export interface PrisonersInterface {
   prisonerNumber: number
   prisonerName: string
   prisonerImg: string
   attempts: number
+}
+
+export const selectGuard = (): GuardInterface => {
+  const guardNum = generateRandomNum(guards.length)
+  return guards[guardNum]
+}
+
+export interface GuardInterface {
+  name: string
+  resource: string
+  picture: string
+  firstJoke: string
 }

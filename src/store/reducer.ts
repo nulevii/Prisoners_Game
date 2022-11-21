@@ -1,36 +1,35 @@
 import { Actions } from './actions'
 import {
   CHANGE_GAME_STATUS, SHOW_RULES,
-  SHOW_START_MENU, SHOW_ABOUT, SHOW_GAME_SETTINGS,
+  SHOW_ABOUT, SHOW_GAME_SETTINGS,
   SHOW_MAIN_MENU_CONFIRM_WINDOW, SHOW_RESET_CONFIRM_WINDOW,
   INCREASE_PRISONERS_QTT, DECREASE_PRISONERS_QTT,
-  START_GAME, STOP_GAME, SOUND_SWITCH, OPEN_BOX
+  START_GAME, STOP_GAME, SOUND_SWITCH, VOLUME_SWITCH, OPEN_BOX
 } from './action-types'
 import {
   createBoxesArray, BoxInterface, createPrisoners,
-  PrisonersInterface
+  PrisonersInterface, selectGuard, GuardInterface
 } from '../utilities/generateGameTools'
 export const initialState: InitialStateInterface = {
   gameRoom: false,
   gameRules: false,
-  startMenu: false,
   about: false,
   gameSettings: true,
   resetConfrirmWindow: false,
   mainMenuConfirmWindow: false,
   gameStatus: 'notStarted',
   sound: false,
-  volume: 1.0,
+  volume: 0.375,
   prisonersQtt: 10,
-  boxes: createBoxesArray(10),
+  boxes: [],
   prisoners: [],
+  guard: selectGuard(),
   currentPrisonerId: 0
 }
 
 export interface InitialStateInterface {
   gameRoom: boolean
   gameRules: boolean
-  startMenu: boolean
   about: boolean
   gameSettings: boolean
   resetConfrirmWindow: boolean
@@ -42,6 +41,7 @@ export interface InitialStateInterface {
   prisonersQtt: number
   boxes: BoxInterface[]
   prisoners: PrisonersInterface[]
+  guard: GuardInterface
   currentPrisonerId: number
 
 }
@@ -53,9 +53,6 @@ function reducer (state: InitialStateInterface = initialState, action: Actions):
 
     case SHOW_RULES:
       return { ...state, gameRules: action.payload }
-
-    case SHOW_START_MENU:
-      return { ...state, startMenu: action.payload }
 
     case SHOW_ABOUT:
       return { ...state, about: action.payload }
@@ -71,6 +68,9 @@ function reducer (state: InitialStateInterface = initialState, action: Actions):
 
     case SOUND_SWITCH:
       return { ...state, sound: action.payload }
+
+    case VOLUME_SWITCH:
+      return { ...state, volume: action.payload }
 
       // App logic
 
@@ -92,14 +92,15 @@ function reducer (state: InitialStateInterface = initialState, action: Actions):
         boxes: createBoxesArray(state.prisonersQtt),
         prisoners: createPrisoners(state.prisonersQtt),
         gameStatus: 'started',
-        currentPrisonerId: 0
+        currentPrisonerId: 0,
+        guard: selectGuard()
       }
 
     case STOP_GAME:
       return {
         ...state,
-        boxes: createBoxesArray(10),
-        prisoners: createPrisoners(10),
+        boxes: [],
+        prisoners: [],
         gameStatus: 'notStarted',
         currentPrisonerId: 0
       }

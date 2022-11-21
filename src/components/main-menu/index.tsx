@@ -39,6 +39,7 @@ const MainMenu: React.FC = () => {
         <canvas ref={(el) => { rainCanvasRefs.current[1] = el }} />
         <canvas ref={(el) => { rainCanvasRefs.current[2] = el }} />
       </div>
+      <div className='bgImg'></div>
 
       <div className="gameTitle"/>
 

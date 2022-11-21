@@ -20,34 +20,40 @@
 
 
 
-input[type='range'] {
-  opacity: .7;
+.volume {
+opacity: .7;
 position: absolute;
-top: 22px;
+top: 25px;
 left: 53px;
-width: 7.6em; height: 2em;
+width: 6.5em; height: 1.5em;
 background-color: transparent;
 overflow: hidden;
 cursor: none;
 }  
 
+.volume {
+  &,
+  &::-webkit-slider-runnable-track, 
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+  }
+}
 
-
-/* ### Slider::-thumb */
-input[type='range'] {
+.volume {
 @mixin thumb() {
 margin: 0; padding: 0;
-height: 2em; width: .7em;
+height: 1.5em; width: .5em;
 border-radius: 0;
+background-color: #f1f1f1;
 border: none;
 box-shadow:
-   -7em 0 0 0 #9c9c9c,
-   -6em 0 0 0 #9c9c9c, 
-   -5em 0 0 0 #9c9c9c,
-   -4em 0 0 0 #9c9c9c, 
-   -3em 0 0 0 #9c9c9c,
-   -2em 0 0 0 #9c9c9c, 
-   -1em 0 0 0 #9c9c9c,
+   -5.6em 0 0 0 #9c9c9c,
+   -4.8em 0 0 0 #9c9c9c, 
+   -4em 0 0 0 #9c9c9c,
+   -3.2em 0 0 0 #9c9c9c, 
+   -2.4em 0 0 0 #9c9c9c,
+   -1.6em 0 0 0 #9c9c9c, 
+   -.8em 0 0 0 #9c9c9c,
 }
 &::-webkit-slider-thumb { @include thumb(); }
   &::-moz-range-thumb { @include thumb(); }
