@@ -6,6 +6,7 @@ import useMouseEffects from './utilities/customHooks/useMouseEffects'
 
 import GameWrapper from './components/gameWrapper'
 import VolumeSettings from './components/volumeSettings'
+import FullScreenBtn from './components/fullscreen-btn'
 
 const App: React.FC = () => {
   useMouseEffects()
@@ -13,6 +14,7 @@ const App: React.FC = () => {
     <Provider store={store}>
       <GameWrapper></GameWrapper>
       <VolumeSettings/>
+      <FullScreenBtn/>
     </Provider>
   )
 }
