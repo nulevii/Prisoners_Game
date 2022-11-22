@@ -2,6 +2,7 @@
 @import "./base/base";
 @import "./base/variables";
 @import "./base/visually-hidden";
+@import "./base/common";
 
 @import "./components/volume-settings";
 @import "./components/main-menu/menu-title";
@@ -10,3 +11,4 @@
 @import "./components/main-menu/menu-rain";
 @import "./components/fullscreen-btn";
 @import "./components/rules";
+@import "./components/about";

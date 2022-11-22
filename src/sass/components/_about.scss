@@ -1,0 +1,63 @@
+.about {
+  &Div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30vw;
+    height: 35vw;
+    background-image: url(../../assets/images/about/Layer43.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  &Text {
+    position: relative;
+    top: 50%;
+    left: 12%;
+    width: 75%;
+  }
+
+  &Us {
+    position: absolute;
+    width: 100%;
+    bottom: 13%;
+    right: 2%;
+
+    display: flex;
+    justify-content: center;
+    gap: 3vw;
+  }
+
+  &Portrait {
+    width: 5vw;
+    height: 5vw;
+    border-radius: 50%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    &1 {
+      background-image: url(../../assets/images/about/zhenya.png);
+    }
+    &2 {
+      background-image: url(../../assets/images/about/inna.png);
+    }
+    &3 {
+      background-image: url(../../assets/images/about/sasha.png);
+    }
+
+    &Text {
+      position: absolute;
+      bottom: -27%;
+      font-size: 15px;
+      display: block;
+    }
+  }
+
+  &VideoText {
+    position: absolute;
+    top: 9%;
+    left: 15%;
+  }
+}

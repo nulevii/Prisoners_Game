@@ -39,7 +39,7 @@ const Rules: React.FC = function () {
 
   return (
     <div className='rulesDiv'>
-      <button className='closeRules' onClick={onHideRules}>X</button>
+      <button className='closeBtn' onClick={onHideRules}>X</button>
       <p className='rulesText'>{rulesText[idx]}</p>
       <button className='rulesLeft rulesArrow visually-hidden' onClick={swapLeft} ref={leftArrowRef}></button>
       <button className='rulesRight rulesArrow' onClick={swapRight} id='rulesArrowRight' ref={rightArrowRef}></button>
