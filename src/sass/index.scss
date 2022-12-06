@@ -1,9 +1,14 @@
 @import "./base/mixins";
 @import "./base/base";
 @import "./base/variables";
+@import "./base/visually-hidden";
+@import "./base/common";
 
 @import "./components/volume-settings";
 @import "./components/main-menu/menu-title";
 @import "./components/main-menu/menu-btns";
 @import "./components/main-menu/menu-cursor";
 @import "./components/main-menu/menu-rain";
+@import "./components/fullscreen-btn";
+@import "./components/rules";
+@import "./components/about";
