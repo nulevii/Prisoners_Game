@@ -1,21 +1,44 @@
-import React, { useState } from 'react'
+import React, { Component, ReactElement } from 'react'
 
-const FullScreenBtn: React.FC = () => {
-  const [currentBtn, setCurrentBtn] = useState('[ ]')
-  document.addEventListener('fullscreenchange', checkFullscreen)
+interface FSState {
+  isFullScreen: boolean
+}
 
-  function toggleFullscreen (): void {
+class FullScreenBtn extends Component<{}, FSState> {
+  constructor (props: {}) {
+    super(props)
+    this.checkFullscreen = this.checkFullscreen.bind(this)
+  }
+
+  state: FSState = {
+    isFullScreen: false
+  }
+
+  componentDidMount (): void {
+    document.addEventListener('fullscreenchange', this.checkFullscreen)
+  }
+
+  componentWillUnmount (): void {
+    document.removeEventListener('fullscreenchange', this.checkFullscreen)
+  }
+
+  toggleFullscreen (): void {
     if (document.fullscreenElement != null) {
       void document.exitFullscreen()
     } else {
       void document.documentElement.requestFullscreen()
     }
   }
-  function checkFullscreen (): void {
-    currentBtn === '[ ]' ? setCurrentBtn('X') : setCurrentBtn('[ ]')
+
+  checkFullscreen (): void {
+    this.setState((prevState) => ({
+      isFullScreen: !prevState.isFullScreen
+    }))
   }
 
-  return (<button type='button' name='fullscreen' className='fullscreen-btn' onClick={toggleFullscreen}>{currentBtn}</button>)
+  render (): ReactElement {
+    return (<button type='button' name='fullscreen' className='fullscreen-btn' onClick={this.toggleFullscreen}>{this.state.isFullScreen ? 'X' : '[ ]'}</button>)
+  }
 }
 
 export default FullScreenBtn
