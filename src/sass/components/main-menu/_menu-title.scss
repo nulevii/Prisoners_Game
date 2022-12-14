@@ -27,12 +27,17 @@
 
 .gameTitle {
   position: relative;
+  background-repeat: no-repeat;
+  background-size: contain;
   right: -2.5%;
-  top: 27%;
+  top: 22%;
   display: flex;
   margin: 0 auto;
-  width: 25%;
-  height: 25%;
+  width: 392px;
+  height: 178px;
   justify-content: center;
+  background-image: url(../../../assets/images/prisoners-logo.png);
 }
+
+
 

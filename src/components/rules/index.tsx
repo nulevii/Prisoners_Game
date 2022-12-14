@@ -8,11 +8,12 @@ const Rules: React.FC = function () {
     dispatch(showRules(false))
   }
   const rulesText = [
-    'First you do one thing',
-    'Then another thing',
-    'And another thing',
-    'At last, you win'
+    'In this game you are the prisoner, one of them. Your tusk is to escape. Guards decide to play with you the game in wich you can not win, at least they think so.',
+    'You with your cellmates should find all the keys from the Main Gates in the boxes that Guards prepared for you. Every box has a number on it and has a number inside it. Both numbers equal to quantyty of prisoners.',
+    'You and your friends will enter in the room one by one and will try to find the nubmer inside the box, that equal to your Prisoner ID, key will be there, I supose you remember your ID, as it`s printed on your uniform. Numbers never change!',
+    'You can only open half of the boxes in the room. If you won`t find your number, better luck next time (next time will never happend). In fact even at least one of your cellmates won`t find his number, the game will be finished.'
   ]
+
   const leftArrowRef = useRef<HTMLButtonElement>(null)
   const rightArrowRef = useRef<HTMLButtonElement>(null)
   const [idx, setCurrentIdx] = useState(0)
