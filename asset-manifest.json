@@ -1,17 +1,21 @@
 {
   "files": {
-    "main.css": "/Prisoners_Game/static/css/main.53da4c31.css",
-    "main.js": "/Prisoners_Game/static/js/main.287761ef.js",
+    "main.css": "/Prisoners_Game/static/css/main.f2cfabbb.css",
+    "main.js": "/Prisoners_Game/static/js/main.1483a5f0.js",
     "static/media/game-background.mp3": "/Prisoners_Game/static/media/game-background.268044683218e33013db.mp3",
     "static/media/main-menu-theme.mp3": "/Prisoners_Game/static/media/main-menu-theme.627b555b470821dc2e0f.mp3",
+    "static/media/Layer43.png": "/Prisoners_Game/static/media/Layer43.01caf0a540081f7bcb86.png",
     "static/media/background.png": "/Prisoners_Game/static/media/background.ff196dd741fafc1a7199.png",
+    "static/media/Notepen.ttf": "/Prisoners_Game/static/media/Notepen.468f20ddaa71363d16db.ttf",
+    "static/media/page.png": "/Prisoners_Game/static/media/page.e3b633f57db8e836ec15.png",
+    "static/media/envelope.png": "/Prisoners_Game/static/media/envelope.9b77e6b5f6af4434d3ef.png",
     "static/media/flashlight-click.mp3": "/Prisoners_Game/static/media/flashlight-click.9d5e67f1d35e292fff55.mp3",
     "index.html": "/Prisoners_Game/index.html",
-    "main.53da4c31.css.map": "/Prisoners_Game/static/css/main.53da4c31.css.map",
-    "main.287761ef.js.map": "/Prisoners_Game/static/js/main.287761ef.js.map"
+    "main.f2cfabbb.css.map": "/Prisoners_Game/static/css/main.f2cfabbb.css.map",
+    "main.1483a5f0.js.map": "/Prisoners_Game/static/js/main.1483a5f0.js.map"
   },
   "entrypoints": [
-    "static/css/main.53da4c31.css",
-    "static/js/main.287761ef.js"
+    "static/css/main.f2cfabbb.css",
+    "static/js/main.1483a5f0.js"
   ]
 }
