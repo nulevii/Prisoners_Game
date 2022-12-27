@@ -32,6 +32,8 @@
     background-image: url(../../assets/images/rules/arrow-right.png);
   }
 
+
+
   &Text {
     font-family: 'Notepen';
     box-sizing: border-box;
@@ -48,4 +50,9 @@
     background-repeat: no-repeat;
     background-image: url(../../assets/images/rules/page.png);
   }
+}
+
+.youtubeVideo{
+  cursor: pointer;
+  z-index: 0;
 }

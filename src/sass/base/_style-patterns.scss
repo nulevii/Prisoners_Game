@@ -12,3 +12,11 @@
   overflow: hidden;
   pointer-events: none;
 }
+
+.cursor-hidden {
+  cursor: none;
+}
+
+.cursor-visible {
+  cursor: auto;
+}

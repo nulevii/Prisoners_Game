@@ -41,7 +41,7 @@ const Rules: React.FC = function () {
   return (
     <div className="rulesDiv">
       <button className="closeBtn" onClick={onHideRules}>
-        X
+
       </button>
       <p className="rulesText">{rulesText[idx]}</p>
       <button
