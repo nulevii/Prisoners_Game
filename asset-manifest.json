@@ -1,11 +1,12 @@
 {
   "files": {
-    "main.css": "/Prisoners_Game/static/css/main.768e2d7e.css",
-    "main.js": "/Prisoners_Game/static/js/main.e9897e0b.js",
+    "main.css": "/Prisoners_Game/static/css/main.f35327a2.css",
+    "main.js": "/Prisoners_Game/static/js/main.1168e13d.js",
     "static/media/game-background.mp3": "/Prisoners_Game/static/media/game-background.268044683218e33013db.mp3",
     "static/media/main-menu-theme.mp3": "/Prisoners_Game/static/media/main-menu-theme.627b555b470821dc2e0f.mp3",
     "static/media/VCR_OSD_MONO_1.001.ttf": "/Prisoners_Game/static/media/VCR_OSD_MONO_1.001.10cf96d54dcd9af0486c.ttf",
     "static/media/background.png": "/Prisoners_Game/static/media/background.ff196dd741fafc1a7199.png",
+    "static/media/video-background-play-sm.jpg": "/Prisoners_Game/static/media/video-background-play-sm.ecdcd07102d81f6c110a.jpg",
     "static/media/rainyhearts.ttf": "/Prisoners_Game/static/media/rainyhearts.2f088ce263e644a4a5a6.ttf",
     "static/media/Notepen.ttf": "/Prisoners_Game/static/media/Notepen.468f20ddaa71363d16db.ttf",
     "static/media/folder-bg.png": "/Prisoners_Game/static/media/folder-bg.c4ed5f99c67265579a59.png",
@@ -13,11 +14,11 @@
     "static/media/envelope.png": "/Prisoners_Game/static/media/envelope.9b77e6b5f6af4434d3ef.png",
     "static/media/flashlight-click.mp3": "/Prisoners_Game/static/media/flashlight-click.9d5e67f1d35e292fff55.mp3",
     "index.html": "/Prisoners_Game/index.html",
-    "main.768e2d7e.css.map": "/Prisoners_Game/static/css/main.768e2d7e.css.map",
-    "main.e9897e0b.js.map": "/Prisoners_Game/static/js/main.e9897e0b.js.map"
+    "main.f35327a2.css.map": "/Prisoners_Game/static/css/main.f35327a2.css.map",
+    "main.1168e13d.js.map": "/Prisoners_Game/static/js/main.1168e13d.js.map"
   },
   "entrypoints": [
-    "static/css/main.768e2d7e.css",
-    "static/js/main.e9897e0b.js"
+    "static/css/main.f35327a2.css",
+    "static/js/main.1168e13d.js"
   ]
 }
