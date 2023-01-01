@@ -4,11 +4,11 @@
 @import "./base/style-patterns";
 @import "./base/common";
 
-@import "./components/volume-settings";
-@import "./components/main-menu/menu-title";
-@import "./components/main-menu/menu-btns";
-@import "./components/main-menu/menu-cursor";
-@import "./components/main-menu/menu-rain";
-@import "./components/fullscreen-btn";
-@import "./components/rules";
-@import "./components/about";
+@import "../components/volume-settings/volume-settings/";
+@import "../components/main-menu/styles/menu-title";
+@import "../components/main-menu/styles/menu-btns";
+@import "../components/main-menu/styles/menu-cursor";
+@import "../components/main-menu/styles/menu-rain";
+@import "../components/fullscreen-btn/fullscreen-btn";
+@import "../components/rules/rules";
+@import "../components/main-menu/about-section/about";
