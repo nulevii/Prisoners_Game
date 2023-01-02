@@ -1,0 +1,13 @@
+.pause-button {
+  margin-top: auto;
+  margin-bottom: auto;
+  height: 48px;
+  width: 51px;
+  background-image: url(/assets/images/game/play-pause.png);
+  background-color: transparent;
+  border: none;
+}
+
+.pause-button.paused {
+  background-position: bottom;
+}

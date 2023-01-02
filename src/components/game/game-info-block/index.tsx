@@ -5,14 +5,20 @@ import { InitialStateInterface } from '../../../store/reducer'
 
 import Prisoner from './prisoner'
 import Guard from './guard'
+import PauseButton from './pause-button'
+import Envelope from './envelope'
+import Clock from './clock'
 
 const GameInfoBlock: React.FC = function () {
   const gameStatus = useSelector((state: InitialStateInterface) => state.gameStatus)
 
-  if (gameStatus === 'started') {
+  if (gameStatus === 'started' || gameStatus === 'paused') {
     return (
-    <section style={{ backgroundColor: 'yellow', height: '150px', display: 'flex', justifyContent: 'space-between' }} className='game-info-block'>
+    <section className='game-info-block'>
       <Prisoner />
+      <Envelope />
+      <PauseButton />
+      <Clock />
       <Guard />
     </section>
     )

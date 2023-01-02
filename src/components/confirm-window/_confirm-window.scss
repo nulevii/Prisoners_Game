@@ -1,0 +1,28 @@
+.confirm__wrapper {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #00000086;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.confirm {
+  background-color: white;
+  width: 300px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.confirm__text {
+  text-align: center;
+  width: 100%;
+}
+.confirm__button {
+  padding: 10px;
+  margin: 5px;
+}

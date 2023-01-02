@@ -1,4 +1,5 @@
 import { guards } from './guards'
+import prisonerImg from '../assets/images/characters/prisoners/prisoner.png'
 const generateRandomNum = (number: number): number => Math.floor(Math.random() * number)
 
 const generateId = (randomNumbersArray: number[] | string[]): number => {
@@ -34,7 +35,6 @@ export const createPrisoners = (prisonersQtt: number): PrisonersInterface[] => {
   const prisoners = Array.from({ length: prisonersQtt }, (_, i) => i + 1)
     .map(prisonerNumber => {
       const prisonerName = `${prisonersNames[generateId(prisonersNames)]} ${prisonersSurnames[generateId(prisonersSurnames)]}`
-      const prisonerImg = 'https://cdn-icons-png.flaticon.com/512/123/123668.png'
       const attempts = prisonersQtt / 2
 
       return {

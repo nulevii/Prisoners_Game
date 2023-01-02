@@ -1,139 +1,151 @@
 import {
-  CHANGE_GAME_STATUS, SHOW_RULES, SHOW_ABOUT,
+  OPEN_GAME, SHOW_RULES, SHOW_ABOUT,
   SHOW_GAME_SETTINGS, INCREASE_PRISONERS_QTT, DECREASE_PRISONERS_QTT,
-  START_GAME, STOP_GAME, SOUND_SWITCH, VOLUME_SWITCH, OPEN_BOX, SHOW_MAIN_MENU_CONFIRM_WINDOW, SHOW_RESET_CONFIRM_WINDOW
+  CHANGE_GAME_STATUS, START_GAME, STOP_GAME, SOUND_SWITCH, VOLUME_SWITCH, OPEN_BOX, SHOW_MAIN_MENU_CONFIRM_WINDOW, SHOW_RESET_CONFIRM_WINDOW
 } from './action-types'
 
-export const changeGameStatus = (payload: boolean): ChangeGameStatusInterface => ({
-  type: CHANGE_GAME_STATUS,
+export const openGame = (payload: boolean): IOpenGame => ({
+  type: OPEN_GAME,
   payload
 })
-interface ChangeGameStatusInterface {
-  type: typeof CHANGE_GAME_STATUS
+interface IOpenGame {
+  type: typeof OPEN_GAME
   payload: boolean
 }
 
-export const showRules = (payload: boolean): ShowRulesInterface => ({
+export const showRules = (payload: boolean): IShowRules => ({
   type: SHOW_RULES,
   payload
 })
-interface ShowRulesInterface {
+interface IShowRules {
   type: typeof SHOW_RULES
   payload: boolean
 }
 
-export const showAbout = (payload: boolean): ShowAboutInterface => ({
+export const showAbout = (payload: boolean): IShowAbout => ({
   type: SHOW_ABOUT,
   payload
 })
-interface ShowAboutInterface {
+interface IShowAbout {
   type: typeof SHOW_ABOUT
   payload: boolean
 }
 
-export const showGameSettings = (payload: boolean): ShowGameSettingsInterface => ({
+export const showGameSettings = (payload: boolean): IShowGameSettings => ({
   type: SHOW_GAME_SETTINGS,
   payload
 })
-interface ShowGameSettingsInterface {
+interface IShowGameSettings {
   type: typeof SHOW_GAME_SETTINGS
   payload: boolean
 }
 
-export const showMainMenuConfirmWindow = (payload: boolean): ShowMainMenuConfirmWindowInterface => ({
+export const showMainMenuConfirmWindow = (payload: boolean): IShowMainMenuConfirmWindow => ({
   type: SHOW_MAIN_MENU_CONFIRM_WINDOW,
   payload
 })
-interface ShowMainMenuConfirmWindowInterface {
+interface IShowMainMenuConfirmWindow {
   type: typeof SHOW_MAIN_MENU_CONFIRM_WINDOW
   payload: boolean
 }
 
-export const showResetConfirmWindow = (payload: boolean): ShowResetConfirmWindowInterface => ({
+export const showResetConfirmWindow = (payload: boolean): IShowResetConfirmWindow => ({
   type: SHOW_RESET_CONFIRM_WINDOW,
   payload
 })
-interface ShowResetConfirmWindowInterface {
+interface IShowResetConfirmWindow {
   type: typeof SHOW_RESET_CONFIRM_WINDOW
   payload: boolean
 }
 
 export const soundSwitch = (
   payload: boolean
-): SoundSwitchInterface => ({
+): ISoundSwitch => ({
   type: SOUND_SWITCH,
   payload
 })
-interface SoundSwitchInterface {
+interface ISoundSwitch {
   type: typeof SOUND_SWITCH
   payload: boolean
 }
 
 export const volumeSwitch = (
   payload: number
-): VolumeSwitchInterface => ({
+): IVolumeSwitch => ({
   type: VOLUME_SWITCH,
   payload
 })
-interface VolumeSwitchInterface {
+interface IVolumeSwitch {
   type: typeof VOLUME_SWITCH
   payload: number
 }
 
 // App logic
 
-export const increasePrisonersQtt = (payload: number): IncreasePrisonersQttInterface => ({
+export const changeGameStatus = (
+  payload: 'started' | 'notStarted' | 'win' | 'lose' | 'paused'
+): IChangeGameStatus => ({
+  type: CHANGE_GAME_STATUS,
+  payload
+})
+interface IChangeGameStatus {
+  type: typeof CHANGE_GAME_STATUS
+  payload: 'started' | 'notStarted' | 'win' | 'lose' | 'paused'
+}
+
+export const increasePrisonersQtt = (payload: number): IIncreasePrisonersQtt => ({
   type: INCREASE_PRISONERS_QTT,
   payload
 })
-interface IncreasePrisonersQttInterface {
+interface IIncreasePrisonersQtt {
   type: typeof INCREASE_PRISONERS_QTT
   payload: number
 }
 
-export const decreasePrisonersQtt = (payload: number): DecreasePrisonersQttInterface => ({
+export const decreasePrisonersQtt = (payload: number): IDecreasePrisonersQtt => ({
   type: DECREASE_PRISONERS_QTT,
   payload
 })
-interface DecreasePrisonersQttInterface {
+interface IDecreasePrisonersQtt {
   type: typeof DECREASE_PRISONERS_QTT
   payload: number
 }
 
-export const startGame = (): StartGameInterface => ({
+export const startGame = (): IStartGame => ({
   type: START_GAME
 })
-interface StartGameInterface {
+interface IStartGame {
   type: typeof START_GAME
 }
 
-export const stopGame = (): StopGameInterface => ({
+export const stopGame = (): IStopGame => ({
   type: STOP_GAME
 })
-interface StopGameInterface {
+interface IStopGame {
   type: typeof STOP_GAME
 }
 
-export const openBox = (payload: number): OpenBoxInterface => ({
+export const openBox = (payload: number): IOpenBox => ({
   type: OPEN_BOX,
   payload
 })
-interface OpenBoxInterface {
+interface IOpenBox {
   type: typeof OPEN_BOX
   payload: number
 }
 
 export type Actions =
-  | ChangeGameStatusInterface
-  | ShowRulesInterface
-  | ShowAboutInterface
-  | ShowGameSettingsInterface
-  | ShowResetConfirmWindowInterface
-  | ShowMainMenuConfirmWindowInterface
-  | IncreasePrisonersQttInterface
-  | DecreasePrisonersQttInterface
-  | StartGameInterface
-  | StopGameInterface
-  | SoundSwitchInterface
-  | VolumeSwitchInterface
-  | OpenBoxInterface
+  | IOpenGame
+  | IShowRules
+  | IShowAbout
+  | IShowGameSettings
+  | IShowResetConfirmWindow
+  | IShowMainMenuConfirmWindow
+  | IIncreasePrisonersQtt
+  | IDecreasePrisonersQtt
+  | IStartGame
+  | IStopGame
+  | ISoundSwitch
+  | IVolumeSwitch
+  | IChangeGameStatus
+  | IOpenBox

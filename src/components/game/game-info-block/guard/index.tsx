@@ -6,22 +6,18 @@ import { InitialStateInterface } from '../../../../store/reducer'
 const Guard: React.FC = function () {
   const guard = useSelector((state: InitialStateInterface) => state.guard)
   const { name, firstJoke, picture } = guard
-  console.log(guard)
-  return (<div className="guard" style={{ display: 'flex' }} >
-      <div className="guard__message" style={{ display: 'flex', padding: '40px' }} >
-        {firstJoke}
+  return (<div className="guard" >
+      <div className="guard-message__wrapper" >
+        <div className='guard-message--top'></div>
+        <div className="guard-message">{firstJoke}</div>
+        <div className='guard-message--bottom'></div>
       </div>
-      <div className="guard__info">
-        <p>{name}</p>
         <img
-          src={picture}
-          alt={name}
-          style={{
-            width: '100px'
-          }}
+        className="guard__picture"
+        src={picture}
+        alt={name}
         />
-        <p>Prison Officer</p>
-      </div>
+        <p className='guard__name'>{name}</p>
     </div>
   )
 }

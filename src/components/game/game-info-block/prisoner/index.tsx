@@ -12,16 +12,14 @@ const Prisoner: React.FC = function () {
   )
   return (
     <div className="prisoner">
-      <p>{PrisonersArray[prisonerIndex].prisonerNumber}</p>
-      <p>{PrisonersArray[prisonerIndex].prisonerName}</p>
       <img
+        className="prisoner__img"
         src={PrisonersArray[prisonerIndex].prisonerImg}
         alt={PrisonersArray[prisonerIndex].prisonerName}
-        style={{
-          width: '100px'
-        }}
       />
-      <p>Attempts {PrisonersArray[prisonerIndex].attempts}</p>
+      <p className="prisoner__name">{PrisonersArray[prisonerIndex].prisonerName}</p>
+      {/* <p className="prisoner__index">{PrisonersArray[prisonerIndex].prisonerNumber}</p> */}
+      {/* <p>Attempts {PrisonersArray[prisonerIndex].attempts}</p> */}
     </div>
   )
 }

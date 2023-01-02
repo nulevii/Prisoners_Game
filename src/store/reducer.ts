@@ -1,9 +1,10 @@
 import { Actions } from './actions'
 import {
-  CHANGE_GAME_STATUS, SHOW_RULES,
+  OPEN_GAME, SHOW_RULES,
   SHOW_ABOUT, SHOW_GAME_SETTINGS,
   SHOW_MAIN_MENU_CONFIRM_WINDOW, SHOW_RESET_CONFIRM_WINDOW,
   INCREASE_PRISONERS_QTT, DECREASE_PRISONERS_QTT,
+  CHANGE_GAME_STATUS,
   START_GAME, STOP_GAME, SOUND_SWITCH, VOLUME_SWITCH, OPEN_BOX
 } from './action-types'
 import {
@@ -34,7 +35,7 @@ export interface InitialStateInterface {
   gameSettings: boolean
   resetConfrirmWindow: boolean
   mainMenuConfirmWindow: boolean
-  gameStatus: 'started' | 'notStarted' | 'win' | 'lose'
+  gameStatus: 'started' | 'notStarted' | 'win' | 'lose' | 'paused'
   sound: boolean
   volume: number
 
@@ -48,7 +49,7 @@ export interface InitialStateInterface {
 
 function reducer (state: InitialStateInterface = initialState, action: Actions): InitialStateInterface {
   switch (action.type) {
-    case CHANGE_GAME_STATUS:
+    case OPEN_GAME:
       return { ...state, gameRoom: action.payload }
 
     case SHOW_RULES:
@@ -73,6 +74,9 @@ function reducer (state: InitialStateInterface = initialState, action: Actions):
       return { ...state, volume: action.payload }
 
       // App logic
+
+    case CHANGE_GAME_STATUS:
+      return { ...state, gameStatus: action.payload }
 
     case INCREASE_PRISONERS_QTT:
       if (state.prisonersQtt + action.payload > 100) {

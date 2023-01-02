@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { InitialStateInterface } from '../../store/reducer'
-import { changeGameStatus, showRules, showAbout } from '../../store/actions'
+import { openGame, showRules, showAbout } from '../../store/actions'
 
 import Rules from '../rules'
 import AboutSection from './about-section'
@@ -21,7 +21,7 @@ const MainMenu: React.FC = () => {
   )
 
   const onStartGame = (): void => {
-    dispatch(changeGameStatus(true))
+    dispatch(openGame(true))
   }
 
   const onInstruction = (): void => {
