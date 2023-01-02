@@ -1,24 +1,32 @@
 {
   "files": {
-    "main.css": "/Prisoners_Game/static/css/main.033f3ead.css",
-    "main.js": "/Prisoners_Game/static/js/main.1168e13d.js",
+    "main.css": "/Prisoners_Game/static/css/main.acfaf9eb.css",
+    "main.js": "/Prisoners_Game/static/js/main.3e0e4e89.js",
     "static/media/game-background.mp3": "/Prisoners_Game/static/media/game-background.268044683218e33013db.mp3",
     "static/media/main-menu-theme.mp3": "/Prisoners_Game/static/media/main-menu-theme.627b555b470821dc2e0f.mp3",
+    "static/media/hopps.jpg": "/Prisoners_Game/static/media/hopps.f59f57bc949eefebbbc8.jpg",
+    "static/media/starling.webp": "/Prisoners_Game/static/media/starling.d9d5e2db43c09c28c5ff.webp",
     "static/media/VCR_OSD_MONO_1.001.ttf": "/Prisoners_Game/static/media/VCR_OSD_MONO_1.001.10cf96d54dcd9af0486c.ttf",
+    "static/media/laverne.jpg": "/Prisoners_Game/static/media/laverne.7bac4b66f31bbf1418a4.jpg",
+    "static/media/photo_2023-01-01_23-56-41.jpg": "/Prisoners_Game/static/media/photo_2023-01-01_23-56-41.eed858a3bd7bf45f1480.jpg",
     "static/media/background.png": "/Prisoners_Game/static/media/background.ff196dd741fafc1a7199.png",
     "static/media/video-background-play-sm.jpg": "/Prisoners_Game/static/media/video-background-play-sm.ecdcd07102d81f6c110a.jpg",
     "static/media/rainyhearts.ttf": "/Prisoners_Game/static/media/rainyhearts.2f088ce263e644a4a5a6.ttf",
     "static/media/Notepen.ttf": "/Prisoners_Game/static/media/Notepen.468f20ddaa71363d16db.ttf",
+    "static/media/mert.png": "/Prisoners_Game/static/media/mert.09cf02093213dfae6f05.png",
+    "static/media/prisoner.png": "/Prisoners_Game/static/media/prisoner.dd34b6c951311d8194ab.png",
     "static/media/folder-bg.png": "/Prisoners_Game/static/media/folder-bg.c4ed5f99c67265579a59.png",
     "static/media/page.png": "/Prisoners_Game/static/media/page.e3b633f57db8e836ec15.png",
     "static/media/envelope.png": "/Prisoners_Game/static/media/envelope.9b77e6b5f6af4434d3ef.png",
+    "static/media/squid.png": "/Prisoners_Game/static/media/squid.d828f870263030f85bb5.png",
     "static/media/flashlight-click.mp3": "/Prisoners_Game/static/media/flashlight-click.9d5e67f1d35e292fff55.mp3",
+    "static/media/wetmore.webp": "/Prisoners_Game/static/media/wetmore.d1e88131b2674bceb091.webp",
     "index.html": "/Prisoners_Game/index.html",
-    "main.033f3ead.css.map": "/Prisoners_Game/static/css/main.033f3ead.css.map",
-    "main.1168e13d.js.map": "/Prisoners_Game/static/js/main.1168e13d.js.map"
+    "main.acfaf9eb.css.map": "/Prisoners_Game/static/css/main.acfaf9eb.css.map",
+    "main.3e0e4e89.js.map": "/Prisoners_Game/static/js/main.3e0e4e89.js.map"
   },
   "entrypoints": [
-    "static/css/main.033f3ead.css",
-    "static/js/main.1168e13d.js"
+    "static/css/main.acfaf9eb.css",
+    "static/js/main.3e0e4e89.js"
   ]
 }
