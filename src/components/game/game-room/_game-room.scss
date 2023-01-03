@@ -1,5 +1,6 @@
 .game-field{
 height: calc(100vh - $info-height);
+display: flex;
 align-items: center;
 justify-content: center;
 }
