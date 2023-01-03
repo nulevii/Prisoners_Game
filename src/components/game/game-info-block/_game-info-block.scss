@@ -1,12 +1,20 @@
+
+$info-height: 180px;
 .game-info-block{
-  height: 260px;
-  background-position: 0 35px;
+  height: $info-height;
   background-repeat: repeat-x;
-  margin-top: auto;
   display: flex;
   background-image: url(/assets/images/game/game-field.png);
   padding-left: 60px;
   padding-right: 60px;
   justify-content: space-between;
+  
+}
 
+.not-started{
+  margin: auto;
+  font-family: rainyhearts;
+  letter-spacing: 8px;
+  font-size: 40px;
+  color: white;
 }

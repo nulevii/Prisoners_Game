@@ -2,7 +2,7 @@ import React from 'react'
 
 function Clock (): JSX.Element {
   return (
-    <div>Clock</div>
+    <div>Clock2</div>
   )
 }
 

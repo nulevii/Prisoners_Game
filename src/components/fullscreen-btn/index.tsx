@@ -37,7 +37,7 @@ class FullScreenBtn extends Component<{}, FSState> {
   }
 
   render (): ReactElement {
-    return (<button type='button' name='fullscreen' className='fullscreen-btn' onClick={this.toggleFullscreen}>{this.state.isFullScreen ? 'X' : '[ ]'}</button>)
+    return (<button type='button' name='fullscreen' className={`fullscreen-btn ${this.state.isFullScreen ? 'fullscreen-btn--closed' : ''}`} onClick={this.toggleFullscreen}></button>)
   }
 }
 

@@ -1,5 +1,4 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
 
 import GameRoom from './game-room'
 import GameInfoBlock from './game-info-block'

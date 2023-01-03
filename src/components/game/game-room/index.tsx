@@ -15,21 +15,23 @@ const GameRoom: React.FC = function () {
     dispatch(openBox(boxIndex))
   }
   return (
-    <div style={{ padding: '20px', display: 'flex', flexWrap: 'wrap', gap: '5px' }} className='room'>
+    <div className='game-field'>
+      <div className='game-room-wrapper'>
       {boxes.map(({ boxNumber, numberInBox, isOpen }, index) => (
         <div onClick={() => { onOpenBox(index) }} key={boxNumber}
         style={{
           height: '100px',
           width: '100px',
           color: 'white',
-          textAlign: 'center',
-          backgroundColor: isOpen ? 'blue' : 'red'
+          textAlign: 'center'
+          // backgroundColor: isOpen ? 'blue' : 'red'
         }}>
           {boxNumber}
           {isOpen && gameStatus === 'started' ? <p> {numberInBox}</p> : null}
         </div>
       ))}
         <GameResult ></GameResult>
+        </div>
     </div>
 
   )

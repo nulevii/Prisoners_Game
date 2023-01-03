@@ -16,13 +16,15 @@
 
 @import "../components/rules/rules"; 
 
-@import '../components/game/game';
-@import '../components/game/game-buttons/game-buttons';
 @import '../components/game/game-info-block/game-info-block';
 @import '../components/game/game-info-block/guard/guard';
 @import '../components/game/game-info-block/prisoner/prisoner';
 @import '../components/game/game-info-block/pause-button/pause-button';
 @import '../components/game/game-info-block/envelope/envelope';
 @import '../components/game/game-info-block/clock/clock';
+
+@import '../components/game/game';
+@import '../components/game/game-room/game-room';
+@import '../components/game/game-buttons/game-buttons';
 
 @import '../components/confirm-window/confirm-window';

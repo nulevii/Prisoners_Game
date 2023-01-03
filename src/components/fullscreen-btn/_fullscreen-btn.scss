@@ -8,4 +8,11 @@
   border: none;
   font-size: 25px;
   cursor: none;
+  width: 37px;
+  height: 32px;
+  background-image: url(/assets/images/main-menu/full-screan-on-off.png);
+}
+
+.fullscreen-btn--closed{
+  background-position: bottom;
 }
