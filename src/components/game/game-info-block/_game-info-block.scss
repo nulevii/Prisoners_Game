@@ -12,9 +12,14 @@ $info-height: 180px;
 }
 
 .not-started{
+  height: $info-height;
+  position: relative;
   margin: auto;
-  font-family: rainyhearts;
+  font-family: 'rainyhearts';
   letter-spacing: 8px;
   font-size: 40px;
   color: white;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { InitialStateInterface } from '../../../store/reducer'
+import { InitialStateInterface } from '../../../../store/reducer'
 import {
   openGame,
   showRules,
@@ -9,11 +9,11 @@ import {
   showMainMenuConfirmWindow,
   showResetConfirmWindow,
   stopGame
-} from '../../../store/actions'
+} from '../../../../store/actions'
 
-import Rules from '../../rules'
-import ConfirmWindow from '../../confirm-window'
-import GameSettings from '../game-settings'
+import Rules from '../../../rules'
+import ConfirmWindow from '../../../confirm-window'
+import GameSettings from '../../game-settings'
 
 function GameButtons (): JSX.Element {
   const dispatch = useDispatch()

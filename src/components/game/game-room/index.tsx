@@ -4,6 +4,7 @@ import { InitialStateInterface } from '../../../store/reducer'
 import { openBox } from '../../../store/actions'
 
 import GameResult from './game-result'
+import GameButtons from './game-buttons'
 
 const GameRoom: React.FC = function () {
   const dispatch = useDispatch()
@@ -17,21 +18,24 @@ const GameRoom: React.FC = function () {
   return (
     <div className='game-field'>
       <div className='game-room-wrapper'>
-      {boxes.map(({ boxNumber, numberInBox, isOpen }, index) => (
-        <div onClick={() => { onOpenBox(index) }} key={boxNumber}
-        style={{
-          height: '100px',
-          width: '100px',
-          color: 'white',
-          textAlign: 'center'
-          // backgroundColor: isOpen ? 'blue' : 'red'
-        }}>
-          {boxNumber}
-          {isOpen && gameStatus === 'started' ? <p> {numberInBox}</p> : null}
+        <GameButtons />
+        <div className='boxes-wrapper'>
+          {boxes.map(({ boxNumber, numberInBox, isOpen }, index) => (
+            <div onClick={() => { onOpenBox(index) }} key={boxNumber}
+              style={{
+                height: '100px',
+                width: '100px',
+                color: 'white',
+                textAlign: 'center'
+                // backgroundColor: isOpen ? 'blue' : 'red'
+              }}>
+              {boxNumber}
+              {isOpen && gameStatus === 'started' ? <p> {numberInBox}</p> : null}
+            </div>
+          ))}
         </div>
-      ))}
         <GameResult ></GameResult>
-        </div>
+      </div>
     </div>
 
   )

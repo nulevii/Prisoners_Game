@@ -1,6 +1,5 @@
 .game-field{
 height: calc(100vh - $info-height);
-display: flex;
 align-items: center;
 justify-content: center;
 }
@@ -10,8 +9,13 @@ justify-content: center;
   background-size: contain;
   background-repeat: no-repeat;
   display: flex;
+  flex-direction: column;
   width: 100vw;
   height: 47vw;
   max-width: calc((100vh - $info-height) * 2.13);
   max-height: calc(100vh - $info-height);;
+}
+
+.boxes-wrapper{
+  display: flex;
 }
