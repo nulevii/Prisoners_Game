@@ -1,9 +1,9 @@
 import React from 'react'
-import { useAddShadow } from '../../utilities/textShadow'
+import { useAddShadowLight } from '../../utilities/textShadowLight'
 
 const ConfirmWindow: React.FC<{ onActionYes: () => void, onActionNo: () => void, action: string }> = function ({ onActionYes, onActionNo, action }) {
   console.log(onActionYes)
-  const textShadowRefs = useAddShadow()
+  const textShadowRefs = useAddShadowLight()
   return (
     <div className='confirm__wrapper'>
       <div className='confirm'>
