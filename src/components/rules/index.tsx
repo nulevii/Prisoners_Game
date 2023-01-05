@@ -1,14 +1,14 @@
-import React, { useState, useRef } from 'react'
+import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { showRules } from '../../store/actions'
-import { useAddShadow } from '../../utilities/textShadow'
+import { useAddShadowLight } from '../../utilities/textShadowLight'
 
 const Rules: React.FC = function () {
   const dispatch = useDispatch()
   const onHideRules = (): void => {
     dispatch(showRules(false))
   }
-  const textShadowRefs = useAddShadow()
+  const textShadowRefs = useAddShadowLight()
   const [idx, setCurrentIdx] = useState(0)
 
   const rulesText = [
@@ -28,16 +28,18 @@ const Rules: React.FC = function () {
 
   return (
     <div className="rulesDiv">
-      <button className="closeBtn" onClick={onHideRules}></button>
+      <button className="closeBtn" onClick={onHideRules} ref={(el) => { textShadowRefs.current![2] = el! }}></button>
       <p className="rulesText">{rulesText[idx]}</p>
       <button
         className={`rulesLeft rulesArrow ${idx === 0 ? 'visually-hidden' : ''}`}
         onClick={swapLeft}
+        ref={(el) => { textShadowRefs.current![0] = el! }}
       ></button>
       <button
         className={`rulesRight rulesArrow ${idx === rulesText.length - 1 ? 'visually-hidden' : ''}`}
         onClick={swapRight}
         id="rulesArrowRight"
+        ref={(el) => { textShadowRefs.current![1] = el! }}
       ></button>
     </div>
   )
