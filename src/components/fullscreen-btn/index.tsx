@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
+import { useAddShadow } from '../../utilities/textShadow'
 
 const FullScreenBtn: React.FC = () => {
   const [isFullScreen, setIsFullScreen] = useState(false)
+  const textShadowRefs = useAddShadow()
 
   useEffect(() => {
     document.addEventListener('fullscreenchange', checkFullscreen)
@@ -22,7 +24,7 @@ const FullScreenBtn: React.FC = () => {
     setIsFullScreen(!isFullScreen)
   }
 
-  return (<button type='button' name='fullscreen' className={`fullscreen-btn ${isFullScreen ? 'fullscreen-btn--closed' : ''}`} onClick={toggleFullscreen}></button>)
+  return (<button ref={(el) => { textShadowRefs.current![0] = el! }} type='button' name='fullscreen' className={`fullscreen-btn ${isFullScreen ? 'fullscreen-btn--closed' : ''}`} onClick={toggleFullscreen}></button>)
 }
 
 export default FullScreenBtn
