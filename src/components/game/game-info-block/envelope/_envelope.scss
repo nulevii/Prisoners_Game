@@ -6,4 +6,9 @@
   background-color: transparent;
   background-size: contain;
   border: none;
+  transition: transform 250ms;
+
+  &:hover, &:focus {
+  transform: translateY(5%);
+}
 }
