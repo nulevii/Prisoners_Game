@@ -21,6 +21,11 @@
     background-color: transparent;
     border: none;
     outline: none;
+    transition: transform 250ms;
+
+  &:hover, &:focus {
+  transform: translateY(5%);
+}
   }
   &Left {
     left: 25px;
@@ -31,8 +36,6 @@
     right: 25px;
     background-image: url(../../assets/images/rules/arrow-right.png);
   }
-
-
 
   &Text {
     font-family: 'Notepen', sans-serif;

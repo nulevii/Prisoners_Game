@@ -10,6 +10,12 @@
   outline: none;
   font-size: 25px;
   background-image: url(../../assets/images/exit-cancel.png);
+  // filter: drop-shadow(12px 12px 12px black)
+  transition: transform 250ms;
+
+  &:hover, &:focus {
+  transform: translateY(5%);
+}
 }
 button {
   cursor: none;

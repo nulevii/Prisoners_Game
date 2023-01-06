@@ -11,6 +11,12 @@
   width: 37px;
   height: 32px;
   background-image: url(/assets/images/main-menu/full-screan-on-off.png);
+
+  transition: transform 250ms;
+
+  &:hover, &:focus {
+  transform: translateY(5%);
+}
 }
 
 .fullscreen-btn--closed{

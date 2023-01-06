@@ -6,6 +6,11 @@
   background-image: url(/assets/images/game/play-pause-sm.png);
   background-color: transparent;
   border: none;
+  transition: transform 250ms;
+
+  &:hover, &:focus {
+  transform: translateY(5%);
+}
 }
 
 .pause-button.paused {

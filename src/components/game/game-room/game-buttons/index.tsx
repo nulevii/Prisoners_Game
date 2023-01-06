@@ -14,9 +14,11 @@ import {
 import Rules from '../../../rules'
 import ConfirmWindow from '../../../confirm-window'
 import GameSettings from '../../game-settings'
+import { useAddShadow } from '../../../../utilities/textShadow'
 
 function GameButtons (): JSX.Element {
   const dispatch = useDispatch()
+  const textShadowRefs = useAddShadow()
 
   const {
     gameRules,
@@ -53,9 +55,9 @@ function GameButtons (): JSX.Element {
     dispatch(showMainMenuConfirmWindow(false))
   }
   return (<div className='game-buttons'>
-    <button onClick={onReset}>Reset</button>
-    <button onClick={onInstruction}>Instruction</button>
-    <button onClick={onMainMenu}>Main menu</button>
+    <button onClick={onReset} ref={(el) => { textShadowRefs.current![0] = el! }}>Reset</button>
+    <button onClick={onInstruction} ref={(el) => { textShadowRefs.current![1] = el! }}>Instruction</button>
+    <button onClick={onMainMenu} ref={(el) => { textShadowRefs.current![2] = el! }}>Main menu</button>
     {resetConfrirmWindow
       ? (
         <ConfirmWindow

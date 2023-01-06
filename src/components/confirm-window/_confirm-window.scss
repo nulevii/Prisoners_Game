@@ -26,4 +26,9 @@
 .confirm__button {
   padding: 10px;
   margin: 5px;
+  transition: transform 250ms;
+
+  &:hover, &:focus {
+  transform: translateY(5%);
+}
 }
