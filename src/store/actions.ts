@@ -1,6 +1,6 @@
 import {
   OPEN_GAME, SHOW_RULES, SHOW_ABOUT,
-  SHOW_GAME_SETTINGS, INCREASE_PRISONERS_QTT, DECREASE_PRISONERS_QTT,
+  SHOW_GAME_SETTINGS, CHANGE_PRISONERS_QTT, CHANGE_TIME_LIMIT,
   CHANGE_GAME_STATUS, START_GAME, STOP_GAME, SOUND_SWITCH, VOLUME_SWITCH, OPEN_BOX, SHOW_MAIN_MENU_CONFIRM_WINDOW, SHOW_RESET_CONFIRM_WINDOW
 } from './action-types'
 
@@ -93,21 +93,21 @@ interface IChangeGameStatus {
   payload: 'started' | 'notStarted' | 'win' | 'lose' | 'paused'
 }
 
-export const increasePrisonersQtt = (payload: number): IIncreasePrisonersQtt => ({
-  type: INCREASE_PRISONERS_QTT,
+export const changePrisonersQtt = (payload: number): IChangePrisonersQtt => ({
+  type: CHANGE_PRISONERS_QTT,
   payload
 })
-interface IIncreasePrisonersQtt {
-  type: typeof INCREASE_PRISONERS_QTT
+interface IChangePrisonersQtt {
+  type: typeof CHANGE_PRISONERS_QTT
   payload: number
 }
 
-export const decreasePrisonersQtt = (payload: number): IDecreasePrisonersQtt => ({
-  type: DECREASE_PRISONERS_QTT,
+export const changeTimeLimit = (payload: number): IChangeTimeLimit => ({
+  type: CHANGE_TIME_LIMIT,
   payload
 })
-interface IDecreasePrisonersQtt {
-  type: typeof DECREASE_PRISONERS_QTT
+interface IChangeTimeLimit {
+  type: typeof CHANGE_TIME_LIMIT
   payload: number
 }
 
@@ -141,8 +141,8 @@ export type Actions =
   | IShowGameSettings
   | IShowResetConfirmWindow
   | IShowMainMenuConfirmWindow
-  | IIncreasePrisonersQtt
-  | IDecreasePrisonersQtt
+  | IChangePrisonersQtt
+  | IChangeTimeLimit
   | IStartGame
   | IStopGame
   | ISoundSwitch

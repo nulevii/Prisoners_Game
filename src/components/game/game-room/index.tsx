@@ -12,7 +12,7 @@ const GameRoom: React.FC = function () {
   const gameStatus = useSelector((state: InitialStateInterface) => state.gameStatus)
 
   const onOpenBox = (boxIndex: number): void => {
-    if (gameStatus === 'notStarted') { return }
+    if (gameStatus !== 'started') { return }
     dispatch(openBox(boxIndex))
   }
   return (
@@ -26,15 +26,15 @@ const GameRoom: React.FC = function () {
                 height: '100px',
                 width: '100px',
                 color: 'white',
-                textAlign: 'center'
-                // backgroundColor: isOpen ? 'blue' : 'red'
+                textAlign: 'center',
+                backgroundColor: isOpen ? 'blue' : 'red'
               }}>
               {boxNumber}
               {isOpen && gameStatus === 'started' ? <p> {numberInBox}</p> : null}
             </div>
           ))}
         </div>
-        <GameResult ></GameResult>
+        <GameResult />
       </div>
     </div>
 

@@ -17,7 +17,7 @@ function PauseButton (): JSX.Element {
     dispatch(changeGameStatus('paused'))
   }
   return (
-    <button onClick={onPause} className={`pause-button ${gameStatus === 'paused' ? 'paused' : ''}`} ref={(el) => { textShadowRefs.current![0] = el! }}></button>
+    <button onClick={onPause} className={`pause-button ${gameStatus === 'paused' ? '' : 'paused'}`} ref={(el) => { textShadowRefs.current![0] = el! }}></button>
   )
 }
 

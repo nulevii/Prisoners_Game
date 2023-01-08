@@ -1,4 +1,4 @@
-.envelope{
+.envelope-btn{
   background-image: url(/assets/images/game/hint.png);
   width: 100px;
   height: 69px;
@@ -11,4 +11,30 @@
   &:hover, &:focus {
   transform: translateY(5%);
 }
+}
+
+.envelope {
+  position: relative;
+  width: 810px;
+  height: 456px;
+  background-image: url(/assets/images/rules/envelope.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.envelope__page {
+  font-family: 'Notepen', sans-serif;
+  box-sizing: border-box;
+  font-size: 213px;
+  margin-left: 40px;
+  margin-top: 20px;
+  padding-left: 180px;
+  padding-top: 64px;
+  padding-right: 16px;
+  padding-bottom: 50px;
+  width: 700px;
+  height: 400px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url(/assets/images/rules/page.png);
 }

@@ -7,7 +7,7 @@ const generateId = (randomNumbersArray: number[] | string[]): number => {
   return numberInBoxId
 }
 export const createBoxesArray = (prisonersQtt: number): BoxInterface[] => {
-  const boxNumbers: number[] = Array.from({ length: prisonersQtt }, (_, i) => i + 1)
+  const boxNumbers: number[] = Array.from({ length: prisonersQtt }, (_, i) => Math.floor(1000 + Math.random() * 9000))
 
   const boxes: BoxInterface[] = [...boxNumbers].map(boxNumber => {
     const numberInBoxId = generateId(boxNumbers)

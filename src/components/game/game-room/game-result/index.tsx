@@ -5,7 +5,7 @@ const GameResult: React.FC = function () {
   const gameStatus = useSelector((state: InitialStateInterface) => state.gameStatus)
   if (gameStatus === 'win') {
     return (
-    <div>
+    <div className='game-result'>
       You win
     </div>
     )
@@ -13,8 +13,16 @@ const GameResult: React.FC = function () {
 
   if (gameStatus === 'lose') {
     return (
-    <div>
+    <div className='game-result'>
       You lose
+    </div>
+    )
+  }
+
+  if (gameStatus === 'paused') {
+    return (
+    <div className='game-result'>
+      Game paused
     </div>
     )
   }

@@ -1,0 +1,29 @@
+.game-settings{
+  width: 616px;
+  height: 757px;
+  padding-left: 120px;
+  padding-top: 125px;
+  padding-right: 35px;
+  padding-bottom: 40px;
+  background-image: url(/assets/images/about/folder-bg.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  font-family: 'VCRMONO', sans-serif;
+  text-transform: uppercase;
+  font-size: 24px;
+}
+
+.select-block{
+  margin-bottom: 40px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.select-block__title{
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.select-block__value{
+  margin: 0 8px;
+}

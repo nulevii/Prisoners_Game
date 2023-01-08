@@ -3,7 +3,7 @@ import {
   OPEN_GAME, SHOW_RULES,
   SHOW_ABOUT, SHOW_GAME_SETTINGS,
   SHOW_MAIN_MENU_CONFIRM_WINDOW, SHOW_RESET_CONFIRM_WINDOW,
-  INCREASE_PRISONERS_QTT, DECREASE_PRISONERS_QTT,
+  CHANGE_PRISONERS_QTT, CHANGE_TIME_LIMIT,
   CHANGE_GAME_STATUS,
   START_GAME, STOP_GAME, SOUND_SWITCH, VOLUME_SWITCH, OPEN_BOX
 } from './action-types'
@@ -22,6 +22,7 @@ export const initialState: InitialStateInterface = {
   sound: false,
   volume: 0.375,
   prisonersQtt: 10,
+  timeLimit: 20,
   boxes: [],
   prisoners: [],
   guard: selectGuard(),
@@ -38,8 +39,8 @@ export interface InitialStateInterface {
   gameStatus: 'started' | 'notStarted' | 'win' | 'lose' | 'paused'
   sound: boolean
   volume: number
-
   prisonersQtt: number
+  timeLimit: number
   boxes: BoxInterface[]
   prisoners: PrisonersInterface[]
   guard: GuardInterface
@@ -78,17 +79,24 @@ function reducer (state: InitialStateInterface = initialState, action: Actions):
     case CHANGE_GAME_STATUS:
       return { ...state, gameStatus: action.payload }
 
-    case INCREASE_PRISONERS_QTT:
-      if (state.prisonersQtt + action.payload > 100) {
-        return { ...state, prisonersQtt: 100 }
+    case CHANGE_PRISONERS_QTT:
+      if (state.prisonersQtt + action.payload > 60) {
+        return { ...state, prisonersQtt: 60 }
+      }
+      if (state.prisonersQtt + action.payload < 10) {
+        return { ...state, prisonersQtt: 10 }
       }
       return { ...state, prisonersQtt: state.prisonersQtt + action.payload }
 
-    case DECREASE_PRISONERS_QTT:
-      if (state.prisonersQtt - action.payload < 10) {
-        return { ...state, prisonersQtt: 10 }
+    case CHANGE_TIME_LIMIT:
+      if (state.timeLimit + action.payload > 60) {
+        return { ...state, timeLimit: 60 }
       }
-      return { ...state, prisonersQtt: state.prisonersQtt - action.payload }
+      if (state.timeLimit + action.payload < 10) {
+        return { ...state, timeLimit: 10 }
+      }
+
+      return { ...state, timeLimit: state.timeLimit + action.payload }
 
     case START_GAME:
       return {
@@ -117,7 +125,6 @@ function reducer (state: InitialStateInterface = initialState, action: Actions):
         ...newPrisoners[state.currentPrisonerId],
         attempts: state.prisoners[state.currentPrisonerId].attempts - 1
       }
-      console.log(state.gameStatus)
 
       if (
         newPrisoners[state.currentPrisonerId].prisonerNumber ===
