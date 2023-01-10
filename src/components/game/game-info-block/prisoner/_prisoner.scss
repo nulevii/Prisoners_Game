@@ -1,6 +1,13 @@
 .prisoner {
   position: relative;
-  top: -25px
+  top: -25px;
+
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  overflow: hidden;
+
+  background-color: $avatarBcg;
 }
 
 .prisoner__index {}
@@ -20,4 +27,7 @@
   margin: 0 auto;
   width: 160px;
   height: 160px;
+
+  animation: upDown 4s linear infinite;
 }
+
