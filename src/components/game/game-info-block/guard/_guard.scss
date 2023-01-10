@@ -1,6 +1,12 @@
 .guard {
   position: relative;
-  top: -25px
+  top: -25px;
+
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: $avatarBcg;
 }
 
 .guard-message__wrapper {
@@ -48,6 +54,8 @@
   height: 160px;
   object-fit: cover;
   border-radius: 50%;
+
+  animation: upDown 4s linear infinite;
 }
 
 .guard__name {
