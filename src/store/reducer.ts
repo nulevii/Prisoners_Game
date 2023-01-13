@@ -12,9 +12,7 @@ import {
   PrisonersInterface, selectGuard, GuardInterface
 } from '../utilities/generateGameTools'
 export const initialState: InitialStateInterface = {
-  gameRoom: false,
-  gameRules: false,
-  about: false,
+
   gameSettings: true,
   resetConfrirmWindow: false,
   mainMenuConfirmWindow: false,
@@ -48,17 +46,8 @@ export interface InitialStateInterface {
 
 }
 
-function reducer (state: InitialStateInterface = initialState, action: Actions): InitialStateInterface {
+function reducer(state: InitialStateInterface = initialState, action: Actions): InitialStateInterface {
   switch (action.type) {
-    case OPEN_GAME:
-      return { ...state, gameRoom: action.payload }
-
-    case SHOW_RULES:
-      return { ...state, gameRules: action.payload }
-
-    case SHOW_ABOUT:
-      return { ...state, about: action.payload }
-
     case SHOW_GAME_SETTINGS:
       return { ...state, gameSettings: action.payload }
 
@@ -74,7 +63,7 @@ function reducer (state: InitialStateInterface = initialState, action: Actions):
     case VOLUME_SWITCH:
       return { ...state, volume: action.payload }
 
-      // App logic
+    // App logic
 
     case CHANGE_GAME_STATUS:
       return { ...state, gameStatus: action.payload }

@@ -4,33 +4,6 @@ import {
   CHANGE_GAME_STATUS, START_GAME, STOP_GAME, SOUND_SWITCH, VOLUME_SWITCH, OPEN_BOX, SHOW_MAIN_MENU_CONFIRM_WINDOW, SHOW_RESET_CONFIRM_WINDOW
 } from './action-types'
 
-export const openGame = (payload: boolean): IOpenGame => ({
-  type: OPEN_GAME,
-  payload
-})
-interface IOpenGame {
-  type: typeof OPEN_GAME
-  payload: boolean
-}
-
-export const showRules = (payload: boolean): IShowRules => ({
-  type: SHOW_RULES,
-  payload
-})
-interface IShowRules {
-  type: typeof SHOW_RULES
-  payload: boolean
-}
-
-export const showAbout = (payload: boolean): IShowAbout => ({
-  type: SHOW_ABOUT,
-  payload
-})
-interface IShowAbout {
-  type: typeof SHOW_ABOUT
-  payload: boolean
-}
-
 export const showGameSettings = (payload: boolean): IShowGameSettings => ({
   type: SHOW_GAME_SETTINGS,
   payload
