@@ -1,33 +1,33 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 interface IMainMenuState {
-  isShownGameRoom: boolean
-  isShownGameRules: boolean
-  isShownAbout: boolean
+  showGameRoom: boolean
+  showGameRules: boolean
+  showAbout: boolean
 }
 
 const initialState: IMainMenuState = {
-  isShownGameRoom: false,
-  isShownGameRules: false,
-  isShownAbout: false
+  showGameRoom: false,
+  showGameRules: false,
+  showAbout: false
 }
 
 const mainMenuSlice = createSlice({
   name: 'mainMenu',
   initialState,
   reducers: {
-    openGame: (state, { payload }: PayloadAction<boolean>) => {
-      state.isShownGameRoom = payload
+    setOpenGame: (state, { payload }: PayloadAction<boolean>) => {
+      state.showGameRoom = payload
     },
-    showRules: (state, { payload }: PayloadAction<boolean>) => {
-      state.isShownGameRules = payload
+    setShowRules: (state, { payload }: PayloadAction<boolean>) => {
+      state.showGameRules = payload
     },
-    showAbout: (state, { payload }: PayloadAction<boolean>) => {
-      state.isShownAbout = payload
+    setShowAbout: (state, { payload }: PayloadAction<boolean>) => {
+      state.showAbout = payload
     }
 
   }
 })
 
 export default mainMenuSlice.reducer
-export const { openGame, showRules, showAbout } = mainMenuSlice.actions
+export const { setOpenGame, setShowRules, setShowAbout } = mainMenuSlice.actions

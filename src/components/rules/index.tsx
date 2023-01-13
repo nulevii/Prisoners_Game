@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { showRules } from '../../store/actions'
+import { useAppDispatch } from '../../store/hooks'
+import { setShowRules } from '../../store/features/main-menu/mainMenuSlice'
 import { useAddShadowLight } from '../../utilities/textShadowLight'
 
 const Rules: React.FC = function () {
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
   const onHideRules = (): void => {
-    dispatch(showRules(false))
+    dispatch(setShowRules(false))
   }
   const textShadowRefs = useAddShadowLight()
   const [idx, setCurrentIdx] = useState(0)
@@ -18,11 +18,11 @@ const Rules: React.FC = function () {
     "Each player... sorry, each prisoner can only open half of the boxes in the room. If you don't find your number, better luck next time! Of course, there will be no next time. In fact, if at least one of your cellmates doesn't find their number, the game is over."
   ]
 
-  function swapLeft (): void {
+  function swapLeft(): void {
     setCurrentIdx(prevIdx => prevIdx - 1)
   }
 
-  function swapRight (): void {
+  function swapRight(): void {
     setCurrentIdx(prevIdx => prevIdx + 1)
   }
 

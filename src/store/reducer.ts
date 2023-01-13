@@ -1,152 +1,144 @@
-import { Actions } from './actions'
-import {
-  OPEN_GAME, SHOW_RULES,
-  SHOW_ABOUT, SHOW_GAME_SETTINGS,
-  SHOW_MAIN_MENU_CONFIRM_WINDOW, SHOW_RESET_CONFIRM_WINDOW,
-  CHANGE_PRISONERS_QTT, CHANGE_TIME_LIMIT,
-  CHANGE_GAME_STATUS,
-  START_GAME, STOP_GAME, SOUND_SWITCH, VOLUME_SWITCH, OPEN_BOX
-} from './action-types'
-import {
-  createBoxesArray, BoxInterface, createPrisoners,
-  PrisonersInterface, selectGuard, GuardInterface
-} from '../utilities/generateGameTools'
-export const initialState: InitialStateInterface = {
+// import { Actions } from './actions'
+// import {
+//   OPEN_GAME, SHOW_RULES,
+//   SHOW_ABOUT, SHOW_GAME_SETTINGS,
+//   SHOW_MAIN_MENU_CONFIRM_WINDOW, SHOW_RESET_CONFIRM_WINDOW,
+//   CHANGE_PRISONERS_QTT, CHANGE_TIME_LIMIT,
+//   CHANGE_GAME_STATUS,
+//   START_GAME, STOP_GAME, SOUND_SWITCH, VOLUME_SWITCH, OPEN_BOX
+// } from './action-types'
+// import {
+//   createBoxesArray, BoxInterface, createPrisoners,
+//   PrisonersInterface, selectGuard, GuardInterface
+// } from '../utilities/generateGameTools'
+// export const initialState: InitialStateInterface = {
 
-  gameSettings: true,
-  resetConfrirmWindow: false,
-  mainMenuConfirmWindow: false,
-  gameStatus: 'notStarted',
-  sound: false,
-  volume: 0.375,
-  prisonersQtt: 10,
-  timeLimit: 20,
-  boxes: [],
-  prisoners: [],
-  guard: selectGuard(),
-  currentPrisonerId: 0
-}
+//   gameSettings: true,
+//   resetConfrirmWindow: false,
+//   mainMenuConfirmWindow: false,
+//   gameStatus: 'notStarted',
+//   prisonersQtt: 10,
+//   timeLimit: 20,
+//   boxes: [],
+//   prisoners: [],
+//   guard: selectGuard(),
+//   currentPrisonerId: 0
+// }
 
-export interface InitialStateInterface {
-  gameRoom: boolean
-  gameRules: boolean
-  about: boolean
-  gameSettings: boolean
-  resetConfrirmWindow: boolean
-  mainMenuConfirmWindow: boolean
-  gameStatus: 'started' | 'notStarted' | 'win' | 'lose' | 'paused'
-  sound: boolean
-  volume: number
-  prisonersQtt: number
-  timeLimit: number
-  boxes: BoxInterface[]
-  prisoners: PrisonersInterface[]
-  guard: GuardInterface
-  currentPrisonerId: number
+// export interface InitialStateInterface {
+//   gameRoom: boolean
+//   gameRules: boolean
+//   about: boolean
+//   gameSettings: boolean
+//   resetConfrirmWindow: boolean
+//   mainMenuConfirmWindow: boolean
+//   gameStatus: 'started' | 'notStarted' | 'win' | 'lose' | 'paused'
+//   sound: boolean
+//   volume: number
+//   prisonersQtt: number
+//   timeLimit: number
+//   boxes: BoxInterface[]
+//   prisoners: PrisonersInterface[]
+//   guard: GuardInterface
+//   currentPrisonerId: number
 
-}
+// }
 
-function reducer(state: InitialStateInterface = initialState, action: Actions): InitialStateInterface {
-  switch (action.type) {
-    case SHOW_GAME_SETTINGS:
-      return { ...state, gameSettings: action.payload }
+// function reducer(state: InitialStateInterface = initialState, action: Actions): InitialStateInterface {
+//   switch (action.type) {
+//     case SHOW_GAME_SETTINGS:
+//       return { ...state, gameSettings: action.payload }
 
-    case SHOW_MAIN_MENU_CONFIRM_WINDOW:
-      return { ...state, mainMenuConfirmWindow: action.payload }
+//     case SHOW_MAIN_MENU_CONFIRM_WINDOW:
+//       return { ...state, mainMenuConfirmWindow: action.payload }
 
-    case SHOW_RESET_CONFIRM_WINDOW:
-      return { ...state, resetConfrirmWindow: action.payload }
+//     case SHOW_RESET_CONFIRM_WINDOW:
+//       return { ...state, resetConfrirmWindow: action.payload }
 
-    case SOUND_SWITCH:
-      return { ...state, sound: action.payload }
+//     // App logic
 
-    case VOLUME_SWITCH:
-      return { ...state, volume: action.payload }
+//     case CHANGE_GAME_STATUS:
+//       return { ...state, gameStatus: action.payload }
 
-    // App logic
+//     case CHANGE_PRISONERS_QTT:
+//       if (state.prisonersQtt + action.payload > 60) {
+//         return { ...state, prisonersQtt: 60 }
+//       }
+//       if (state.prisonersQtt + action.payload < 10) {
+//         return { ...state, prisonersQtt: 10 }
+//       }
+//       return { ...state, prisonersQtt: state.prisonersQtt + action.payload }
 
-    case CHANGE_GAME_STATUS:
-      return { ...state, gameStatus: action.payload }
+//     case CHANGE_TIME_LIMIT:
+//       if (state.timeLimit + action.payload > 60) {
+//         return { ...state, timeLimit: 60 }
+//       }
+//       if (state.timeLimit + action.payload < 10) {
+//         return { ...state, timeLimit: 10 }
+//       }
 
-    case CHANGE_PRISONERS_QTT:
-      if (state.prisonersQtt + action.payload > 60) {
-        return { ...state, prisonersQtt: 60 }
-      }
-      if (state.prisonersQtt + action.payload < 10) {
-        return { ...state, prisonersQtt: 10 }
-      }
-      return { ...state, prisonersQtt: state.prisonersQtt + action.payload }
+//       return { ...state, timeLimit: state.timeLimit + action.payload }
 
-    case CHANGE_TIME_LIMIT:
-      if (state.timeLimit + action.payload > 60) {
-        return { ...state, timeLimit: 60 }
-      }
-      if (state.timeLimit + action.payload < 10) {
-        return { ...state, timeLimit: 10 }
-      }
+//     case START_GAME:
+//       return {
+//         ...state,
+//         boxes: createBoxesArray(state.prisonersQtt),
+//         prisoners: createPrisoners(state.prisonersQtt),
+//         gameStatus: 'started',
+//         currentPrisonerId: 0,
+//         guard: selectGuard()
+//       }
 
-      return { ...state, timeLimit: state.timeLimit + action.payload }
+//     case STOP_GAME:
+//       return {
+//         ...state,
+//         boxes: [],
+//         prisoners: [],
+//         gameStatus: 'notStarted',
+//         currentPrisonerId: 0
+//       }
 
-    case START_GAME:
-      return {
-        ...state,
-        boxes: createBoxesArray(state.prisonersQtt),
-        prisoners: createPrisoners(state.prisonersQtt),
-        gameStatus: 'started',
-        currentPrisonerId: 0,
-        guard: selectGuard()
-      }
+//     case OPEN_BOX:
+//       const newBoxes = [...state.boxes]
+//       newBoxes[action.payload] = { ...newBoxes[action.payload], isOpen: true }
+//       const newPrisoners = [...state.prisoners]
+//       newPrisoners[state.currentPrisonerId] = {
+//         ...newPrisoners[state.currentPrisonerId],
+//         attempts: state.prisoners[state.currentPrisonerId].attempts - 1
+//       }
 
-    case STOP_GAME:
-      return {
-        ...state,
-        boxes: [],
-        prisoners: [],
-        gameStatus: 'notStarted',
-        currentPrisonerId: 0
-      }
+//       if (
+//         newPrisoners[state.currentPrisonerId].prisonerNumber ===
+//         state.boxes[action.payload].numberInBox
+//       ) {
+//         const closedBoxes = newBoxes.map((box) => {
+//           return { ...box, isOpen: false }
+//         })
+//         if (
+//           newPrisoners[state.currentPrisonerId].prisonerNumber ===
+//           state.prisonersQtt
+//         ) {
+//           return { ...state, gameStatus: 'win' }
+//         }
+//         return {
+//           ...state,
+//           currentPrisonerId: state.currentPrisonerId + 1,
+//           boxes: closedBoxes
+//         }
+//       }
 
-    case OPEN_BOX:
-      const newBoxes = [...state.boxes]
-      newBoxes[action.payload] = { ...newBoxes[action.payload], isOpen: true }
-      const newPrisoners = [...state.prisoners]
-      newPrisoners[state.currentPrisonerId] = {
-        ...newPrisoners[state.currentPrisonerId],
-        attempts: state.prisoners[state.currentPrisonerId].attempts - 1
-      }
+//       if (newPrisoners[state.currentPrisonerId].attempts === 0) {
+//         return { ...state, gameStatus: 'lose' }
+//       }
+//       return {
+//         ...state,
+//         boxes: newBoxes,
+//         prisoners: newPrisoners
+//       }
 
-      if (
-        newPrisoners[state.currentPrisonerId].prisonerNumber ===
-        state.boxes[action.payload].numberInBox
-      ) {
-        const closedBoxes = newBoxes.map((box) => {
-          return { ...box, isOpen: false }
-        })
-        if (
-          newPrisoners[state.currentPrisonerId].prisonerNumber ===
-          state.prisonersQtt
-        ) {
-          return { ...state, gameStatus: 'win' }
-        }
-        return {
-          ...state,
-          currentPrisonerId: state.currentPrisonerId + 1,
-          boxes: closedBoxes
-        }
-      }
+//     default:
+//       return state
+//   }
+// }
 
-      if (newPrisoners[state.currentPrisonerId].attempts === 0) {
-        return { ...state, gameStatus: 'lose' }
-      }
-      return {
-        ...state,
-        boxes: newBoxes,
-        prisoners: newPrisoners
-      }
-
-    default:
-      return state
-  }
-}
-
-export default reducer
+// export default reducer

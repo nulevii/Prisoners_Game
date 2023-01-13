@@ -31,28 +31,6 @@ interface IShowResetConfirmWindow {
   payload: boolean
 }
 
-export const soundSwitch = (
-  payload: boolean
-): ISoundSwitch => ({
-  type: SOUND_SWITCH,
-  payload
-})
-interface ISoundSwitch {
-  type: typeof SOUND_SWITCH
-  payload: boolean
-}
-
-export const volumeSwitch = (
-  payload: number
-): IVolumeSwitch => ({
-  type: VOLUME_SWITCH,
-  payload
-})
-interface IVolumeSwitch {
-  type: typeof VOLUME_SWITCH
-  payload: number
-}
-
 // App logic
 
 export const changeGameStatus = (

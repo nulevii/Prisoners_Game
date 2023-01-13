@@ -1,6 +1,6 @@
 import React from 'react'
 import { useAppDispatch, useAppSelector } from '../../store/hooks'
-import { openGame, showRules, showAbout } from '../../store/features/main-menu/mainMenuSlice'
+import { setOpenGame, setShowRules, setShowAbout } from '../../store/features/main-menu/mainMenuSlice'
 
 import Rules from '../rules'
 import AboutSection from './about-section'
@@ -12,20 +12,20 @@ const MainMenu: React.FC = () => {
   const rainCanvasRefs = useRainMenu()
 
   const dispatch = useAppDispatch()
-  const { isShownGameRules } = useAppSelector((store) => store.mainMenu)
-  const { isShownAbout } = useAppSelector((state) => state.mainMenu
+  const { showGameRules } = useAppSelector((store) => store.mainMenu)
+  const { showAbout } = useAppSelector((state) => state.mainMenu
   )
 
   const onStartGame = (): void => {
-    dispatch(openGame(true))
+    dispatch(setOpenGame(true))
   }
 
   const onInstruction = (): void => {
-    dispatch(showRules(true))
+    dispatch(setShowRules(true))
   }
 
   const onAbout = (): void => {
-    dispatch(showAbout(true))
+    dispatch(setShowAbout(true))
   }
 
   return (
@@ -54,8 +54,8 @@ const MainMenu: React.FC = () => {
         ref={(el) => { textShadowRefs.current![2] = el! }}
         className="menuBtn aboutBtn"
       ></button>
-      {isShownGameRules ? <Rules /> : null}
-      {isShownAbout ? <AboutSection /> : null}
+      {showGameRules ? <Rules /> : null}
+      {showAbout ? <AboutSection /> : null}
     </div>
   )
 }

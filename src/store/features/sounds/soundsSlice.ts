@@ -1,11 +1,26 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-const initialState = {}
+interface ISoundsState {
+  sound: boolean
+  volume: number
+}
+const initialState: ISoundsState = {
+  sound: false,
+  volume: 0.375
+}
 
 const soundsSlice = createSlice({
   name: 'sounds',
   initialState,
-  reducers: {}
+  reducers: {
+    soundSwitch: (state, { payload }: PayloadAction<boolean>) => {
+      state.sound = payload
+    },
+    volumeSwitch: (state, { payload }: PayloadAction<number>) => {
+      state.volume = payload
+    }
+  }
 })
 
 export default soundsSlice.reducer
+export const { soundSwitch, volumeSwitch } = soundsSlice.actions
