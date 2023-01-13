@@ -1,7 +1,6 @@
 import React from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { InitialStateInterface } from '../../store/reducer'
-import { openGame, showRules, showAbout } from '../../store/actions'
+import { useAppDispatch, useAppSelector } from '../../store/hooks'
+import { openGame, showRules, showAbout } from '../../store/features/main-menu/mainMenuSlice'
 
 import Rules from '../rules'
 import AboutSection from './about-section'
@@ -12,12 +11,9 @@ const MainMenu: React.FC = () => {
   const textShadowRefs = useAddShadow()
   const rainCanvasRefs = useRainMenu()
 
-  const dispatch = useDispatch()
-  const gameRulseStatus: boolean = useSelector(
-    (state: InitialStateInterface) => state.gameRules
-  )
-  const settingsStatus: boolean = useSelector(
-    (state: InitialStateInterface) => state.about
+  const dispatch = useAppDispatch()
+  const { isShownGameRules } = useAppSelector((store) => store.mainMenu)
+  const { isShownAbout } = useAppSelector((state) => state.mainMenu
   )
 
   const onStartGame = (): void => {
@@ -41,7 +37,7 @@ const MainMenu: React.FC = () => {
       </div>
       <div className='bgImg'></div>
 
-      <div className="gameTitle"/>
+      <div className="gameTitle" />
 
       <button
         onClick={onStartGame}
@@ -58,8 +54,8 @@ const MainMenu: React.FC = () => {
         ref={(el) => { textShadowRefs.current![2] = el! }}
         className="menuBtn aboutBtn"
       ></button>
-      {gameRulseStatus ? <Rules /> : null}
-      {settingsStatus ? <AboutSection /> : null}
+      {isShownGameRules ? <Rules /> : null}
+      {isShownAbout ? <AboutSection /> : null}
     </div>
   )
 }
