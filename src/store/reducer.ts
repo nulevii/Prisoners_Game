@@ -13,16 +13,6 @@
 // } from '../utilities/generateGameTools'
 // export const initialState: InitialStateInterface = {
 
-//   gameSettings: true,
-//   resetConfrirmWindow: false,
-//   mainMenuConfirmWindow: false,
-//   gameStatus: 'notStarted',
-//   prisonersQtt: 10,
-//   timeLimit: 20,
-//   boxes: [],
-//   prisoners: [],
-//   guard: selectGuard(),
-//   currentPrisonerId: 0
 // }
 
 // export interface InitialStateInterface {
@@ -32,15 +22,8 @@
 //   gameSettings: boolean
 //   resetConfrirmWindow: boolean
 //   mainMenuConfirmWindow: boolean
-//   gameStatus: 'started' | 'notStarted' | 'win' | 'lose' | 'paused'
 //   sound: boolean
 //   volume: number
-//   prisonersQtt: number
-//   timeLimit: number
-//   boxes: BoxInterface[]
-//   prisoners: PrisonersInterface[]
-//   guard: GuardInterface
-//   currentPrisonerId: number
 
 // }
 

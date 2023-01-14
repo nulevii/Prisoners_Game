@@ -1,14 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit'
 
 import gameLogicReducer from './features/game-logic/gameLocicSlice'
-import gameMenuReducer from './features/game-menu/gameMenuSlice'
+import gameSettingsReducer from './features/game-settings/gameSettingsSlice'
 import mainMenuReducer from './features/main-menu/mainMenuSlice'
 import soundsReducer from './features/sounds/soundsSlice'
 
 export const store = configureStore({
   reducer: {
     gameLogic: gameLogicReducer,
-    gameMenu: gameMenuReducer,
+    gameSettings: gameSettingsReducer,
     mainMenu: mainMenuReducer,
     sounds: soundsReducer
   }

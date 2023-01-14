@@ -1,15 +1,13 @@
 import React from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { InitialStateInterface } from '../../../store/reducer'
+import { useAppDispatch, useAppSelector } from '../../../store/hooks'
 import { openBox } from '../../../store/actions'
 
 import GameResult from './game-result'
 import GameButtons from './game-buttons'
 
 const GameRoom: React.FC = function () {
-  const dispatch = useDispatch()
-  const boxes = useSelector((state: InitialStateInterface) => state.boxes)
-  const gameStatus = useSelector((state: InitialStateInterface) => state.gameStatus)
+  const dispatch = useAppDispatch()
+  const { boxes, gameStatus } = useAppSelector((state) => state.gameLogic)
 
   const onOpenBox = (boxIndex: number): void => {
     if (gameStatus !== 'started') { return }

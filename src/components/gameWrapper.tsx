@@ -1,14 +1,13 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
-import { InitialStateInterface } from '../store/reducer'
+import { useAppSelector } from '../store/hooks'
 
 import MainMenu from './main-menu'
 import Game from './game'
 
 const GameWrapper: React.FC = function () {
-  const { gameRoom } = useSelector((state: InitialStateInterface) => state)
+  const { showGameRoom } = useAppSelector((state) => state.mainMenu)
 
-  if (gameRoom) { return (<Game />) }
+  if (showGameRoom) { return (<Game />) }
 
   return (<MainMenu/>)
 }

@@ -1,35 +1,40 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { InitialStateInterface } from '../../../store/reducer'
-import { showGameSettings, changePrisonersQtt, changeTimeLimit, startGame } from '../../../store/actions'
+import { useAppDispatch, useAppSelector } from '../../../store/hooks'
+import { setShowGameSettings, changePrisonersQtt, changeTimeLimit } from '../../../store/features/game-settings/gameSettingsSlice'
 import { useAddShadow } from '../../../utilities/textShadow'
 
 const GameSettings: React.FC = function () {
-  const dispatch = useDispatch()
-  const { prisonersQtt, timeLimit } = useSelector((state: InitialStateInterface) => state)
+  const dispatch = useAppDispatch()
+  const { prisonersQtt, timeLimit } = useAppSelector((state) => state.gameSettings)
   const textShadowRefs = useAddShadow()
 
-  const onStart = (): void => {
-    dispatch(showGameSettings(false))
-    dispatch(startGame())
-  }
   const INCREASE_QTT = +10
   const DECREASE_QTT = -10
 
   const INCREASE_TIME_LIMIT = +5
   const DECREASE_TIME_LIMIT = -5
+
   const onIncreasePrisonersQtt = (): void => {
+    if (prisonersQtt >= 60) return
     dispatch(changePrisonersQtt(INCREASE_QTT))
   }
   const onDecreasePrisonersQtt = (): void => {
+    if (prisonersQtt <= 10) return
     dispatch(changePrisonersQtt(DECREASE_QTT))
   }
 
   const onIncreaseTimeLimit = (): void => {
+    if (timeLimit >= 60) return
     dispatch(changeTimeLimit(INCREASE_TIME_LIMIT))
   }
   const onDecreaseTimeLimit = (): void => {
+    if (timeLimit <= 10) return
     dispatch(changeTimeLimit(DECREASE_TIME_LIMIT))
+  }
+
+  const onStart = (): void => {
+    dispatch(setShowGameSettings(false))
+    // dispatch(startGame())
   }
 
   return (

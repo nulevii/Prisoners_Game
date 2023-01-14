@@ -1,15 +1,17 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useAppDispatch, useAppSelector } from '../../../../store/hooks'
 
-import { InitialStateInterface } from '../../../../store/reducer'
 import {
-  openGame,
-  showRules,
-  showGameSettings,
-  showMainMenuConfirmWindow,
-  showResetConfirmWindow,
-  stopGame
-} from '../../../../store/actions'
+  // openGame,
+  // showRules,
+  // showGameSettings,
+  // showMainMenuConfirmWindow,
+  // showResetConfirmWindow,
+  // stopGame,
+  setShowGameSettings, setConfirmWindowType
+} from '../../../../store/features/game-settings/gameSettingsSlice'
+
+import { setShowRules } from '../../../../store/features/main-menu/mainMenuSlice'
 
 import Rules from '../../../rules'
 import ConfirmWindow from '../../../confirm-window'
@@ -17,68 +19,65 @@ import GameSettings from '../../game-settings'
 import { useAddShadow } from '../../../../utilities/textShadow'
 
 function GameButtons (): JSX.Element {
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
   const textShadowRefs = useAddShadow()
 
-  const {
-    gameRules,
-    gameSettings,
-    resetConfrirmWindow,
-    mainMenuConfirmWindow
-  } = useSelector((state: InitialStateInterface) => state)
+  const { showGameSettings, confirmWindowType } =
+  useAppSelector((state) => state.gameSettings)
+  const { showGameRules } = useAppSelector((state) => state.mainMenu)
+
+  const isResetConfirmWindow = confirmWindowType === 'reset'
+  const isManiMenuConfirmWindow = confirmWindowType === 'main-menu'
 
   const onReset = (): void => {
-    dispatch(showResetConfirmWindow(true))
+    dispatch(setConfirmWindowType('reset'))
   }
   const onResetYes = (): void => {
-    dispatch(stopGame())
-    dispatch(showGameSettings(true))
-    dispatch(showResetConfirmWindow(false))
+    // dispatch(stopGame())
+    dispatch(setShowGameSettings(true))
+    dispatch(setConfirmWindowType(''))
   }
   const onResetNo = (): void => {
-    dispatch(showResetConfirmWindow(false))
+    dispatch(setConfirmWindowType(''))
   }
   const onInstruction = (): void => {
-    dispatch(showRules(true))
+    dispatch(setShowRules(true))
   }
 
   const onMainMenu = (): void => {
-    dispatch(showMainMenuConfirmWindow(true))
+    dispatch(setConfirmWindowType('main-menu'))
   }
   const onMainMenuYes = (): void => {
-    dispatch(showMainMenuConfirmWindow(false))
-    dispatch(stopGame())
-    dispatch(openGame(false))
-    dispatch(showGameSettings(true))
+    dispatch(setConfirmWindowType(''))
+    // dispatch(stopGame())
+    // dispatch(openGame(false))
+    dispatch(setShowGameSettings(true))
   }
   const onMainMenuNo = (): void => {
-    dispatch(showMainMenuConfirmWindow(false))
+    dispatch(setConfirmWindowType(''))
   }
   return (<div className='game-buttons'>
     <button onClick={onReset} ref={(el) => { textShadowRefs.current![0] = el! }}>Reset</button>
     <button onClick={onInstruction} ref={(el) => { textShadowRefs.current![1] = el! }}>Instruction</button>
     <button onClick={onMainMenu} ref={(el) => { textShadowRefs.current![2] = el! }}>Main menu</button>
-    {resetConfrirmWindow
-      ? (
+    {isResetConfirmWindow &&
+       (
         <ConfirmWindow
           action={'restart game'}
           onActionYes={onResetYes}
           onActionNo={onResetNo}
         ></ConfirmWindow>
-        )
-      : null}
-    {gameRules ? <Rules /> : null}
-    {mainMenuConfirmWindow
-      ? (
+       )}
+    {showGameRules && <Rules />}
+    {isManiMenuConfirmWindow &&
+       (
         <ConfirmWindow
           action={'go back to main menu'}
           onActionYes={onMainMenuYes}
           onActionNo={onMainMenuNo}
         ></ConfirmWindow>
-        )
-      : null}
-
-    {gameSettings ? <GameSettings /> : null}
+       )}
+    {showGameSettings ? <GameSettings /> : null}
   </div>)
 }
 
