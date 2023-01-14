@@ -1,6 +1,6 @@
 import React from 'react'
 import { useAppSelector, useAppDispatch } from '../../../../store/hooks'
-import { changeGameStatus } from '../../../../store/features/game-logic/gameLocicSlice'
+import { changeGameStatus } from '../../../../store/features/game-logic/gameLogicSlice'
 import { useAddShadowLight } from '../../../../utilities/textShadowLight'
 
 function PauseButton (): JSX.Element {

@@ -3,6 +3,7 @@ import { useAppSelector } from '../../../../store/hooks'
 
 const Guard: React.FC = function () {
   const { name, firstJoke, picture } = useAppSelector((state) => state.gameLogic.guard)
+  console.log(firstJoke)
   return (<div className="guard" >
       <div className="guard-message__wrapper" >
         <div className='guard-message--top'></div>

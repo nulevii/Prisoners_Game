@@ -1,17 +1,10 @@
 import React from 'react'
 import { useAppDispatch, useAppSelector } from '../../../../store/hooks'
 
-import {
-  // openGame,
-  // showRules,
-  // showGameSettings,
-  // showMainMenuConfirmWindow,
-  // showResetConfirmWindow,
-  // stopGame,
-  setShowGameSettings, setConfirmWindowType
-} from '../../../../store/features/game-settings/gameSettingsSlice'
-
-import { setShowRules } from '../../../../store/features/main-menu/mainMenuSlice'
+import { setShowGameSettings, setConfirmWindowType }
+  from '../../../../store/features/game-settings/gameSettingsSlice'
+import { changeGameStatus } from '../../../../store/features/game-logic/gameLogicSlice'
+import { setShowRules, setOpenGame } from '../../../../store/features/main-menu/mainMenuSlice'
 
 import Rules from '../../../rules'
 import ConfirmWindow from '../../../confirm-window'
@@ -49,8 +42,8 @@ function GameButtons (): JSX.Element {
   }
   const onMainMenuYes = (): void => {
     dispatch(setConfirmWindowType(''))
-    // dispatch(stopGame())
-    // dispatch(openGame(false))
+    dispatch(changeGameStatus('notStarted'))
+    dispatch(setOpenGame(false))
     dispatch(setShowGameSettings(true))
   }
   const onMainMenuNo = (): void => {

@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../../../../store/hooks'
-import { changeGameStatus } from '../../../../store/actions'
+import { changeGameStatus } from '../../../../store/features/game-logic/gameLogicSlice'
 
 function Clock (): JSX.Element {
   const dispatch = useAppDispatch()

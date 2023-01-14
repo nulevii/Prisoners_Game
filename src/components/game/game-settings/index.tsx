@@ -1,7 +1,7 @@
 import React from 'react'
 import { useAppDispatch, useAppSelector } from '../../../store/hooks'
 import { setShowGameSettings, changePrisonersQtt, changeTimeLimit } from '../../../store/features/game-settings/gameSettingsSlice'
-import { changeGameStatus } from '../../../store/features/game-logic/gameLocicSlice'
+import { startGame } from '../../../store/features/game-logic/gameLogicSlice'
 import { useAddShadow } from '../../../utilities/textShadow'
 
 const GameSettings: React.FC = function () {
@@ -35,7 +35,7 @@ const GameSettings: React.FC = function () {
 
   const onStart = (): void => {
     dispatch(setShowGameSettings(false))
-    dispatch(changeGameStatus('started'))
+    dispatch(startGame(prisonersQtt))
   }
 
   return (

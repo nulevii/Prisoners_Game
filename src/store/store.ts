@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
 
-import gameLogicReducer from './features/game-logic/gameLocicSlice'
+import gameLogicReducer from './features/game-logic/gameLogicSlice'
 import gameSettingsReducer from './features/game-settings/gameSettingsSlice'
 import mainMenuReducer from './features/main-menu/mainMenuSlice'
 import soundsReducer from './features/sounds/soundsSlice'

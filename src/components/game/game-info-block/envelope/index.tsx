@@ -4,8 +4,8 @@ import { useAddShadowLight } from '../../../../utilities/textShadowLight'
 
 function Envelope (): JSX.Element {
   const currentPrisonerId = useAppSelector((state) => state.gameLogic.currentPrisonerId)
-  const textShadowRefs = useAddShadowLight()
   const [isVisibleEnvelope, setIsVisibleEnvelope] = useState(true)
+  const textShadowRefs = useAddShadowLight()
 
   const closeEnvelope = (): void => {
     setIsVisibleEnvelope(false)
