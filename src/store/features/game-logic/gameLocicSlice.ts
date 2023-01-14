@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { selectGuard, BoxInterface, GuardInterface, PrisonersInterface } from '../../../utilities/generateGameTools'
 
 interface IGameLogicState {
@@ -19,7 +19,12 @@ const initialState: IGameLogicState = {
 const gameLocgicSlice = createSlice({
   name: 'gameLogic',
   initialState,
-  reducers: {}
+  reducers: {
+    changeGameStatus: (state, { payload }: PayloadAction<IGameLogicState['gameStatus']>) => {
+      state.gameStatus = payload
+    }
+  }
 })
 
 export default gameLocgicSlice.reducer
+export const { changeGameStatus } = gameLocgicSlice.actions

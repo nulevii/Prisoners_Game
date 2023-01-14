@@ -1,15 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useAppDispatch, useAppSelector } from '../../../../store/hooks'
 import { changeGameStatus } from '../../../../store/actions'
-import { InitialStateInterface } from '../../../../store/reducer'
 
 function Clock (): JSX.Element {
-  const dispatch = useDispatch()
-  const { currentPrisonerId, gameStatus, timeLimit } = useSelector((state: InitialStateInterface) => state)
+  const dispatch = useAppDispatch()
+  const { currentPrisonerId, gameStatus } = useAppSelector((state) => state.gameLogic)
+  const timeLimit = useAppSelector((state) => state.gameSettings.timeLimit)
   const [timeLeft, setTimeLeft] = useState(timeLimit)
   useEffect(() => {
     const startTimer = (): void => {
-      setTimeLeft((prevState) => prevState - 0.5)
+      setTimeLeft((prevState: number) => prevState - 0.5)
     }
     const timer = setInterval(startTimer, 500)
     if (gameStatus === 'paused') {

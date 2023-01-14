@@ -10,7 +10,7 @@ const GameRoom: React.FC = function () {
   const { boxes, gameStatus } = useAppSelector((state) => state.gameLogic)
 
   const onOpenBox = (boxIndex: number): void => {
-    if (gameStatus !== 'started') { return }
+    if (gameStatus !== 'started') return
     dispatch(openBox(boxIndex))
   }
   return (

@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
-import { InitialStateInterface } from '../../../../store/reducer'
+import { useAppSelector } from '../../../../store/hooks'
 import { useAddShadowLight } from '../../../../utilities/textShadowLight'
 
 function Envelope (): JSX.Element {
-  const currentPrisonerId = useSelector((state: InitialStateInterface) => state.currentPrisonerId)
+  const currentPrisonerId = useAppSelector((state) => state.gameLogic.currentPrisonerId)
   const textShadowRefs = useAddShadowLight()
   const [isVisibleEnvelope, setIsVisibleEnvelope] = useState(true)
 

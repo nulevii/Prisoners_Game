@@ -1,11 +1,8 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
-
-import { InitialStateInterface } from '../../../../store/reducer'
+import { useAppSelector } from '../../../../store/hooks'
 
 const Guard: React.FC = function () {
-  const guard = useSelector((state: InitialStateInterface) => state.guard)
-  const { name, firstJoke, picture } = guard
+  const { name, firstJoke, picture } = useAppSelector((state) => state.gameLogic.guard)
   return (<div className="guard" >
       <div className="guard-message__wrapper" >
         <div className='guard-message--top'></div>

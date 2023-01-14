@@ -1,15 +1,15 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { InitialStateInterface } from '../../../../store/reducer'
-import { changeGameStatus } from '../../../../store/actions'
+import { useAppSelector, useAppDispatch } from '../../../../store/hooks'
+import { changeGameStatus } from '../../../../store/features/game-logic/gameLocicSlice'
 import { useAddShadowLight } from '../../../../utilities/textShadowLight'
 
 function PauseButton (): JSX.Element {
-  const dispatch = useDispatch()
-  const gameStatus = useSelector((state: InitialStateInterface) => state.gameStatus)
+  const dispatch = useAppDispatch()
+  const gameStatus = useAppSelector((state) => state.gameLogic.gameStatus)
   const textShadowRefs = useAddShadowLight()
 
   const onPause = (): void => {
+    console.log('first')
     if (gameStatus === 'paused') {
       dispatch(changeGameStatus('started'))
       return
