@@ -9,7 +9,7 @@ interface IGameSettingsStore {
 
 const initialState: IGameSettingsStore = {
   showGameSettings: true,
-  prisonersQtt: 4,
+  prisonersQtt: 10,
   timeLimit: 20,
   confirmWindowType: ''
 }
