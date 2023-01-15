@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { showRules } from '../../store/actions'
+import { useAppDispatch } from '../../store/hooks'
+import { setShowRules } from '../../store/features/main-menu/mainMenuSlice'
 import { useAddShadowLight } from '../../utilities/textShadowLight'
 
 const Rules: React.FC = function () {
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
   const onHideRules = (): void => {
-    dispatch(showRules(false))
+    dispatch(setShowRules(false))
   }
   const textShadowRefs = useAddShadowLight()
   const [idx, setCurrentIdx] = useState(0)

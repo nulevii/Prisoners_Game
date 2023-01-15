@@ -1,6 +1,6 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
-import { showAbout } from '../../../store/actions'
+import { useAppDispatch } from '../../../store/hooks'
+import { setShowAbout } from '../../../store/features/main-menu/mainMenuSlice'
 
 import inna from '../../../assets/images/about/inna.png'
 import zhenya from '../../../assets/images/about/zhenya.png'
@@ -10,21 +10,21 @@ import AboutVideo from './about-video'
 import { useAddShadowLight } from '../../../utilities/textShadowLight'
 
 const AboutSection: React.FC = function () {
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
   const textShadowRefs = useAddShadowLight()
 
-  const onHideSettings = (): void => {
-    dispatch(showAbout(false))
+  const onHideAbout = (): void => {
+    dispatch(setShowAbout(false))
   }
 
   return (
     <div className="aboutDiv">
-      <button className="closeBtn" onClick={onHideSettings} ref={(el) => { textShadowRefs.current![0] = el! }}>
+      <button className="closeBtn" onClick={onHideAbout} ref={(el) => { textShadowRefs.current![0] = el! }}>
       </button>
       <p className="aboutVideoText">Video</p>
       <AboutVideo />
       <p className="aboutText">
-      This game was created with love on the basis of a prisoner riddle whose solution is so unintuitive that it`s hard to believe at first glance, and hard to believe at second glance, too. You can watch the video above for more details.
+        This game was created with love on the basis of a prisoner riddle whose solution is so unintuitive that it`s hard to believe at first glance, and hard to believe at second glance, too. You can watch the video above for more details.
       </p>
       <div className="aboutUs">
         <div className="aboutPortrait aboutPortrait1">

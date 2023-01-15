@@ -1,18 +1,16 @@
 import React from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { InitialStateInterface } from '../../../store/reducer'
-import { openBox } from '../../../store/actions'
+import { useAppDispatch, useAppSelector } from '../../../store/hooks'
+import { openBox } from '../../../store/features/game-logic/gameLogicSlice'
 
 import GameResult from './game-result'
 import GameButtons from './game-buttons'
 
 const GameRoom: React.FC = function () {
-  const dispatch = useDispatch()
-  const boxes = useSelector((state: InitialStateInterface) => state.boxes)
-  const gameStatus = useSelector((state: InitialStateInterface) => state.gameStatus)
+  const dispatch = useAppDispatch()
+  const { boxes, gameStatus } = useAppSelector((state) => state.gameLogic)
 
   const onOpenBox = (boxIndex: number): void => {
-    if (gameStatus !== 'started') { return }
+    if (gameStatus !== 'started') return
     dispatch(openBox(boxIndex))
   }
   return (
@@ -21,7 +19,7 @@ const GameRoom: React.FC = function () {
         <GameButtons />
         <div className='boxes-wrapper'>
           {boxes.map(({ boxNumber, numberInBox, isOpen }, index) => (
-            <div onClick={() => { onOpenBox(index) }} key={boxNumber}
+            <div onClick={() => { onOpenBox(boxNumber) }} key={boxNumber}
               style={{
                 height: '100px',
                 width: '100px',

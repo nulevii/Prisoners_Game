@@ -1,7 +1,5 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
-
-import { InitialStateInterface } from '../../../store/reducer'
+import { useAppSelector } from '../../../store/hooks'
 
 import Prisoner from './prisoner'
 import Guard from './guard'
@@ -10,7 +8,7 @@ import Envelope from './envelope'
 import Clock from './clock'
 
 const GameInfoBlock: React.FC = function () {
-  const gameStatus = useSelector((state: InitialStateInterface) => state.gameStatus)
+  const { gameStatus } = useAppSelector((state) => state.gameLogic)
 
   return (
     <section className='game-info-block'>

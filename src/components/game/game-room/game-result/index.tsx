@@ -1,8 +1,7 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
-import { InitialStateInterface } from '../../../../store/reducer'
+import { useAppSelector } from '../../../../store/hooks'
 const GameResult: React.FC = function () {
-  const gameStatus = useSelector((state: InitialStateInterface) => state.gameStatus)
+  const gameStatus = useAppSelector((state) => state.gameLogic.gameStatus)
   if (gameStatus === 'win') {
     return (
     <div className='game-result'>
