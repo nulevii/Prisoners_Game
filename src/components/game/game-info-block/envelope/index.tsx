@@ -4,8 +4,11 @@ import { useAddShadowLight } from '../../../../utilities/textShadowLight'
 
 function Envelope (): JSX.Element {
   const currentPrisonerId = useAppSelector((state) => state.gameLogic.currentPrisonerId)
+  const prisoners = useAppSelector((state) => state.gameLogic.prisoners)
   const [isVisibleEnvelope, setIsVisibleEnvelope] = useState(true)
   const textShadowRefs = useAddShadowLight()
+
+  const prisonerNumber = prisoners[currentPrisonerId].prisonerNumber
 
   const closeEnvelope = (): void => {
     setIsVisibleEnvelope(false)
@@ -21,7 +24,7 @@ function Envelope (): JSX.Element {
     <section className={`modal-window ${isVisibleEnvelope ? '' : 'visually-hidden'}`}>
       <div className='envelope'>
       <button className="closeBtn" onClick={closeEnvelope} ref={(el) => { textShadowRefs.current![2] = el! }}></button>
-      <p className="envelope__page">{currentPrisonerId}</p>
+      <p className="envelope__page">{prisonerNumber}</p>
       </div>
     </section>
     </>

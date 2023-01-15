@@ -9,7 +9,6 @@ function PauseButton (): JSX.Element {
   const textShadowRefs = useAddShadowLight()
 
   const onPause = (): void => {
-    console.log('first')
     if (gameStatus === 'paused') {
       dispatch(changeGameStatus('started'))
       return

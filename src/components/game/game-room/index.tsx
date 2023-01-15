@@ -1,6 +1,6 @@
 import React from 'react'
 import { useAppDispatch, useAppSelector } from '../../../store/hooks'
-import { openBox } from '../../../store/actions'
+import { openBox } from '../../../store/features/game-logic/gameLogicSlice'
 
 import GameResult from './game-result'
 import GameButtons from './game-buttons'
@@ -19,7 +19,7 @@ const GameRoom: React.FC = function () {
         <GameButtons />
         <div className='boxes-wrapper'>
           {boxes.map(({ boxNumber, numberInBox, isOpen }, index) => (
-            <div onClick={() => { onOpenBox(index) }} key={boxNumber}
+            <div onClick={() => { onOpenBox(boxNumber) }} key={boxNumber}
               style={{
                 height: '100px',
                 width: '100px',

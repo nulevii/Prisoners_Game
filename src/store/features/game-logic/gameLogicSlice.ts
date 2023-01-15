@@ -16,24 +16,6 @@ const initialState: IGameLogicState = {
   currentPrisonerId: 0
 }
 
-//       return {
-//         ...state,
-//         boxes: createBoxesArray(state.prisonersQtt),
-//         prisoners: createPrisoners(state.prisonersQtt),
-//         gameStatus: 'started',
-//         currentPrisonerId: 0,
-//         guard: selectGuard()
-//       }
-
-//     case STOP_GAME:
-//       return {
-//         ...state,
-//         boxes: [],
-//         prisoners: [],
-//         gameStatus: 'notStarted',
-//         currentPrisonerId: 0
-//       }
-
 const gameLocgicSlice = createSlice({
   name: 'gameLogic',
   initialState,
@@ -42,14 +24,42 @@ const gameLocgicSlice = createSlice({
       state.gameStatus = payload
     },
     startGame: (state, { payload }: PayloadAction<number>) => {
-      state.boxes = createBoxesArray(payload)
-      state.prisoners = createPrisoners(payload)
+      const boxes = createBoxesArray(payload)
+      state.boxes = boxes
+      state.prisoners = createPrisoners(boxes)
       state.currentPrisonerId = 0
       state.guard = selectGuard()
       state.gameStatus = 'started'
+    },
+    stopGame: (state) => {
+      state.boxes = []
+      state.prisoners = []
+      state.gameStatus = 'notStarted'
+      state.currentPrisonerId = 0
+    },
+    openBox: (state, { payload }: PayloadAction<number>) => {
+      const openedBox = state.boxes.find(box => box.boxNumber === payload)
+      const prisoner = state.prisoners[state.currentPrisonerId]
+
+      if (openedBox !== undefined) {
+        openedBox.isOpen = true
+        prisoner.attempts -= 1
+      }
+      if (openedBox?.numberInBox === prisoner.prisonerNumber) {
+        state.boxes = state.boxes.map(box => ({ ...box, isOpen: false }))
+        state.currentPrisonerId += 1
+      }
+      if (state.prisoners[state.currentPrisonerId]?.attempts === 0) {
+        state.gameStatus = 'lose'
+      }
+      if (state.currentPrisonerId === state.prisoners.length) {
+        console.log('first')
+        state.gameStatus = 'win'
+      }
     }
   }
-})
+}
+)
 
 export default gameLocgicSlice.reducer
-export const { changeGameStatus, startGame } = gameLocgicSlice.actions
+export const { changeGameStatus, startGame, stopGame, openBox } = gameLocgicSlice.actions

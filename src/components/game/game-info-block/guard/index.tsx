@@ -3,7 +3,6 @@ import { useAppSelector } from '../../../../store/hooks'
 
 const Guard: React.FC = function () {
   const { name, firstJoke, picture } = useAppSelector((state) => state.gameLogic.guard)
-  console.log(firstJoke)
   return (<div className="guard" >
 
     <img

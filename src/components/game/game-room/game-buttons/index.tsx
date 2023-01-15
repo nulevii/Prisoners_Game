@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from '../../../../store/hooks'
 
 import { setShowGameSettings, setConfirmWindowType }
   from '../../../../store/features/game-settings/gameSettingsSlice'
-import { changeGameStatus } from '../../../../store/features/game-logic/gameLogicSlice'
+import { changeGameStatus, stopGame } from '../../../../store/features/game-logic/gameLogicSlice'
 import { setShowRules, setOpenGame } from '../../../../store/features/main-menu/mainMenuSlice'
 
 import Rules from '../../../rules'
@@ -26,7 +26,7 @@ function GameButtons (): JSX.Element {
     dispatch(setConfirmWindowType('reset'))
   }
   const onResetYes = (): void => {
-    // dispatch(stopGame())
+    dispatch(stopGame())
     dispatch(setShowGameSettings(true))
     dispatch(setConfirmWindowType(''))
   }
@@ -42,9 +42,9 @@ function GameButtons (): JSX.Element {
   }
   const onMainMenuYes = (): void => {
     dispatch(setConfirmWindowType(''))
-    dispatch(changeGameStatus('notStarted'))
-    dispatch(setOpenGame(false))
+    dispatch(stopGame())
     dispatch(setShowGameSettings(true))
+    dispatch(setOpenGame(false))
   }
   const onMainMenuNo = (): void => {
     dispatch(setConfirmWindowType(''))
