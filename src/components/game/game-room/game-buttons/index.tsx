@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from '../../../../store/hooks'
 
 import { setShowGameSettings, setConfirmWindowType }
   from '../../../../store/features/game-settings/gameSettingsSlice'
-import { changeGameStatus, stopGame } from '../../../../store/features/game-logic/gameLogicSlice'
+import { stopGame } from '../../../../store/features/game-logic/gameLogicSlice'
 import { setShowRules, setOpenGame } from '../../../../store/features/main-menu/mainMenuSlice'
 
 import Rules from '../../../rules'
