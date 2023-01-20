@@ -24,7 +24,8 @@ const FullScreenBtn: React.FC = () => {
     setIsFullScreen(prevState => !prevState)
   }
 
-  return (<button ref={(el) => { textShadowRefs.current![0] = el! }} type='button' name='fullscreen' className={`fullscreen-btn ${isFullScreen ? 'fullscreen-btn--closed' : ''}`} onClick={toggleFullscreen}></button>)
+  return (<button ref={(el) => { textShadowRefs.current![0] = el! }} type='button' name='fullscreen'
+    className={`fullscreen-btn ${isFullScreen ? 'fullscreen-btn--closed' : ''}`} onClick={toggleFullscreen}></button>)
 }
 
 export default FullScreenBtn
