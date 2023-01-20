@@ -28,7 +28,7 @@ const VolumeSettings: React.FC = () => {
         onClick={onSoundButton}
         ref={(el) => { textShadowRefs.current![0] = el! }}
       ></button>
-      <input className='volume' ref={volumeRef} onChange={onVolumeRange} type='range' min='1' defaultValue='3' max='8' step='1' />
+      <input className={`volume ${sound ? '' : 'visually-hidden'}`} ref={volumeRef} onChange={onVolumeRange} type='range' min='1' defaultValue='3' max='8' step='1' />
     </>
   )
 }
