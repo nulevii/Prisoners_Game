@@ -5,7 +5,7 @@ import Prisoner from './prisoner'
 import Guard from './guard'
 import PauseButton from './pause-button'
 import Envelope from './envelope'
-import Clock from './clock'
+import Timer from './timer'
 
 const GameInfoBlock: React.FC = function () {
   const { gameStatus } = useAppSelector((state) => state.gameLogic)
@@ -17,7 +17,7 @@ const GameInfoBlock: React.FC = function () {
           <Prisoner />
           <Envelope />
           <PauseButton />
-          <Clock />
+          <Timer />
           <Guard />
         </>
         : <div className='not-started'>Game not started!</div>
