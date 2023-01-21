@@ -6,6 +6,7 @@ justify-content: center;
 }
 
 .game-room-wrapper{
+  position: relative;
   background-image: url(/assets/images/game/game-background-lamps.png);
   background-size: contain;
   background-repeat: no-repeat;
@@ -18,5 +19,120 @@ justify-content: center;
 }
 
 .boxes-wrapper{
+  top:195px;
+  position:absolute;
   display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  gap: 40px;
+}
+
+.table {
+  position: absolute;
+  opacity: 0.1;
+  width: 14%;
+  height: 12%;
+  background-color: yellow;
+
+  &-one{
+    top: 16%;
+    left: 8.5%;
+    transform: rotate(2deg);
+  }
+  &-two{
+    top: 16%;
+    left:24.8%;
+    transform: rotate(-1deg);
+  }
+  &-three{
+    top: 16.5%;
+    left:41%;
+  }
+  &-four{
+    top: 17%;
+    left:57.7%;
+  }
+  &-five{
+    top: 17%;
+    left:74%;
+  }
+
+  &-six{
+    top: 28.5%;
+    left: 8.2%;
+    transform: rotate(2deg);
+  }
+  &-seven{
+    top: 28.5%;
+    left: 24.5%;
+  }
+  &-eight{
+    top: 29.5%;
+    left: 40%;
+  }
+  &-nine{
+    top: 30.5%;
+    left: 56%;
+    transform: rotate(2deg);
+  }
+  &-ten{
+    top: 30.5%;
+    left: 72.2%;
+  }
+
+  &-eleven{
+    top: 52%;
+    left: 9%;
+  }
+  &-tvelve{
+    top: 52.5%;
+    left: 25.8%;
+    transform: rotate(2deg);
+  }
+  &-thirteen{
+    top: 53%;
+    left: 42.5%;
+  }
+  &-fourteen{
+    top: 54%;
+    left: 58.6%;
+  }
+  &-fifteen{
+    top: 54%;
+    left: 75.3%;
+    transform: rotate(2deg);
+  }
+
+  &-sixteen{
+    top: 67%;
+    left: 7.8%;
+  }
+  &-seventeen{
+    top: 67%;
+    left: 24.8%;
+  }
+  &-eighteen{
+    top: 67%;
+    left: 41.5%;
+  }
+  &-nineteen{
+    top: 67.5%;
+    left: 58.2%;
+  }
+  &-twenty{
+    top: 67%;
+    left: 75.3%;
+    transform: rotate(2deg);
+  }
+}
+
+
+.box{
+
+  height: 8.52%;
+  width: 4%;
+  color: white;
+  text-align: center;
+  flex-grow: 0;
 }
