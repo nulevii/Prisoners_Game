@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
 function Clock ({ timeLeft, timeLimit }: { timeLeft: number, timeLimit: number }): JSX.Element {
-  const clockParts = 20
+  const CLOCK_PARTS = 20
   const leftTimeInPersent = timeLeft / timeLimit
-  const clockPart = Math.ceil(leftTimeInPersent * clockParts)
+  const clockPart = Math.ceil(leftTimeInPersent * CLOCK_PARTS)
 
-  const generateClassFour = (type: number, part: number): string => {
+  const generateClassFour = (type: number, section: number): string => {
     const partsInSection = 5
-    const sectionBiggestNum = part * partsInSection
+    const sectionBiggestNum = section * partsInSection
     const image = {
       [sectionBiggestNum - 1]: 'image-four',
       [sectionBiggestNum - 2]: 'image-three',
