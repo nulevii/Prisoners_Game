@@ -1,5 +1,6 @@
 import { guards } from './guards'
 import prisonerImg from '../assets/images/characters/prisoners/prisoner.png'
+const BOX_QTT = 60
 
 const getRandomArrIndex = (number: number): number => Math.floor(Math.random() * number)
 const getRandomNumber = (): number => Math.floor(1000 + Math.random() * 9000)
@@ -8,27 +9,50 @@ const generateId = (randomNumbersArray: number[] | string[]): number => {
   const numberInBoxId = getRandomArrIndex(randomNumbersArray.length)
   return numberInBoxId
 }
-export const createBoxesArray = (prisonersQtt: number): BoxInterface[] => {
-  const boxNumbers: number[] = Array.from({ length: prisonersQtt }, (_, i) => getRandomNumber())
 
-  const boxes: BoxInterface[] = [...boxNumbers].map(boxNumber => {
-    const numberInBoxId = generateId(boxNumbers)
-    const numberInBox = boxNumbers[numberInBoxId]
-
-    boxNumbers.splice(numberInBoxId, 1)
-
-    return {
-      boxNumber,
-      numberInBox,
-      isOpen: false
-    }
-  })
-  return boxes
+const generateArray = (arrLength: number): number[] => {
+  return Array.from({ length: arrLength }, (_, i) => i + 1)
 }
+const generateRandomNumArray = (arrLength: number): number[] => {
+  return Array.from({ length: arrLength }, (_, i) => getRandomNumber())
+}
+
+const takeNumberFromArr = (arr: number[]): number => {
+  const numberId = generateId(arr)
+  const number = arr[numberId]
+  arr.splice(numberId, 1)
+  return number
+}
+
 export interface BoxInterface {
   boxNumber: number
   numberInBox: number
   isOpen: boolean
+  boxPosition: number
+}
+
+export const createBoxesArray = (prisonersQtt: number): BoxInterface[] => {
+  const boxNumbers = generateRandomNumArray(prisonersQtt)
+  const boxPositions = generateArray(BOX_QTT)
+  const boxesArr: BoxInterface[] = [...boxNumbers].map(boxNumber => {
+    const numberInBox = takeNumberFromArr(boxNumbers)
+    const boxPosition = takeNumberFromArr(boxPositions)
+
+    return {
+      boxNumber,
+      numberInBox,
+      isOpen: false,
+      boxPosition
+    }
+  })
+  return boxesArr
+}
+
+export interface PrisonersInterface {
+  prisonerNumber: number
+  prisonerName: string
+  prisonerImg: string
+  attempts: number
 }
 
 const prisonersNames = ['Adam', 'Alex', 'Aaron', 'Ben', 'Carl', 'Dan', 'David', 'Edward', 'Fred', 'Frank', 'George', 'Hal', 'Hank', 'Ike', 'John', 'Jack', 'Joe', 'Larry', 'Monte', 'Matthew', 'Mark', 'Nathan', 'Otto', 'Paul', 'Peter', 'Roger', 'Roger', 'Steve', 'Thomas', 'Tim', 'Ty', 'Victor', 'Walter']
@@ -48,12 +72,6 @@ export const createPrisoners = (boxes: BoxInterface[]): PrisonersInterface[] => 
   })
   return prisoners
 }
-export interface PrisonersInterface {
-  prisonerNumber: number
-  prisonerName: string
-  prisonerImg: string
-  attempts: number
-}
 
 export const selectGuard = (): GuardInterface => {
   const guardNum = getRandomArrIndex(guards.length)
@@ -65,4 +83,14 @@ export interface GuardInterface {
   resource: string
   picture: string
   firstJoke: string
+}
+
+export const updateBoxPositions = (boxesArr: BoxInterface[]): BoxInterface[] => {
+  const newBoxesArr = [...boxesArr]
+  const boxPositions = generateArray(BOX_QTT)
+  return newBoxesArr.map((box) => {
+    const boxPosition = takeNumberFromArr(boxPositions)
+    box.boxPosition = boxPosition
+    return box
+  })
 }
