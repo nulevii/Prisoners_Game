@@ -1,6 +1,6 @@
 import { guards } from './guards'
 import prisonerImg from '../assets/images/characters/prisoners/prisoner.png'
-const BOX_QTT = 60
+import { BOX_QTT } from './constants'
 
 const getRandomArrIndex = (number: number): number => Math.floor(Math.random() * number)
 const getRandomNumber = (): number => Math.floor(1000 + Math.random() * 9000)
