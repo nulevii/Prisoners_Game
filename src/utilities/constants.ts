@@ -1,7 +1,7 @@
-export const TABLES_ARR = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'tvelve',
+export const TABLE_NUMBERS_ARR = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'tvelve',
   'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen', 'twenty']
 
-export const BOX_ON_TABLE_POSITION = [2, 1, 0]
+export const BOX_TABLE_POSITIONS: [2, 1, 0] = [2, 1, 0]
 
 export const BOX_QTT = 60
 
