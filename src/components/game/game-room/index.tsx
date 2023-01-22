@@ -1,37 +1,19 @@
 import React from 'react'
-import { useAppDispatch, useAppSelector } from '../../../store/hooks'
-import { openBox } from '../../../store/features/game-logic/gameLogicSlice'
+
+import { TABLE_NUMBERS_ARR } from '../../../utilities/constants'
 
 import GameResult from './game-result'
 import GameButtons from './game-buttons'
+import Table from './table'
 
 const GameRoom: React.FC = function () {
-  const dispatch = useAppDispatch()
-  const { boxes, gameStatus } = useAppSelector((state) => state.gameLogic)
-
-  const onOpenBox = (boxIndex: number): void => {
-    if (gameStatus !== 'started') return
-    dispatch(openBox(boxIndex))
-  }
   return (
     <div className='game-field'>
       <div className='game-room-wrapper'>
         <GameButtons />
-        <div className='boxes-wrapper'>
-          {boxes.map(({ boxNumber, numberInBox, isOpen }, index) => (
-            <div onClick={() => { onOpenBox(boxNumber) }} key={boxNumber}
-              style={{
-                height: '100px',
-                width: '100px',
-                color: 'white',
-                textAlign: 'center',
-                backgroundColor: isOpen ? 'blue' : 'red'
-              }}>
-              {boxNumber}
-              {isOpen && gameStatus === 'started' ? <p> {numberInBox}</p> : null}
-            </div>
-          ))}
-        </div>
+        {TABLE_NUMBERS_ARR.map((tableNumber, index) =>
+          <Table key={tableNumber} tableNumber={tableNumber} tableIndex={index}></Table>
+        )}
         <GameResult />
       </div>
     </div>
