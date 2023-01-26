@@ -1,11 +1,11 @@
-.game-field{
-height: calc(100vh - $info-height);
-display: flex;
-align-items: center;
-justify-content: center;
+.game-field {
+  height: calc(100vh - $info-height);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.game-room-wrapper{
+.game-room-wrapper {
   position: relative;
   background-image: url(/assets/images/game/game-background-lamps.png);
   background-size: contain;
@@ -15,12 +15,13 @@ justify-content: center;
   width: 100vw;
   height: 47vw;
   max-width: calc((100vh - $info-height) * 2.13);
-  max-height: calc(100vh - $info-height);;
+  max-height: calc(100vh - $info-height);
+  ;
 }
 
-.boxes-wrapper{
-  top:195px;
-  position:absolute;
+.boxes-wrapper {
+  top: 195px;
+  position: absolute;
   display: flex;
   height: 100%;
   width: 100%;
@@ -35,94 +36,110 @@ justify-content: center;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 5%;
+  gap: 2.5%;
 
-  &-one{
+  &-one {
     top: 16%;
     left: 8.5%;
     transform: rotate(2deg);
   }
-  &-two{
+
+  &-two {
     top: 16%;
-    left:24.8%;
+    left: 24.8%;
     transform: rotate(-1deg);
   }
-  &-three{
+
+  &-three {
     top: 16.5%;
-    left:41%;
-  }
-  &-four{
-    top: 17%;
-    left:57.7%;
-  }
-  &-five{
-    top: 17%;
-    left:74%;
+    left: 41%;
   }
 
-  &-six{
+  &-four {
+    top: 17%;
+    left: 57.7%;
+  }
+
+  &-five {
+    top: 17%;
+    left: 74%;
+  }
+
+  &-six {
     top: 28.5%;
     left: 8.2%;
     transform: rotate(2deg);
   }
-  &-seven{
+
+  &-seven {
     top: 28.5%;
     left: 24.5%;
   }
-  &-eight{
+
+  &-eight {
     top: 29.5%;
     left: 40%;
   }
-  &-nine{
+
+  &-nine {
     top: 30.5%;
     left: 56%;
     transform: rotate(2deg);
   }
-  &-ten{
+
+  &-ten {
     top: 30.5%;
     left: 72.2%;
   }
 
-  &-eleven{
+  &-eleven {
     top: 52%;
     left: 9%;
   }
-  &-tvelve{
+
+  &-tvelve {
     top: 52.5%;
     left: 25.8%;
     transform: rotate(2deg);
   }
-  &-thirteen{
+
+  &-thirteen {
     top: 53%;
     left: 42.5%;
   }
-  &-fourteen{
+
+  &-fourteen {
     top: 54%;
     left: 58.6%;
   }
-  &-fifteen{
+
+  &-fifteen {
     top: 54%;
     left: 75.3%;
     transform: rotate(2deg);
   }
 
-  &-sixteen{
+  &-sixteen {
     top: 67%;
     left: 7.8%;
   }
-  &-seventeen{
+
+  &-seventeen {
     top: 67%;
     left: 24.8%;
   }
-  &-eighteen{
+
+  &-eighteen {
     top: 67%;
     left: 41.5%;
   }
-  &-nineteen{
+
+  &-nineteen {
     top: 67.5%;
     left: 58.2%;
   }
-  &-twenty{
+
+  &-twenty {
     top: 67%;
     left: 75.3%;
     transform: rotate(2deg);
@@ -130,22 +147,65 @@ justify-content: center;
 }
 
 
-.box{
-  height: 80%;
-  width: 40%;
+.box {
+  height: 75%;
+  width: 32%;
+  background-size: 100% 200%;
   color: black;
   text-align: center;
   flex-grow: 0;
   font-family: VCRMONO;
-  padding-top: 10%;
+  padding: 0.3% 1%;
+  // background-size: cover;
+  
 }
 
-.opened-box{
-  background-color: blue;
+.opened-box {
+  background-position: bottom;
 }
 
-.closed-box{
-  background-image: url(/assets/images/game/box.png);
-  background-size: 100% 100%;
+.closed-box {
+
   background-repeat: no-repeat;
+  background-position: top;
+}
+
+.box-sticker {
+  background-image: url(/assets/images/game/boxes/boxSticker.png);
+  height: 97%;
+  width: 86%;
+  padding-top: 10%;
+  padding-right: 2%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  background-size: 100% 100%;
+}
+
+.box-text-fieild {
+  font-family: yoster;
+  letter-spacing: -1.5px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #d4c8af;
+  color: #1c1c26;
+  width: 87%;
+  height: 35%;
+}
+
+.inside-box-text{
+  background-image: url(/assets/images/game/boxes/BoxInnerSheet.png);
+  font-family: rainyhearts;
+  font-size: 22px;
+  padding: 3%;
+  width: 58%;
+  height: 45%;
+  background-size: 100% 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40%;
+  margin-left: 29%;
 }

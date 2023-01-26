@@ -17,7 +17,6 @@ function GameButtons (): JSX.Element {
 
   const { showGameSettings, confirmWindowType } =
   useAppSelector((state) => state.gameSettings)
-  const { showGameRules } = useAppSelector((state) => state.mainMenu)
 
   const isResetConfirmWindow = confirmWindowType === 'reset'
   const isManiMenuConfirmWindow = confirmWindowType === 'main-menu'
@@ -61,7 +60,6 @@ function GameButtons (): JSX.Element {
           onActionNo={onResetNo}
         ></ConfirmWindow>
        )}
-    {showGameRules && <Rules />}
     {isManiMenuConfirmWindow &&
        (
         <ConfirmWindow

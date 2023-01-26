@@ -1,12 +1,12 @@
 import { guards } from './guards'
-import prisonerImg from '../assets/images/characters/prisoners/prisoner.png'
-import { BOX_QTT } from './constants'
 
-const getRandomArrIndex = (number: number): number => Math.floor(Math.random() * number)
-const getRandomNumber = (): number => Math.floor(1000 + Math.random() * 9000)
+import { BOX_QTT, PRISONERS_IMG_ARR, BOXES_IMG_ARR } from './constants'
+
+const getRandomNumber = (number: number): number => Math.floor(Math.random() * number)
+const getRandomBoxNumber = (): number => Math.floor(1000 + Math.random() * 9000)
 
 const generateId = (randomNumbersArray: number[] | string[]): number => {
-  const numberInBoxId = getRandomArrIndex(randomNumbersArray.length)
+  const numberInBoxId = getRandomNumber(randomNumbersArray.length)
   return numberInBoxId
 }
 
@@ -14,7 +14,7 @@ const generateArray = (arrLength: number): number[] => {
   return Array.from({ length: arrLength }, (_, i) => i + 1)
 }
 const generateRandomNumArray = (arrLength: number): number[] => {
-  return Array.from({ length: arrLength }, (_, i) => getRandomNumber())
+  return Array.from({ length: arrLength }, (_, i) => getRandomBoxNumber())
 }
 
 const takeNumberFromArr = (arr: number[]): number => {
@@ -29,6 +29,7 @@ export interface BoxInterface {
   numberInBox: number
   isOpen: boolean
   boxPosition: number
+  boxImg: string
 }
 
 export const createBoxesArray = (prisonersQtt: number): BoxInterface[] => {
@@ -37,12 +38,15 @@ export const createBoxesArray = (prisonersQtt: number): BoxInterface[] => {
   const boxesArr: BoxInterface[] = [...boxNumbers].map(boxNumber => {
     const numberInBox = takeNumberFromArr(boxNumbers)
     const boxPosition = takeNumberFromArr(boxPositions)
+    const boxImgNum = getRandomNumber(BOXES_IMG_ARR.length)
+    const boxImg = BOXES_IMG_ARR[boxImgNum]
 
     return {
       boxNumber,
       numberInBox,
       isOpen: false,
-      boxPosition
+      boxPosition,
+      boxImg
     }
   })
   return boxesArr
@@ -62,6 +66,7 @@ export const createPrisoners = (boxes: BoxInterface[]): PrisonersInterface[] => 
   const prisoners = newBoxes.map(({ boxNumber }: { boxNumber: number }) => {
     const prisonerName = `${prisonersNames[generateId(prisonersNames)]} ${prisonersSurnames[generateId(prisonersSurnames)]}`
     const attempts = newBoxes.length / 2
+    const prisonerImg = PRISONERS_IMG_ARR[getRandomNumber(PRISONERS_IMG_ARR.length)]
 
     return {
       prisonerNumber: boxNumber,
@@ -74,7 +79,7 @@ export const createPrisoners = (boxes: BoxInterface[]): PrisonersInterface[] => 
 }
 
 export const selectGuard = (): GuardInterface => {
-  const guardNum = getRandomArrIndex(guards.length)
+  const guardNum = getRandomNumber(guards.length)
   return guards[guardNum]
 }
 
