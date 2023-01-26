@@ -1,9 +1,6 @@
-import mert from '../assets/images/characters/guards/mert.png'
-import squid from '../assets/images/characters/guards/squid.png'
-import wetmore from '../assets/images/characters/guards/wetmore.webp'
-import starling from '../assets/images/characters/guards/starling.webp'
-import laverne from '../assets/images/characters/guards/laverne.jpg'
-import hopps from '../assets/images/characters/guards/hopps.jpg'
+import { GUARDS_IMGS } from './constants'
+
+const { mert, squid, wetmore, starling, laverne, hopps } = GUARDS_IMGS
 
 export const guards = [{
   name: 'Guard Mert',
