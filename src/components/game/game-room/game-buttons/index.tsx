@@ -6,7 +6,6 @@ import { setShowGameSettings, setConfirmWindowType }
 import { stopGame } from '../../../../store/features/game-logic/gameLogicSlice'
 import { setShowRules, setOpenGame } from '../../../../store/features/main-menu/mainMenuSlice'
 
-import Rules from '../../../rules'
 import ConfirmWindow from '../../../confirm-window'
 import GameSettings from '../../game-settings'
 import { useAddShadow } from '../../../../utilities/textShadow'

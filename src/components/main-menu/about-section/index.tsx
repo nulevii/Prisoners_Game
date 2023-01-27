@@ -39,7 +39,7 @@ const AboutSection: React.FC = function () {
         </div>
         <div className="aboutPortrait aboutPortrait3">
           <img src={sasha} alt="Designer" />
-          <p className="aboutPortraitText">Myakisheva S.</p>
+          <p className="aboutPortraitText">Miakisheva S.</p>
           <p className="aboutPortraitText"> Designer</p>
         </div>
       </div>
