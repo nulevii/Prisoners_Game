@@ -27,11 +27,11 @@ const Rules: React.FC = function () {
 
   function swapLeft (): void {
     setGoingRight(false)
-    if (!goingLeft) {
-      setGoingLeft(true)
-    }
+    setGoingLeft(true)
+
     if (!disabledArrows) {
       setDisabledArrows(true)
+
       setCurrentIdx((prevIdx) => {
         setAnimateLastPage(false)
         if (lastPage) {
@@ -73,9 +73,6 @@ const Rules: React.FC = function () {
   }
 
   function swapRight (): void {
-    if (!goingRight) {
-      setGoingRight(true)
-    }
     setGoingLeft(false)
     setFirstPage(false)
     setAnimateLastPage(false)
@@ -97,6 +94,9 @@ const Rules: React.FC = function () {
       })
       ), 500)
     }
+    if (!goingRight) {
+      setGoingRight(true)
+    }
   }
 
   return (
@@ -110,7 +110,7 @@ const Rules: React.FC = function () {
       ></button>
       <p
         className={
-          currentIdx === 1
+          currentIdx === 1 || (currentIdx === 0 && goingLeft)
             ? 'animatedText rulesText'
             : 'rulesText'
         }
@@ -121,7 +121,7 @@ const Rules: React.FC = function () {
       </p>
             <p
         className={
-          currentIdx === 2
+          currentIdx === 2 || (currentIdx === 1 && goingLeft)
             ? 'animatedText rulesText'
             : 'rulesText'
         }
@@ -132,7 +132,7 @@ const Rules: React.FC = function () {
       </p>
       <p
         className={
-          currentIdx === 3
+          currentIdx === 3 || (currentIdx === 2 && goingLeft)
             ? 'animatedText rulesText'
             : 'rulesText'
         }
