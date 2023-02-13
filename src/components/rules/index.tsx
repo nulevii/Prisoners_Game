@@ -9,14 +9,9 @@ const Rules: React.FC = function () {
     dispatch(setShowRules(false))
   }
   const textShadowRefs = useAddShadowLight()
-  const [currentIdx, setCurrentIdx] = useState(0)
   const [zIndex, setZIndex] = useState([4, 3, 2, 1])
   const [disabledArrows, setDisabledArrows] = useState(false)
-  const [lastPage, setLastPage] = useState(false)
-  const [firstPage, setFirstPage] = useState(true)
-  const [animateLastPage, setAnimateLastPage] = useState(false)
-  const [goingLeft, setGoingLeft] = useState(false)
-  const [goingRight, setGoingRight] = useState(false)
+  const [current, setCurrent] = useState({ page: 1, animatedPage: 0 })
 
   const rulesText = [
     '1 In this game you are a prisoner, one among many. Your task is to escape. Guards want to play a game with you, in which you cannot win. At least, they think so.',
@@ -25,77 +20,64 @@ const Rules: React.FC = function () {
     "4 Each player... sorry, each prisoner can only open half of the boxes in the room. If you don't find your number, better luck next time! Of course, there will be no next time. In fact, if at least one of your cellmates doesn't find their number, the game is over."
   ]
 
-  function swapLeft (): void {
-    setGoingRight(false)
-    setGoingLeft(true)
-
+  function changePage (direct: string): void {
     if (!disabledArrows) {
       setDisabledArrows(true)
 
-      setCurrentIdx((prevIdx) => {
-        setAnimateLastPage(false)
-        if (lastPage) {
-          setLastPage(false)
-          setAnimateLastPage(true)
-        }
-        if (!goingLeft) {
-          return prevIdx
-        }
-        return prevIdx - 1
-      }
-      )
-
-      setZIndex(prev => prev.map(el => {
-        if (el === 1) {
-          return 3
-        }
-        if (el === 3) {
-          return 0
-        }
-        return el
-      })
-      )
-
-      setTimeout(() => setZIndex(prev => {
-        setDisabledArrows(false)
-        return prev.map(el => {
-          if (el === 3) {
-            return 4
+      if (direct === 'left') {
+        setCurrent((prev) => {
+          return {
+            page: prev.page - 1,
+            animatedPage: prev.page
           }
-          if (el === 0) {
-            return 2
-          }
-          return el - 1
         })
-      }), 500)
-    }
-    if (currentIdx === 2) setFirstPage(true)
-  }
-
-  function swapRight (): void {
-    setGoingLeft(false)
-    setFirstPage(false)
-    setAnimateLastPage(false)
-    if (!disabledArrows) {
-      setDisabledArrows(true)
-      setCurrentIdx((prevIdx) => {
-        if (prevIdx === 2) {
-          setLastPage(true)
-        }
-        return prevIdx + 1
-      })
-      setTimeout(() => setZIndex(prev => prev.map(el => {
-        if (el === 4) {
-          setDisabledArrows(false)
-          return 1
-        }
-        setDisabledArrows(false)
-        return el + 1
-      })
-      ), 500)
-    }
-    if (!goingRight) {
-      setGoingRight(true)
+        setZIndex(prev => prev.map(el => {
+          if (el === 1) {
+            return 3
+          }
+          if (el === 3) {
+            return 0
+          }
+          return el
+        })
+        )
+        setTimeout(
+          () =>
+            setZIndex((prev) => {
+              setDisabledArrows(false)
+              return prev.map((el) => {
+                if (el === 3) {
+                  return 4
+                }
+                if (el === 0) {
+                  return 2
+                }
+                return el - 1
+              })
+            }),
+          500
+        )
+      } else {
+        setCurrent((prev) => {
+          return {
+            page: prev.page + 1,
+            animatedPage: prev.page
+          }
+        })
+        setTimeout(
+          () =>
+            setZIndex((prev) => {
+              setDisabledArrows(false)
+              return prev.map((el) => {
+                if (el === 4) {
+                  return 1
+                }
+                return el + 1
+              })
+            }),
+          500
+        )
+      }
     }
   }
 
@@ -110,7 +92,7 @@ const Rules: React.FC = function () {
       ></button>
       <p
         className={
-          currentIdx === 1 || (currentIdx === 0 && goingLeft)
+          current.animatedPage === 1
             ? 'animatedText rulesText'
             : 'rulesText'
         }
@@ -119,9 +101,9 @@ const Rules: React.FC = function () {
       >
         {rulesText[0]}
       </p>
-            <p
+      <p
         className={
-          currentIdx === 2 || (currentIdx === 1 && goingLeft)
+          current.animatedPage === 2
             ? 'animatedText rulesText'
             : 'rulesText'
         }
@@ -132,40 +114,36 @@ const Rules: React.FC = function () {
       </p>
       <p
         className={
-          currentIdx === 3 || (currentIdx === 2 && goingLeft)
-            ? 'animatedText rulesText'
-            : 'rulesText'
+        current.animatedPage === 3
+          ? 'animatedText rulesText'
+          : 'rulesText'
         }
         key={rulesText[2]}
         style={{ zIndex: zIndex[2] }}
-
       >
         {rulesText[2]}
       </p>
       <p
         className={
-          animateLastPage
+          current.animatedPage === 4
             ? 'animatedText rulesText'
             : 'rulesText'
         }
         key={rulesText[3]}
         style={{ zIndex: zIndex[3] }}
-
       >
         {rulesText[3]}
       </p>
       <button
-        className={`rulesLeft rulesArrow ${firstPage ? 'visually-hidden' : ''}`}
-        onClick={swapLeft}
+        className={`rulesLeft rulesArrow ${current.page === 1 ? 'visually-hidden' : ''}`}
+        onClick={() => changePage('left')}
         ref={(el) => {
           textShadowRefs.current![0] = el!
         }}
       ></button>
       <button
-        className={`rulesRight rulesArrow ${
-          lastPage ? 'visually-hidden' : ''
-        }`}
-        onClick={swapRight}
+        className={`rulesRight rulesArrow ${current.page === 4 ? 'visually-hidden' : ''}`}
+        onClick={() => changePage('right')}
         id="rulesArrowRight"
         ref={(el) => {
           textShadowRefs.current![1] = el!
