@@ -38,6 +38,9 @@
   }
 
   &Text {
+    position: absolute;
+    top: 15px;
+    left:15px;
     font-family: 'Notepen', sans-serif;
     box-sizing: border-box;
     font-size: 43px;
@@ -59,3 +62,20 @@
   cursor: pointer;
   z-index: 0;
 }
+
+.animatedText {
+  animation:  1s linear 0s 1 swipeRules;
+}
+
+@keyframes swipeRules {
+  0% {
+    transform: translateY(0) skew(0);
+  }
+  60% {
+    transform: translateY(-140%) skew(-10deg, 30deg);
+  }
+  100% {
+    transform: translateY(0) skew(0);
+  }
+}
+
