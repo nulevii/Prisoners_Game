@@ -1,4 +1,70 @@
-.game-result{
-  background-color: white;
+.game-result {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #191c25
+}
+
+.image-wrapper {
+  width: 1300px;
+  height: 800px;
+  background-size: contain;
+  display: flex;
+  background-repeat: no-repeat;
+  align-items: flex-end;
+  padding: 30px;
+  background-size: 100% 100%;
+}
+
+.win-section {
+  background-image: url(/assets/images/game/win-img.png);
+}
+
+.lose-section {
+  background-image: url(/assets/images/game/lose-img.png);
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.selection-btn {
+  height: 35px;
+  background-size: 100% 100%;
+  background-color: transparent;
+  border: none;
+  transition: transform 250ms;
+
+  &:hover,
+  &:focus {
+    transform: translateY(5%);
+  }
+}
+
+.main-menu-btn {
+  background-image: url(/assets/images/game/main-menu.png);
+  width: 207px;
+}
+
+.restart-btn {
+  background-image: url(/assets/images/game/restart.png);
+  width: 175px;
+}
+
+.paused-modal {
+  top: 40px;
+  width: 100%;
+  height: 100%;
   position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 170px;
+  color: white;
+  font-family: rainyhearts;
+  text-transform: uppercase;
 }

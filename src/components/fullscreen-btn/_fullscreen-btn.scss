@@ -11,14 +11,15 @@
   width: 37px;
   height: 32px;
   background-image: url(/assets/images/main-menu/full-screan-btns.png);
-
+  z-index: 20;
   transition: transform 250ms;
 
-  &:hover, &:focus {
-  transform: translateY(5%);
-}
+  &:hover,
+  &:focus {
+    transform: translateY(5%);
+  }
 }
 
-.fullscreen-btn--closed{
+.fullscreen-btn--closed {
   background-position: bottom;
 }

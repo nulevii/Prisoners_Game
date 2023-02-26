@@ -10,10 +10,12 @@ import './sass/index.scss'
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 )
-root.render(
+document.addEventListener('DOMContentLoaded', function (event) {
+  root.render(
   <React.StrictMode>
     <Provider store={store}>
       <App />
     </Provider>
   </React.StrictMode>
-)
+  )
+})
