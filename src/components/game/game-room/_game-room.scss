@@ -209,3 +209,47 @@
   margin-top: 40%;
   margin-left: 29%;
 }
+
+.game-stats{
+  font-family: rainyhearts;
+  color: white;
+  font-weight: 600;
+  letter-spacing: 4px;
+  font-size: 32px;
+  width: 7%;
+  height: 15%;
+  position: absolute;
+  right: 2%;
+  top: 13%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  &__keys {
+    background-image: url(/assets/images/game/key.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center right;
+    width: 30%;
+    height: 40%;
+  }
+
+  &__lifes{
+    background-image: url(/assets/images/game/heart.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center ;
+    width: 30%;
+    height: 40%;
+  }
+}
+
+.stat-wrapper{
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: end;
+  gap: 10%;
+}

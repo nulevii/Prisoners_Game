@@ -1,4 +1,5 @@
 .confirm {
+
   width: 600px;
   height: 400px;
   display: flex;
@@ -33,13 +34,13 @@
 }
 
 &.yes-btn{
-  background-image: url(/assets/images/game/confirm-window/yes.png);
+  background-image: url(/assets/images/game/confirm-window/confirm.png);
   margin-right: auto;
   width: 70px;
   height: 70px;
 }
 
 &.no-btn{
-  background-image: url(/assets/images/game/confirm-window/no.png);
+  background-image: url(/assets/images/game/confirm-window/reject.png);
 }
 }
