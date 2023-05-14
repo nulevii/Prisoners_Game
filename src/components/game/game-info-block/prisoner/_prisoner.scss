@@ -1,15 +1,10 @@
 .prisoner {
   position: relative;
   top: -25px;
-
   width: 160px;
   height: 160px;
   border-radius: 50%;
-
-  background-color: $avatarBcg;
 }
-
-.prisoner__index {}
 
 .prisoner__name {
   margin-top: 5px;
